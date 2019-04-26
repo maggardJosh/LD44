@@ -17,5 +17,5 @@ MonoBehaviour:
   Scenes:
   - Assets\Scenes\SampleScene.unity
   BuildAndroid: 0
-  BuildWeb: 0
+  BuildWeb: 1
   BuildPC: 1
