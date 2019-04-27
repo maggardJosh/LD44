@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class QuestSystem : MonoBehaviour
 {
@@ -20,10 +18,11 @@ public class QuestSystem : MonoBehaviour
         }
     }
 
-    public QuestState CurrentState = QuestState.A_JUST_STARTED;
+    public QuestState CurrentState { get; private set; } = QuestState.A_JUST_STARTED;
     public void CompleteQuest()
     {
         CurrentState++;
     }
+
 
 }
