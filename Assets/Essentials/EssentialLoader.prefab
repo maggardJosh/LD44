@@ -64,3 +64,5 @@ MonoBehaviour:
     type: 3}
   MainCamera: {fileID: 5182742253061862743, guid: 4cf537f428ef00d48a02f4993f82843a,
     type: 3}
+  QuestSystem: {fileID: 4222499381334298558, guid: f4df92013ff38fd4d957de479e563179,
+    type: 3}

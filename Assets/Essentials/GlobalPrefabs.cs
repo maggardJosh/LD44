@@ -18,6 +18,7 @@ public class GlobalPrefabs : MonoBehaviour
     public GameObject VirtualCamera;
     public GameObject PlayerPrefab;
     public GameObject MainCamera;
+    public GameObject QuestSystem;
 
     // Start is called before the first frame update
     void Start()
