@@ -22,7 +22,11 @@ public class TopDownController : MonoBehaviour
         {
             animator.SetFloat("lastXMove", xMove);
             animator.SetFloat("lastYMove", yMove);
-            rigidBody.MovePosition((Vector2)transform.position + new Vector2(xMove, yMove) * speed * Time.deltaTime);
+            rigidBody.velocity = (new Vector2(xMove, yMove) * speed);
+        }
+        else
+        {
+            rigidBody.velocity = Vector2.zero;
         }
         animator.SetFloat("xMove", xMove);
         animator.SetFloat("yMove", yMove);

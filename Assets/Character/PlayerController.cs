@@ -6,13 +6,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private TopDownController controller;
-    // Start is called before the first frame update
+    
     void Start()
     {
         controller = GetComponent<TopDownController>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         controller.xMove = Input.GetAxisRaw("Horizontal");
