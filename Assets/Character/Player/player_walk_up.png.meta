@@ -1,7 +1,19 @@
 fileFormatVersion: 2
-guid: f79a7c7d506fb484fa545ff7e6cdbc40
+guid: 5cc64ae19a115c442bd40d3b6350df90
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 8890557358867232727
+    second: player_walk_up_0
+  - first:
+      213: -4111156606367865582
+    second: player_walk_up_1
+  - first:
+      213: 5059150903664805491
+    second: player_walk_up_2
+  - first:
+      213: 7762000961155725643
+    second: player_walk_up_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,10 +52,10 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
-  spriteExtrude: 1
+  spriteMode: 2
+  spriteExtrude: 13
   spriteMeshType: 1
-  alignment: 7
+  alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
@@ -115,11 +127,95 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: player_walk_up_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 20
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2be55d5e1e6c3c446a39ea32e8c9b7fd
+      internalID: 8890557358867232727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_walk_up_1
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 0
+        width: 20
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a89cb240e0d36a641bcb760e17a938a1
+      internalID: -4111156606367865582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_walk_up_2
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 0
+        width: 20
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9f2b996ce68af84ea5a60cf668f5b34
+      internalID: 5059150903664805491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_walk_up_3
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 0
+        width: 20
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 065ca57064f819d458708cc3892af6cb
+      internalID: 7762000961155725643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 590bf691dab005749bc64e063d2b0631
+    spriteID: eb1842d74b71d7d4e8b42e3f4862bd69
     internalID: 0
     vertices: []
     indices: 
