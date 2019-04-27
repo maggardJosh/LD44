@@ -57,7 +57,7 @@ public class ThrowingEnemy : MonoBehaviour
     {
         controller.FacePosition(player.transform.position);
         Vector3 newTarget = startPos + new Vector3(Random.Range(-jitterRandom, jitterRandom), Random.Range(-jitterRandom, jitterRandom), 0);
-        transform.position = Vector3.MoveTowards(transform.position, newTarget, .05f);
+        transform.position = Vector3.MoveTowards(transform.position, newTarget, 1f * Time.deltaTime);
     }
 
     private void ThrowLogic()

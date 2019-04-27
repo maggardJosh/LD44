@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6205160327632775082}
   - component: {fileID: 6205160327632775081}
   - component: {fileID: 6205160327632775080}
-  - component: {fileID: 6205160327632775084}
   m_Layer: 5
   m_Name: TransitionScreen
   m_TagString: Untagged
@@ -100,19 +99,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6205160327632775084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6205160327632775127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adbf49728944d1443a2009ab11e21cdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeSpeed: 0.5
 --- !u!1 &6205160327821821663
 GameObject:
   m_ObjectHideFlags: 0

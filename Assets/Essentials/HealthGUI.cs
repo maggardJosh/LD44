@@ -18,7 +18,6 @@ public class HealthGUI : MonoBehaviour
         float healthRatio = health / 2f;
         for (int i = 0; i < hearts.Length; i++)
         {
-            Debug.Log(healthRatio + " " + i);
             hearts[i].fillAmount = Mathf.Min(1, healthRatio);
             healthRatio--;
         }

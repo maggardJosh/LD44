@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +16,7 @@ public class FadeTransitionScreen : MonoBehaviour
         }
     }
 
-    public bool IsTransitioning { get { return currentState != FadeState.FADED_OUT; } }
+    public bool IsTransitioning { get { return currentState != FadeState.FADED_IN; } }
     public float fadeSpeed = .3f;
     private enum FadeState
     {
@@ -40,21 +39,29 @@ public class FadeTransitionScreen : MonoBehaviour
         switch (currentState)
         {
             case FadeState.FADING_IN:
-                oldColor.a -= fadeSpeed * Time.deltaTime;
+                oldColor.a -= fadeSpeed * Mathf.Min(0.1f, Time.unscaledDeltaTime);
+                Time.timeScale = Mathf.Clamp01(.5f - oldColor.a);
                 image.color = oldColor;
                 if (oldColor.a <= 0)
+                {
+                    Time.timeScale = 1;
+                    oldColor.a = 0;
                     currentState = FadeState.FADED_IN;
+                }
                 break;
             case FadeState.FADED_OUT:
                 break;
             case FadeState.FADED_IN:
                 break;
             case FadeState.FADING_OUT:
-                oldColor.a += fadeSpeed * Time.deltaTime;
+                oldColor.a += fadeSpeed * Time.unscaledDeltaTime;
+                Time.timeScale = Mathf.Clamp01(.5f - oldColor.a);
                 image.color = oldColor;
                 if (oldColor.a >= 1)
                 {
-                    LoadAction.Invoke();
+                    Time.timeScale = 0;
+                    if (LoadAction != null)
+                        LoadAction.Invoke();
                     currentState = FadeState.FADING_IN;
                 }
                 break;
