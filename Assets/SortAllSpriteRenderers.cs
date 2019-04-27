@@ -6,6 +6,8 @@ public class SortAllSpriteRenderers : MonoBehaviour
     void Update()
     {
         foreach (var c in FindObjectsOfType<SpriteRenderer>())
+        {
             c.sortingOrder = Mathf.CeilToInt((-c.transform.position.y - 300) * 100);
+        }
     }
 }
