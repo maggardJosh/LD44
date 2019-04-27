@@ -479,7 +479,7 @@ Tilemap:
   - first: {x: -10, y: -7, z: 0}
     second:
       m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 4
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -2842,17 +2842,17 @@ Tilemap:
   - m_RefCount: 11
     m_Data: {fileID: -4683339530408089196, guid: f034d0f0cf6ef084da25df19cf6f12e7,
       type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -979089462801025887, guid: f034d0f0cf6ef084da25df19cf6f12e7,
-      type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 18
     m_Data: {fileID: -5780151342473224253, guid: f034d0f0cf6ef084da25df19cf6f12e7,
       type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -2890417086725145291, guid: f034d0f0cf6ef084da25df19cf6f12e7,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -979089462801025887, guid: f034d0f0cf6ef084da25df19cf6f12e7,
+      type: 3}
   - m_RefCount: 11
     m_Data: {fileID: -6264777607469435119, guid: f034d0f0cf6ef084da25df19cf6f12e7,
       type: 3}
@@ -3167,7 +3167,7 @@ PrefabInstance:
     - target: {fileID: 8148226193897643613, guid: 1e97c4ff2eef50c41b3023cc78a2c5ee,
         type: 3}
       propertyPath: sceneToWarpTo
-      value: SampleScene
+      value: Outside
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e97c4ff2eef50c41b3023cc78a2c5ee, type: 3}

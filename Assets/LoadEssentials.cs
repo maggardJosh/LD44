@@ -5,17 +5,18 @@ using UnityEngine;
 public class LoadEssentials : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        
         if(FindObjectsOfType<Cinemachine.CinemachineVirtualCamera>().Length <= 0)
         {
             GameObject virtualCamera = GameObject.Instantiate(GlobalPrefabs.Instance.VirtualCamera);
-            DontDestroyOnLoad(virtualCamera);
         }
 
         if(FindObjectsOfType<PlayerController>().Length <= 0)
         {
             GameObject player = GameObject.Instantiate(GlobalPrefabs.Instance.PlayerPrefab);
+            var virtualCam = FindObjectOfType<Cinemachine.CinemachineVirtualCamera>().Follow = player.transform;
             DontDestroyOnLoad(player);
         }
 

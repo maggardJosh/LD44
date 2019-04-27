@@ -151,6 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a01d469ed9cd14cb61644292c937ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastWarp: 
+  hasLeftWarp: 1
 --- !u!58 &537303968286632713
 CircleCollider2D:
   m_ObjectHideFlags: 0
