@@ -4,6 +4,11 @@ public class LoadEssentials : MonoBehaviour
 {
     void Awake()
     {
+        if(FindObjectOfType<FadeTransitionScreen>() == null)
+        {
+            GameObject transScreen = Instantiate(GlobalPrefabs.Instance.TransitionCanvas);
+            DontDestroyOnLoad(transScreen);
+        }
         if (FindObjectOfType<QuestSystem>() == null)
         {
             GameObject questSystem = GameObject.Instantiate(GlobalPrefabs.Instance.QuestSystem);
