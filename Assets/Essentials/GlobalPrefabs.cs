@@ -20,6 +20,7 @@ public class GlobalPrefabs : MonoBehaviour
     public GameObject MainCamera;
     public GameObject QuestSystem;
     public GameObject DialogueCanvas;
+    public GameObject HealthCanvas;
     [Header("SharedPrefabs")]
     public GameObject ShadowPrefab;
     public GameObject InteractIndicatorPrefab;

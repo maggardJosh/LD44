@@ -9,6 +9,11 @@ public class LoadEssentials : MonoBehaviour
             GameObject questSystem = GameObject.Instantiate(GlobalPrefabs.Instance.QuestSystem);
             DontDestroyOnLoad(questSystem);
         }
+        if (FindObjectOfType<HealthGUI>() == null)
+        {
+            GameObject healthUI = Instantiate(GlobalPrefabs.Instance.HealthCanvas);
+            DontDestroyOnLoad(healthUI);
+        }
         if (FindObjectOfType<DialogueManager>() == null)
         {
             GameObject dialogueManager = Instantiate(GlobalPrefabs.Instance.DialogueCanvas);

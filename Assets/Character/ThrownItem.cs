@@ -10,15 +10,12 @@ public class ThrownItem : MonoBehaviour
     private float count = 0;
     public float throwTime = 2;
     public float maxHeight = 2;
+    public GameObject parent;
 
     public GameObject actualItem;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+   
+    public float DamageDistanceSquared = 1 * 1;
+    
     void Update()
     {
         count += Time.deltaTime;
@@ -35,8 +32,20 @@ public class ThrownItem : MonoBehaviour
         actualItem.transform.localPosition = localPos;
     }
 
-    public void Throw(Vector3 targetPos, float time, float height)
+    private void OnDestroy()
     {
+        foreach (var d in FindObjectsOfType<Damageable>())
+            if (d.gameObject != parent && (d.transform.position - transform.position).sqrMagnitude <= DamageDistanceSquared)
+            {
+                d.TakeDamage(1);
+                d.PushBack(transform.position, 2f, 1f);
+
+            }
+    }
+
+    public void Throw(GameObject parent, Vector3 targetPos, float time, float height)
+    {
+        this.parent = parent;
         startPos = transform.position;
         endPos = targetPos;
         throwTime = time;

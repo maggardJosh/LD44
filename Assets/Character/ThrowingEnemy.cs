@@ -16,7 +16,7 @@ public class ThrowingEnemy : MonoBehaviour
         var item = Instantiate(GlobalPrefabs.Instance.ThrownItemPrefab);
         item.transform.position = transform.position;
 
-        item.GetComponent<ThrownItem>().Throw(FindObjectOfType<PlayerController>().transform.position, ThrowSpeed, ThrowHeight);
+        item.GetComponent<ThrownItem>().Throw(gameObject, FindObjectOfType<PlayerController>().transform.position, ThrowSpeed, ThrowHeight);
     }
 
     void Start()
@@ -41,6 +41,8 @@ public class ThrowingEnemy : MonoBehaviour
     void Update()
     {
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Throw"))    //Are we throwing?
+            return;
+        if (controller.StunTimeLeft > 0)
             return;
 
         timeUntilThrow -= Time.deltaTime;

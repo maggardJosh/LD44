@@ -1,31 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Damageable : MonoBehaviour
 {
     public int health = 3;
+    TopDownController controller;
+
+    private void Start()
+    {
+        controller = GetComponent<TopDownController>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (controller.StunTimeLeft > 0)
+            return;
         var weapon = collision.GetComponentInParent<Weapon>();
         if (weapon == null)
             return;
 
-        GetComponent<TopDownController>().PushBack(weapon.transform.position, weapon.PushBackValue, weapon.StunTime);
-        health -= weapon.Damage;
+        TakeDamage(weapon.Damage);
+        PushBack(weapon.transform.position, weapon.PushBackValue, weapon.StunTime);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (controller.StunTimeLeft > 0)
+            return;
+        health -= damage;
         if (health <= 0)
             Destroy(gameObject);
-
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PushBack(Vector3 position, float PushBackValue, float stunTime)
     {
-        
+        controller.PushBack(position, PushBackValue, stunTime);
+
     }
 }
