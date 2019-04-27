@@ -42,6 +42,8 @@ public class ThrowingEnemy : MonoBehaviour
     {
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Throw"))    //Are we throwing?
             return;
+        if (controller.StunTimeLeft > 0)
+            return;
 
         timeUntilThrow -= Time.deltaTime;
         if (timeUntilThrow > 0)

@@ -48,7 +48,8 @@ public class TopDownController : MonoBehaviour
 
     void LateUpdate()
     {
-        if(StunTimeLeft > 0)
+        animator.SetFloat("StunLeft", StunTimeLeft);
+        if (StunTimeLeft > 0)
         {
             StunTimeLeft -= Time.deltaTime;
             StunLogic();
