@@ -23,6 +23,7 @@ public class DialogueComponent : MonoBehaviour
         {
             canInteract = true;
             interactIndicator.gameObject.SetActive(true);
+            GetComponentInParent<NpcMovingController>().Interact();
         }
     }
 
@@ -33,6 +34,7 @@ public class DialogueComponent : MonoBehaviour
             canInteract = false;
             interactIndicator.gameObject.SetActive(false);
             isFirstInteraction = true;
+            GetComponentInParent<NpcMovingController>().StopInteracting();
         }
     }
 
