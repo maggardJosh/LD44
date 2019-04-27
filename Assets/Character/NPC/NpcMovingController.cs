@@ -38,6 +38,7 @@ public class NpcMovingController : MonoBehaviour
     private bool bonkedOnBarrier = false;
     private Vector3 bonkVector;
 
+    private GameObject playerToFace;
 
     // Use this for initialization
     void Start()
@@ -129,7 +130,8 @@ public class NpcMovingController : MonoBehaviour
 
     private void ContinueInteracting()
     {
-        //do idle animations during this time
+        //do idle animations during this time maybe
+        controller.FacePosition(playerToFace.transform.position);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -169,11 +171,10 @@ public class NpcMovingController : MonoBehaviour
         return BonkDirection.Left;
     }
 
-    public void Interact()
+    public void Interact(GameObject player)
     {
+        playerToFace = player;
         ChangeState(State.Interacting);
-        //change LastXMove and LastYMove to face player
-        
     }
 
     public void StopInteracting()
