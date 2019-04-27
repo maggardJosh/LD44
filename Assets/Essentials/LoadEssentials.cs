@@ -9,6 +9,11 @@ public class LoadEssentials : MonoBehaviour
             GameObject questSystem = GameObject.Instantiate(GlobalPrefabs.Instance.QuestSystem);
             DontDestroyOnLoad(questSystem);
         }
+        if (FindObjectOfType<DialogueManager>() == null)
+        {
+            GameObject dialogueManager = Instantiate(GlobalPrefabs.Instance.DialogueCanvas);
+            DontDestroyOnLoad(dialogueManager);
+        }
         if (FindObjectsOfType<Cinemachine.CinemachineVirtualCamera>().Length <= 0)
         {
             GameObject virtualCamera = GameObject.Instantiate(GlobalPrefabs.Instance.VirtualCamera);

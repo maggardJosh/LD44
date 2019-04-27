@@ -10,8 +10,10 @@ public class PlayerController : MonoBehaviour
     public string targetWarp = "";
     private Animator animController;
 
-    public PolygonCollider2D horizontalHitBoxLeft;
-    public PolygonCollider2D horizontalHitBoxRight;
+    public BoxCollider2D horizontalHitBoxLeft;
+    public BoxCollider2D horizontalHitBoxRight;
+    public BoxCollider2D hitBoxUp;
+    public BoxCollider2D hitBoxDown;
 
     void Start()
     {
@@ -25,6 +27,8 @@ public class PlayerController : MonoBehaviour
     {
         horizontalHitBoxLeft.enabled = false;
         horizontalHitBoxRight.enabled = false;
+        hitBoxUp.enabled = false;
+        hitBoxDown.enabled = false;
     }
 
     private void OnDestroy()
@@ -59,6 +63,7 @@ public class PlayerController : MonoBehaviour
 
     public void WhipHit(string hitboxToEnable)
     {
+        Debug.Log(hitboxToEnable);
         switch (hitboxToEnable)
         {
             case "WhipHorizontalHit":
@@ -66,6 +71,12 @@ public class PlayerController : MonoBehaviour
                     horizontalHitBoxLeft.enabled = true;
                 else
                     horizontalHitBoxRight.enabled = true;
+                break;
+            case "WhipUp":
+                hitBoxUp.enabled = true;
+                break;
+            case "WhipDown":
+                hitBoxDown.enabled = true;
                 break;
         }
     }

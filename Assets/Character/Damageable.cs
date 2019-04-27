@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Damageable : MonoBehaviour
 {
-
+    public int health = 3;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var weapon = collision.GetComponentInParent<Weapon>();
@@ -12,6 +12,9 @@ public class Damageable : MonoBehaviour
             return;
 
         GetComponent<TopDownController>().PushBack(weapon.transform.position, weapon.PushBackValue, weapon.StunTime);
+        health -= weapon.Damage;
+        if (health <= 0)
+            Destroy(gameObject);
 
     }
     // Start is called before the first frame update

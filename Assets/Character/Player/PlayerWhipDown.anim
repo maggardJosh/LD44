@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerWhipRight
+  m_Name: PlayerWhipDown
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,16 +20,16 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -5619851431437305788, guid: 5143076e39b0d9a4188383a58536313f,
+      value: {fileID: 3529534114109028559, guid: fef6126d7d29784498b5a57ad4965de7,
         type: 3}
     - time: 0.083333336
-      value: {fileID: -3735492887692990872, guid: 5143076e39b0d9a4188383a58536313f,
+      value: {fileID: 1470673512859533209, guid: fef6126d7d29784498b5a57ad4965de7,
         type: 3}
     - time: 0.16666667
-      value: {fileID: 4079141822943475827, guid: 5143076e39b0d9a4188383a58536313f,
+      value: {fileID: 3299591587197514302, guid: fef6126d7d29784498b5a57ad4965de7,
         type: 3}
     - time: 0.25
-      value: {fileID: 2647466922472445135, guid: 5143076e39b0d9a4188383a58536313f,
+      value: {fileID: 1634703946239087574, guid: fef6126d7d29784498b5a57ad4965de7,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -50,10 +50,10 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -5619851431437305788, guid: 5143076e39b0d9a4188383a58536313f, type: 3}
-    - {fileID: -3735492887692990872, guid: 5143076e39b0d9a4188383a58536313f, type: 3}
-    - {fileID: 4079141822943475827, guid: 5143076e39b0d9a4188383a58536313f, type: 3}
-    - {fileID: 2647466922472445135, guid: 5143076e39b0d9a4188383a58536313f, type: 3}
+    - {fileID: 3529534114109028559, guid: fef6126d7d29784498b5a57ad4965de7, type: 3}
+    - {fileID: 1470673512859533209, guid: fef6126d7d29784498b5a57ad4965de7, type: 3}
+    - {fileID: 3299591587197514302, guid: fef6126d7d29784498b5a57ad4965de7, type: 3}
+    - {fileID: 1634703946239087574, guid: fef6126d7d29784498b5a57ad4965de7, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -81,7 +81,7 @@ AnimationClip:
   m_Events:
   - time: 0.083333336
     functionName: WhipHit
-    data: WhipHorizontalHit
+    data: WhipDown
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
