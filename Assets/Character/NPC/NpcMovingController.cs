@@ -11,7 +11,8 @@ public class NpcMovingController : MonoBehaviour
         TransitionToWaiting,
         Walking,
         TransitionToWalking,
-        InteractingWithPlayer
+        Interacting,
+        InteractingComplete
     }
 
     private enum BonkDirection
@@ -37,6 +38,7 @@ public class NpcMovingController : MonoBehaviour
     private bool bonkedOnBarrier = false;
     private Vector3 bonkVector;
 
+    private GameObject playerToFace;
 
     // Use this for initialization
     void Start()
@@ -65,6 +67,12 @@ public class NpcMovingController : MonoBehaviour
                 break;
             case State.Walking:
                 ContinueWalking();
+                break;
+            case State.Interacting:
+                ContinueInteracting();
+                break;
+            case State.InteractingComplete:
+                ChangeState(State.TransitionToWaiting);
                 break;
             default:
                 //reset if screwy
@@ -120,6 +128,12 @@ public class NpcMovingController : MonoBehaviour
 
     }
 
+    private void ContinueInteracting()
+    {
+        //do idle animations during this time maybe
+        controller.FacePosition(playerToFace.transform.position);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         ResetWaitingState();
@@ -155,5 +169,16 @@ public class NpcMovingController : MonoBehaviour
     private BonkDirection GetBonkDirection(Vector3 directionOfBonk)
     {
         return BonkDirection.Left;
+    }
+
+    public void Interact(GameObject player)
+    {
+        playerToFace = player;
+        ChangeState(State.Interacting);
+    }
+
+    public void StopInteracting()
+    {
+        ChangeState(State.InteractingComplete);
     }
 }

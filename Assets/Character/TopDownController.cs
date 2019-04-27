@@ -42,7 +42,7 @@ public class TopDownController : MonoBehaviour
     {
         Vector3 diffNormalized = (transform.position - position).normalized;
         animator.SetFloat("lastXMove", diffNormalized.x);
-        animator.SetFloat("lastYMove", diffNormalized.y);
+        animator.SetFloat("lastYMove", -diffNormalized.y);
         sRend.flipX = -diffNormalized.x < 0;
     }
 
