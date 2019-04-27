@@ -8,6 +8,7 @@ public class Dialogue : ScriptableObject
     public class DialogueSet
     {
         public QuestSystem.QuestState MinQuestLevel = QuestSystem.QuestState.A_JUST_STARTED;
+        [TextArea(2,8)]
         public List<string> DialogueLines = new List<string>();
         public bool ShouldIncreaseQuest = false;
     }

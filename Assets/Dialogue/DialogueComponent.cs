@@ -8,6 +8,8 @@ public class DialogueComponent : MonoBehaviour
     public bool canInteract = false;
     private InteractIndicator interactIndicator;
 
+    private bool isFirstInteraction = true;
+
     private void Start()
     {
         interactIndicator = Instantiate(GlobalPrefabs.Instance.InteractIndicatorPrefab, transform).GetComponent<InteractIndicator>();
@@ -30,6 +32,7 @@ public class DialogueComponent : MonoBehaviour
         {
             canInteract = false;
             interactIndicator.gameObject.SetActive(false);
+            isFirstInteraction = true;
         }
     }
 
@@ -41,12 +44,10 @@ public class DialogueComponent : MonoBehaviour
 
     private void ShowDialogue()
     {
-        var set = GetCurrentDialogue();
-        //TODO: Dan - Actually show dialogue here and handle increasing quest at the end of dialogue
-        foreach (string message in set.DialogueLines)
-            Debug.Log(message);
-        if (set.ShouldIncreaseQuest)
-            QuestSystem.Instance.CompleteQuest();
+        if (isFirstInteraction)
+            FirstDialogue();
+        else
+            ContinueDialogue();
     }
 
     private Dialogue.DialogueSet GetCurrentDialogue()
@@ -56,5 +57,31 @@ public class DialogueComponent : MonoBehaviour
                 return set;
 
         return Dialogue.dialogueEntries.LastOrDefault();
+    }
+
+    public void FirstDialogue()
+    {
+        DialogueManager.Instance.SetDialogueName(Dialogue.CharacterName);
+        DialogueManager.Instance.StartDialogue(GetCurrentDialogue());
+        isFirstInteraction = false;
+    }
+    
+    public void ContinueDialogue()
+    {
+        if (DialogueManager.Instance.dialogueQueue.Count == 0)
+            FinishDialogue();
+
+        if (Input.GetButtonDown("Interact"))
+            DialogueManager.Instance.DisplayNextSentence();
+
+    }
+
+    public void FinishDialogue()
+    {
+        isFirstInteraction = true;
+        DialogueManager.Instance.gameObject.SetActive(false);
+
+        if (GetCurrentDialogue().ShouldIncreaseQuest)
+            QuestSystem.Instance.CompleteQuest();
     }
 }

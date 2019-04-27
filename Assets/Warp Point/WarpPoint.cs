@@ -14,7 +14,6 @@ public class WarpPoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         //check to see if the object colliding with me is the player
         //warp the player to the new scene
         if (collision.gameObject.tag == "Player")
