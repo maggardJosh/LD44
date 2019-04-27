@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 9022918594306731984}
   - component: {fileID: 9022918594306731985}
   - component: {fileID: 9022918594306731986}
-  - component: {fileID: 9022918594306731971}
   - component: {fileID: 5761541547081235260}
+  - component: {fileID: 2731947374925293753}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Essentials
@@ -158,19 +158,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.4}
   serializedVersion: 2
   m_Radius: 0.6
---- !u!114 &9022918594306731971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9022918594306731997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0558821031aa9a24e8e244ce156b3691, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementBounds: {fileID: 0}
 --- !u!114 &5761541547081235260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,3 +170,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a8f663ecaf67a44787930ed2bae87ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 3
+--- !u!114 &2731947374925293753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9022918594306731997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d426de702fe1a42821993d275bf766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ThrowSpeed: 1
+  ThrowHeight: 1
+  minThrowTime: 3
+  maxThrowTime: 5
