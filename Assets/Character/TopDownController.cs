@@ -21,7 +21,8 @@ public class TopDownController : MonoBehaviour
         sRend = GetComponent<SpriteRenderer>();
         GameObject shadow = GameObject.Instantiate(GlobalPrefabs.Instance.ShadowPrefab, transform);
         shadow.transform.localPosition = Vector3.zero;
-
+        animator.SetFloat("xMove", 0);
+        animator.SetFloat("yMove", -1);
     }
 
     public void PushBack(Vector3 position, float pushBackValue, float stunTime)
