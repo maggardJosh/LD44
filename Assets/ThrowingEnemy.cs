@@ -16,7 +16,7 @@ public class ThrowingEnemy : MonoBehaviour
         var item = Instantiate(GlobalPrefabs.Instance.ThrownItemPrefab);
         item.transform.position = transform.position;
 
-        item.GetComponent<ThrownItem>().Throw(FindObjectOfType<PlayerController>().transform.position, ThrowSpeed, ThrowHeight);
+        item.GetComponent<ThrownItem>().Throw(gameObject, FindObjectOfType<PlayerController>().transform.position, ThrowSpeed, ThrowHeight);
     }
 
     void Start()
