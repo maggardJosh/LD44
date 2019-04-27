@@ -38,6 +38,14 @@ public class TopDownController : MonoBehaviour
         this.StunTimeLeft = stunTime;
     }
 
+    public void FacePosition(Vector3 position)
+    {
+        Vector3 diffNormalized = (transform.position - position).normalized;
+        animator.SetFloat("lastXMove", diffNormalized.x);
+        animator.SetFloat("lastYMove", diffNormalized.y);
+        sRend.flipX = -diffNormalized.x < 0;
+    }
+
     void LateUpdate()
     {
         if(StunTimeLeft > 0)
