@@ -4,6 +4,7 @@ using System.Collections;
 public class NpcMovingController : MonoBehaviour
 {
     private TopDownController controller;
+    [SerializeField] private Bounds movementBounds;
     
     private enum State
     {
