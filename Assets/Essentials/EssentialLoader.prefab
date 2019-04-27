@@ -70,3 +70,5 @@ MonoBehaviour:
     type: 3}
   InteractIndicatorPrefab: {fileID: 1246078820509063622, guid: 0136457582bc952438309a180c614d0e,
     type: 3}
+  ThrownItemPrefab: {fileID: 4480813943179879866, guid: 9d0c2c695a16d824fb10953964d624bf,
+    type: 3}
