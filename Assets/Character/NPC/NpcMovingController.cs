@@ -3,7 +3,6 @@
 public class NpcMovingController : Npc
 {
     private TopDownController controller;
-    [SerializeField] private CompositeCollider2D movementBounds;
 
     private enum State
     {
@@ -14,6 +13,7 @@ public class NpcMovingController : Npc
         Interacting,
         InteractingComplete
     }
+
     
     private State currentState;
 
@@ -77,11 +77,7 @@ public class NpcMovingController : Npc
             yMoveNpc = Random.Range(-1f, 1f);
             
         }
-        if (movementBounds != null && !this.movementBounds.bounds.Contains(transform.position + new Vector3(xMoveNpc, yMoveNpc)))
-        {
-            Bonk(new Vector3(xMoveNpc, yMoveNpc).normalized);
-        }
-
+        
         controller.xMove = xMoveNpc;
         controller.yMove = yMoveNpc;
 
@@ -146,13 +142,14 @@ public class NpcMovingController : Npc
         targetTime = runningTime = 0;
         ChangeState(State.Waiting);
     }
+    
 
-    private void Bonk(Vector3 diffNormalized)
+    public void Bonk(Vector2 collisionNormal)
     {
-        if (diffNormalized.x > diffNormalized.y)
-            xMoveNpc *= -1;
-        else
-            yMoveNpc *= -1;
+        Vector2 moveVector = new Vector2(xMoveNpc, yMoveNpc);
+        Vector2 result = Vector2.Reflect(moveVector, collisionNormal);
+        xMoveNpc = result.x;
+        yMoveNpc = result.y;
     }
 
     public override void Interact(GameObject player)
