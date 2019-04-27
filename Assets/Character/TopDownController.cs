@@ -4,6 +4,7 @@ public class TopDownController : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
     private Animator animator;
+    private SpriteRenderer sRend;
 
     public float xMove;
     public float yMove;
@@ -14,6 +15,10 @@ public class TopDownController : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        sRend = GetComponent<SpriteRenderer>();
+        GameObject shadow = GameObject.Instantiate(GlobalPrefabs.Instance.ShadowPrefab, transform);
+        shadow.transform.localPosition = Vector3.zero;
+
     }
 
     void LateUpdate()
@@ -22,8 +27,9 @@ public class TopDownController : MonoBehaviour
         {
             animator.SetFloat("lastXMove", xMove);
             animator.SetFloat("lastYMove", yMove);
+
             if (Mathf.Abs(xMove) > 0)
-                animator.SetBool("xFlip", xMove < 0);
+                sRend.flipX = xMove < 0;
             rigidBody.velocity = (new Vector2(xMove, yMove) * speed);
         }
         else
