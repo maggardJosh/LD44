@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class NpcMovingController : MonoBehaviour
+public class NpcMovingController : Npc
 {
     private TopDownController controller;
     [SerializeField] private CompositeCollider2D movementBounds;
@@ -155,13 +155,13 @@ public class NpcMovingController : MonoBehaviour
             yMoveNpc *= -1;
     }
 
-    public void Interact(GameObject player)
+    public override void Interact(GameObject player)
     {
         controller.FacePosition(player.transform.position);
         ChangeState(State.Interacting);
     }
 
-    public void StopInteracting()
+    public override void StopInteracting()
     {
         ChangeState(State.InteractingComplete);
     }
