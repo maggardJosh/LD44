@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class TopDownController : MonoBehaviour
 {
@@ -23,6 +22,8 @@ public class TopDownController : MonoBehaviour
         {
             animator.SetFloat("lastXMove", xMove);
             animator.SetFloat("lastYMove", yMove);
+            if (Mathf.Abs(xMove) > 0)
+                animator.SetBool("xFlip", xMove < 0);
             rigidBody.velocity = (new Vector2(xMove, yMove) * speed);
         }
         else
