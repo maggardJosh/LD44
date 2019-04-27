@@ -17,6 +17,7 @@ MonoBehaviour:
   Scenes:
   - Assets\Scenes\Outside.unity
   - Assets\Scenes\Inside.unity
+  - Assets\Scenes\EnemyScene.unity
   BuildAndroid: 0
   BuildWeb: 1
   BuildPC: 1

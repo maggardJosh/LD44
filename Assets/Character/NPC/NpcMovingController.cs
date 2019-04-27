@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class NpcMovingController : MonoBehaviour
+public class NpcMovingController : Npc
 {
     private TopDownController controller;
     [SerializeField] private CompositeCollider2D movementBounds;
@@ -11,9 +11,10 @@ public class NpcMovingController : MonoBehaviour
         TransitionToWaiting,
         Walking,
         TransitionToWalking,
-        InteractingWithPlayer
+        Interacting,
+        InteractingComplete
     }
-
+    
     private State currentState;
 
     private float minWaitTime = 1;
@@ -25,8 +26,7 @@ public class NpcMovingController : MonoBehaviour
     private float targetTime;
     private float xMoveNpc;
     private float yMoveNpc;
-
-
+    
     // Use this for initialization
     void Start()
     {
@@ -36,11 +36,6 @@ public class NpcMovingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Check current state
-        //If state is static, wait until they feel like moving
-        //If they are moving, pick a direction and walk for a bit or until they hit a wall
-        //Once they hit a wall, stop and wait
-        //controller.xMove = 1;
         EvaluateStates();
     }
 
@@ -60,6 +55,12 @@ public class NpcMovingController : MonoBehaviour
             case State.Walking:
                 ContinueWalking();
                 break;
+            case State.Interacting:
+                ContinueInteracting();
+                break;
+            case State.InteractingComplete:
+                ChangeState(State.TransitionToWaiting);
+                break;
             default:
                 //reset if screwy
                 ChangeState(State.TransitionToWaiting);
@@ -74,11 +75,11 @@ public class NpcMovingController : MonoBehaviour
             targetTime = Random.Range(minMoveTime, maxMoveTime);
             xMoveNpc = Random.Range(-1f, 1f);
             yMoveNpc = Random.Range(-1f, 1f);
+            
         }
         if (movementBounds != null && !this.movementBounds.bounds.Contains(transform.position + new Vector3(xMoveNpc, yMoveNpc)))
         {
-            xMoveNpc *= -1;
-            yMoveNpc *= -1;
+            Bonk(new Vector3(xMoveNpc, yMoveNpc).normalized);
         }
 
         controller.xMove = xMoveNpc;
@@ -107,6 +108,20 @@ public class NpcMovingController : MonoBehaviour
 
     }
 
+    private void ContinueInteracting()
+    {
+        //do idle animations during this time maybe
+        
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.otherCollider.CompareTag("Player"))
+            return;
+
+        Bonk((collision.collider.transform.position - collision.otherCollider.transform.position).normalized);
+    }
+
     private void ChangeState(State stateToChangeTo)
     {
         controller.xMove = controller.yMove = 0;
@@ -130,5 +145,24 @@ public class NpcMovingController : MonoBehaviour
     {
         targetTime = runningTime = 0;
         ChangeState(State.Waiting);
+    }
+
+    private void Bonk(Vector3 diffNormalized)
+    {
+        if (diffNormalized.x > diffNormalized.y)
+            xMoveNpc *= -1;
+        else
+            yMoveNpc *= -1;
+    }
+
+    public override void Interact(GameObject player)
+    {
+        controller.FacePosition(player.transform.position);
+        ChangeState(State.Interacting);
+    }
+
+    public override void StopInteracting()
+    {
+        ChangeState(State.InteractingComplete);
     }
 }

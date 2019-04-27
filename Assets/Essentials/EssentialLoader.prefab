@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &501535647094673497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5349721362373313011}
+  - component: {fileID: 272812245455087026}
+  - component: {fileID: 1047038526288511172}
+  m_Layer: 0
+  m_Name: EssentialLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5349721362373313011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501535647094673497}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.881194, y: 1.9606018, z: -1.8459954}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &272812245455087026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501535647094673497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe2a135738d4a849aca8308f7012776, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1047038526288511172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501535647094673497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87ecd1a31c8abfb4ab7648149f161ec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VirtualCamera: {fileID: 192790672788313078, guid: 40a8cff43d7ad794bbbf16c8fc022ea3,
+    type: 3}
+  PlayerPrefab: {fileID: 537303968286632710, guid: 0d9f65fc838eaa645a0c6a6b26f9b2de,
+    type: 3}
+  MainCamera: {fileID: 5182742253061862743, guid: 4cf537f428ef00d48a02f4993f82843a,
+    type: 3}
+  QuestSystem: {fileID: 4222499381334298558, guid: f4df92013ff38fd4d957de479e563179,
+    type: 3}
+  DialogueCanvas: {fileID: 6143993469321460212, guid: 518a79171d2a90e4da199b923afed240,
+    type: 3}
+  HealthCanvas: {fileID: 5203353782335474526, guid: ba2a31a4e3e36634e899a04e95fe0169,
+    type: 3}
+  TransitionCanvas: {fileID: 6205160327632775127, guid: a4e09ee15c5565949b26ca9bdac11280,
+    type: 3}
+  ShadowPrefab: {fileID: 3414744869417834552, guid: 9b50a23e91614744e8c2a69eda269aa8,
+    type: 3}
+  InteractIndicatorPrefab: {fileID: 1246078820509063622, guid: 0136457582bc952438309a180c614d0e,
+    type: 3}
+  ThrownItemPrefab: {fileID: 4480813943179879866, guid: 9d0c2c695a16d824fb10953964d624bf,
+    type: 3}
