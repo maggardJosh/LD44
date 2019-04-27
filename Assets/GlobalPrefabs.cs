@@ -15,6 +15,10 @@ public class GlobalPrefabs : MonoBehaviour
         }
     }
     public GameObject ShadowPrefab;
+    public GameObject VirtualCamera;
+    public GameObject PlayerPrefab;
+    public GameObject MainCamera;
+
     // Start is called before the first frame update
     void Start()
     {

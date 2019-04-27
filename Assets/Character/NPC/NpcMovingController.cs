@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class NpcMovingController : MonoBehaviour
 {
     private TopDownController controller;
-    [SerializeField] private Bounds movementBounds;
-    
+    [SerializeField] private CompositeCollider2D movementBounds;
+
     private enum State
     {
         Waiting,
@@ -75,6 +74,11 @@ public class NpcMovingController : MonoBehaviour
             targetTime = Random.Range(minMoveTime, maxMoveTime);
             xMoveNpc = Random.Range(-1f, 1f);
             yMoveNpc = Random.Range(-1f, 1f);
+        }
+        if (movementBounds != null && !this.movementBounds.bounds.Contains(transform.position + new Vector3(xMoveNpc, yMoveNpc)))
+        {
+            xMoveNpc *= -1;
+            yMoveNpc *= -1;
         }
 
         controller.xMove = xMoveNpc;
