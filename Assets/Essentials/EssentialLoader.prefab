@@ -56,8 +56,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ecd1a31c8abfb4ab7648149f161ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShadowPrefab: {fileID: 3414744869417834552, guid: 9b50a23e91614744e8c2a69eda269aa8,
-    type: 3}
   VirtualCamera: {fileID: 192790672788313078, guid: 40a8cff43d7ad794bbbf16c8fc022ea3,
     type: 3}
   PlayerPrefab: {fileID: 537303968286632710, guid: 0d9f65fc838eaa645a0c6a6b26f9b2de,
@@ -65,4 +63,8 @@ MonoBehaviour:
   MainCamera: {fileID: 5182742253061862743, guid: 4cf537f428ef00d48a02f4993f82843a,
     type: 3}
   QuestSystem: {fileID: 4222499381334298558, guid: f4df92013ff38fd4d957de479e563179,
+    type: 3}
+  ShadowPrefab: {fileID: 3414744869417834552, guid: 9b50a23e91614744e8c2a69eda269aa8,
+    type: 3}
+  InteractIndicatorPrefab: {fileID: 1246078820509063622, guid: 0136457582bc952438309a180c614d0e,
     type: 3}

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class QuestSystem : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class QuestSystem : MonoBehaviour
     public void CompleteQuest()
     {
         CurrentState++;
+        if (!Enum.IsDefined(typeof(QuestState), CurrentState))
+            CurrentState--;
     }
 
 

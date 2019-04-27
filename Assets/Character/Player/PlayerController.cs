@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(TopDownController))]
 public class PlayerController : MonoBehaviour
@@ -11,9 +12,15 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<TopDownController>();
+        SceneManager.sceneLoaded += LevelLoaded;
     }
 
-    private void OnLevelWasLoaded(int level)
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= LevelLoaded;
+    }
+
+    private void LevelLoaded(Scene arg0, LoadSceneMode arg1)
     {
         List<WarpPoint> points = new List<WarpPoint>(FindObjectsOfType<WarpPoint>());
         foreach (WarpPoint p in points)

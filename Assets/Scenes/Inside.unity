@@ -187,17 +187,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9044198033848796740, guid: 51ac424ce91af4244a5c7a7e8649297e,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: 9d9b8cef14fae7841857f7b605ccb489,
-        type: 2}
-    - target: {fileID: 9044198033848796763, guid: 51ac424ce91af4244a5c7a7e8649297e,
-        type: 3}
-      propertyPath: movementBounds
-      value: 
-      objectReference: {fileID: 1184826489}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51ac424ce91af4244a5c7a7e8649297e, type: 3}
 --- !u!1 &416452608
@@ -3137,7 +3126,7 @@ PrefabInstance:
     - target: {fileID: 8148226193897643611, guid: 1e97c4ff2eef50c41b3023cc78a2c5ee,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8148226193897643611, guid: 1e97c4ff2eef50c41b3023cc78a2c5ee,
         type: 3}
@@ -3238,17 +3227,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9044198033848796740, guid: 51ac424ce91af4244a5c7a7e8649297e,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: 9d9b8cef14fae7841857f7b605ccb489,
-        type: 2}
-    - target: {fileID: 9044198033848796763, guid: 51ac424ce91af4244a5c7a7e8649297e,
-        type: 3}
-      propertyPath: movementBounds
-      value: 
-      objectReference: {fileID: 1184826489}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51ac424ce91af4244a5c7a7e8649297e, type: 3}
 --- !u!1001 &945516967
@@ -3318,17 +3296,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9044198033848796740, guid: 51ac424ce91af4244a5c7a7e8649297e,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: 9d9b8cef14fae7841857f7b605ccb489,
-        type: 2}
-    - target: {fileID: 9044198033848796763, guid: 51ac424ce91af4244a5c7a7e8649297e,
-        type: 3}
-      propertyPath: movementBounds
-      value: 
-      objectReference: {fileID: 1184826489}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51ac424ce91af4244a5c7a7e8649297e, type: 3}
 --- !u!1 &969659020
@@ -3590,17 +3557,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9044198033848796740, guid: 51ac424ce91af4244a5c7a7e8649297e,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: 9d9b8cef14fae7841857f7b605ccb489,
-        type: 2}
-    - target: {fileID: 9044198033848796763, guid: 51ac424ce91af4244a5c7a7e8649297e,
-        type: 3}
-      propertyPath: movementBounds
-      value: 
-      objectReference: {fileID: 1184826489}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51ac424ce91af4244a5c7a7e8649297e, type: 3}
 --- !u!1001 &7570979704343266262
@@ -3722,7 +3678,7 @@ PrefabInstance:
     - target: {fileID: 9044198033848796742, guid: 51ac424ce91af4244a5c7a7e8649297e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9044198033848796742, guid: 51ac424ce91af4244a5c7a7e8649297e,
         type: 3}
@@ -3739,12 +3695,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9044198033848796740, guid: 51ac424ce91af4244a5c7a7e8649297e,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: 9d9b8cef14fae7841857f7b605ccb489,
-        type: 2}
     - target: {fileID: 9044198033848796763, guid: 51ac424ce91af4244a5c7a7e8649297e,
         type: 3}
       propertyPath: movementBounds

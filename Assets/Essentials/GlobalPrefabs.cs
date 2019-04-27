@@ -14,11 +14,14 @@ public class GlobalPrefabs : MonoBehaviour
             return _instance;
         }
     }
-    public GameObject ShadowPrefab;
+    [Header("Essentials")]
     public GameObject VirtualCamera;
     public GameObject PlayerPrefab;
     public GameObject MainCamera;
     public GameObject QuestSystem;
+    [Header("SharedPrefabs")]
+    public GameObject ShadowPrefab;
+    public GameObject InteractIndicatorPrefab;
 
     // Start is called before the first frame update
     void Start()

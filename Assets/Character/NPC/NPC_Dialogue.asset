@@ -17,8 +17,10 @@ MonoBehaviour:
     DialogueLines:
     - Hey you just started!
     - '... and you haven''t completed any quests yet...'
+    ShouldIncreaseQuest: 1
   - MinQuestLevel: 1
     DialogueLines:
     - YO!
     - Nice job on that quest
+    ShouldIncreaseQuest: 0
   CharacterName: Character
