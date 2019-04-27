@@ -66,6 +66,8 @@ MonoBehaviour:
     type: 3}
   DialogueCanvas: {fileID: 6143993469321460212, guid: 518a79171d2a90e4da199b923afed240,
     type: 3}
+  HealthCanvas: {fileID: 5203353782335474526, guid: ba2a31a4e3e36634e899a04e95fe0169,
+    type: 3}
   ShadowPrefab: {fileID: 3414744869417834552, guid: 9b50a23e91614744e8c2a69eda269aa8,
     type: 3}
   InteractIndicatorPrefab: {fileID: 1246078820509063622, guid: 0136457582bc952438309a180c614d0e,
