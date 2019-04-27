@@ -20,10 +20,14 @@ public class WarpPoint : MonoBehaviour
         {
             if (!collision.GetComponent<PlayerController>().hasLeftWarp)
                 return;
-            LoadScene();
-            var p = collision.GetComponent<PlayerController>();
-            p.targetWarp = warpPointToSpawnAt;
-            p.hasLeftWarp = false;
+            FadeTransitionScreen.Instance.Transition(() =>
+            {
+                LoadScene();
+                var p = collision.GetComponent<PlayerController>();
+                p.targetWarp = warpPointToSpawnAt;
+                p.hasLeftWarp = false;
+            });
+            
         }
     }
 

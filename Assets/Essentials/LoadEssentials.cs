@@ -4,6 +4,11 @@ public class LoadEssentials : MonoBehaviour
 {
     void Awake()
     {
+        if(FindObjectOfType<FadeTransitionScreen>() == null)
+        {
+            GameObject transScreen = Instantiate(GlobalPrefabs.Instance.TransitionCanvas);
+            DontDestroyOnLoad(transScreen);
+        }
         if (FindObjectOfType<QuestSystem>() == null)
         {
             GameObject questSystem = GameObject.Instantiate(GlobalPrefabs.Instance.QuestSystem);
@@ -14,7 +19,7 @@ public class LoadEssentials : MonoBehaviour
             GameObject healthUI = Instantiate(GlobalPrefabs.Instance.HealthCanvas);
             DontDestroyOnLoad(healthUI);
         }
-        if (FindObjectOfType<DialogueManager>() == null)
+        if (DialogueManager.Instance == null)
         {
             GameObject dialogueManager = Instantiate(GlobalPrefabs.Instance.DialogueCanvas);
             DontDestroyOnLoad(dialogueManager);

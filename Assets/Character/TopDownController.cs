@@ -21,8 +21,10 @@ public class TopDownController : MonoBehaviour
         sRend = GetComponent<SpriteRenderer>();
         GameObject shadow = GameObject.Instantiate(GlobalPrefabs.Instance.ShadowPrefab, transform);
         shadow.transform.localPosition = Vector3.zero;
+        animator.SetFloat("lastXMove", 0);
+        animator.SetFloat("lastYMove", -1);
         animator.SetFloat("xMove", 0);
-        animator.SetFloat("yMove", -1);
+        animator.SetFloat("yMove", 0);
     }
 
     public void PushBack(Vector3 position, float pushBackValue, float stunTime)
@@ -48,6 +50,8 @@ public class TopDownController : MonoBehaviour
 
     void LateUpdate()
     {
+        if (FadeTransitionScreen.Instance.IsTransitioning)
+            return;
         animator.SetFloat("StunLeft", StunTimeLeft);
         if (StunTimeLeft > 0)
         {

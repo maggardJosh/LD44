@@ -21,6 +21,7 @@ public class GlobalPrefabs : MonoBehaviour
     public GameObject QuestSystem;
     public GameObject DialogueCanvas;
     public GameObject HealthCanvas;
+    public GameObject TransitionCanvas;
     [Header("SharedPrefabs")]
     public GameObject ShadowPrefab;
     public GameObject InteractIndicatorPrefab;
