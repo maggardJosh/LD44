@@ -14,6 +14,14 @@ public class NpcMovingController : MonoBehaviour
         InteractingWithPlayer
     }
 
+    private enum BonkDirection
+    {
+        Left,
+        Right,
+        Up,
+        Down
+    }
+
     private State currentState;
 
     private float minWaitTime = 1;
@@ -26,6 +34,9 @@ public class NpcMovingController : MonoBehaviour
     private float xMoveNpc;
     private float yMoveNpc;
 
+    private bool bonkedOnBarrier = false;
+    private Vector3 bonkVector;
+
 
     // Use this for initialization
     void Start()
@@ -36,11 +47,6 @@ public class NpcMovingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Check current state
-        //If state is static, wait until they feel like moving
-        //If they are moving, pick a direction and walk for a bit or until they hit a wall
-        //Once they hit a wall, stop and wait
-        //controller.xMove = 1;
         EvaluateStates();
     }
 
@@ -74,6 +80,13 @@ public class NpcMovingController : MonoBehaviour
             targetTime = Random.Range(minMoveTime, maxMoveTime);
             xMoveNpc = Random.Range(-1f, 1f);
             yMoveNpc = Random.Range(-1f, 1f);
+
+            if (bonkedOnBarrier)
+            {
+                xMoveNpc *= -1;
+                yMoveNpc *= -1;
+                bonkedOnBarrier = false;
+            }
         }
         if (movementBounds != null && !this.movementBounds.bounds.Contains(transform.position + new Vector3(xMoveNpc, yMoveNpc)))
         {
@@ -107,6 +120,13 @@ public class NpcMovingController : MonoBehaviour
 
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        ResetWaitingState();
+        bonkVector = collision.collider.gameObject.transform.position - collision.otherCollider.gameObject.transform.position;
+        bonkedOnBarrier = true;
+    }
+
     private void ChangeState(State stateToChangeTo)
     {
         controller.xMove = controller.yMove = 0;
@@ -130,5 +150,10 @@ public class NpcMovingController : MonoBehaviour
     {
         targetTime = runningTime = 0;
         ChangeState(State.Waiting);
+    }
+
+    private BonkDirection GetBonkDirection(Vector3 directionOfBonk)
+    {
+        return BonkDirection.Left;
     }
 }
