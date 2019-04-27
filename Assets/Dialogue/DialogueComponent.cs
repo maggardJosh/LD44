@@ -33,10 +33,14 @@ public class DialogueComponent : MonoBehaviour
         }
     }
 
-    private void Update()
+    public bool TryInteract()
     {
         if (canInteract && Input.GetButtonDown("Interact"))
+        {
             ShowDialogue();
+            return true;
+        }
+        return false;
     }
 
     private void ShowDialogue()

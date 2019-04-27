@@ -8,11 +8,23 @@ public class PlayerController : MonoBehaviour
     private TopDownController controller;
     public bool hasLeftWarp = false;
     public string targetWarp = "";
+    private Animator animController;
+
+    public PolygonCollider2D horizontalHitBoxLeft;
+    public PolygonCollider2D horizontalHitBoxRight;
 
     void Start()
     {
         controller = GetComponent<TopDownController>();
+        animController = GetComponent<Animator>();
         SceneManager.sceneLoaded += LevelLoaded;
+        DisableHitboxes();
+    }
+
+    private void DisableHitboxes()
+    {
+        horizontalHitBoxLeft.enabled = false;
+        horizontalHitBoxRight.enabled = false;
     }
 
     private void OnDestroy()
@@ -36,7 +48,33 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        DisableHitboxes();
+        if (animController.GetCurrentAnimatorStateInfo(0).IsName("Whip"))
+            return;
         controller.xMove = Input.GetAxisRaw("Horizontal");
         controller.yMove = Input.GetAxisRaw("Vertical");
+        if (Input.GetButtonDown("Interact"))
+            TestInteractAndWhip();
+    }
+
+    public void WhipHit(string hitboxToEnable)
+    {
+        switch (hitboxToEnable)
+        {
+            case "WhipHorizontalHit":
+                if (GetComponent<SpriteRenderer>().flipX)
+                    horizontalHitBoxLeft.enabled = true;
+                else
+                    horizontalHitBoxRight.enabled = true;
+                break;
+        }
+    }
+
+    private void TestInteractAndWhip()
+    {
+        foreach (var dialogueComp in FindObjectsOfType<DialogueComponent>())
+            if (dialogueComp.TryInteract())
+                return;
+        animController.SetTrigger("Whip");
     }
 }
