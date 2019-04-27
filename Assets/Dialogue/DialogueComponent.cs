@@ -23,10 +23,17 @@ public class DialogueComponent : MonoBehaviour
         {
             canInteract = true;
             interactIndicator.gameObject.SetActive(true);
-            GetComponentInParent<NpcMovingController>().Interact(collision.gameObject);
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            GetComponentInParent<NpcMovingController>().Interact(collision.gameObject);
+        }
+    }
+    
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))

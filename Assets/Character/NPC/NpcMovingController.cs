@@ -14,15 +14,7 @@ public class NpcMovingController : MonoBehaviour
         Interacting,
         InteractingComplete
     }
-
-    private enum BonkDirection
-    {
-        Left,
-        Right,
-        Up,
-        Down
-    }
-
+    
     private State currentState;
 
     private float minWaitTime = 1;
@@ -34,12 +26,7 @@ public class NpcMovingController : MonoBehaviour
     private float targetTime;
     private float xMoveNpc;
     private float yMoveNpc;
-
-    private bool bonkedOnBarrier = false;
-    private Vector3 bonkVector;
-
-    private GameObject playerToFace;
-
+    
     // Use this for initialization
     void Start()
     {
@@ -88,18 +75,11 @@ public class NpcMovingController : MonoBehaviour
             targetTime = Random.Range(minMoveTime, maxMoveTime);
             xMoveNpc = Random.Range(-1f, 1f);
             yMoveNpc = Random.Range(-1f, 1f);
-
-            if (bonkedOnBarrier)
-            {
-                xMoveNpc *= -1;
-                yMoveNpc *= -1;
-                bonkedOnBarrier = false;
-            }
+            
         }
         if (movementBounds != null && !this.movementBounds.bounds.Contains(transform.position + new Vector3(xMoveNpc, yMoveNpc)))
         {
-            xMoveNpc *= -1;
-            yMoveNpc *= -1;
+            Bonk(new Vector3(xMoveNpc, yMoveNpc).normalized);
         }
 
         controller.xMove = xMoveNpc;
@@ -131,14 +111,15 @@ public class NpcMovingController : MonoBehaviour
     private void ContinueInteracting()
     {
         //do idle animations during this time maybe
-        controller.FacePosition(playerToFace.transform.position);
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        ResetWaitingState();
-        bonkVector = collision.collider.gameObject.transform.position - collision.otherCollider.gameObject.transform.position;
-        bonkedOnBarrier = true;
+        if (collision.otherCollider.CompareTag("Player"))
+            return;
+
+        Bonk((collision.collider.transform.position - collision.otherCollider.transform.position).normalized);
     }
 
     private void ChangeState(State stateToChangeTo)
@@ -166,14 +147,17 @@ public class NpcMovingController : MonoBehaviour
         ChangeState(State.Waiting);
     }
 
-    private BonkDirection GetBonkDirection(Vector3 directionOfBonk)
+    private void Bonk(Vector3 diffNormalized)
     {
-        return BonkDirection.Left;
+        if (diffNormalized.x > diffNormalized.y)
+            xMoveNpc *= -1;
+        else
+            yMoveNpc *= -1;
     }
 
     public void Interact(GameObject player)
     {
-        playerToFace = player;
+        controller.FacePosition(player.transform.position);
         ChangeState(State.Interacting);
     }
 
