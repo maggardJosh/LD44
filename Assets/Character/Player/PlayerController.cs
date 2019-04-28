@@ -210,7 +210,16 @@ public class PlayerController : MonoBehaviour
                 return;
         controller.speed = WhipStrafeSpeed;
         animController.SetTrigger("Whip");
-        animController.SetFloat("whipX", animController.GetFloat("lastXMove"));
-        animController.SetFloat("whipY", animController.GetFloat("lastYMove"));
+        float xMove = Input.GetAxisRaw("Horizontal");
+        float yMove = Input.GetAxisRaw("Vertical");
+        if (xMove == 0 && yMove == 0)
+        {
+            if (xMove != 0)
+                GetComponent<SpriteRenderer>().flipX = xMove < 0;
+            xMove = animController.GetFloat("lastXMove");
+            yMove = animController.GetFloat("lastYMove");
+        }
+        animController.SetFloat("whipX", xMove);
+        animController.SetFloat("whipY", yMove);
     }
 }
