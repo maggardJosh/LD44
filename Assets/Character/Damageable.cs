@@ -54,6 +54,8 @@ public class Damageable : MonoBehaviour
 
     public void TakeDamage(int damage, Vector3 position, float pushBackValue)
     {
+        if (!enabled)
+            return;
         if (controller.StunTimeLeft <= 0 && !invulnerable)
         {
             TakeDamage(damage);

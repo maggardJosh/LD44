@@ -78,6 +78,7 @@ public class PlayerController : MonoBehaviour
             animController.SetTrigger("RollDone");
         }
         controller.enabled = true;
+        d.enabled = true;
     }
     Coroutine diveCoroutine;
     void Update()
@@ -117,15 +118,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public Damageable d;
     private IEnumerator StartDive()
     {
         controller.enabled = false;
+        d = GetComponent<Damageable>();
+        d.enabled = false;
         animController.SetTrigger("Dive");
         yield return HandleRollOrDive(diveDistance, diveTime);
         animController.SetTrigger("Roll");
         yield return HandleRollOrDive(rollDistance, rollTime);
         animController.SetTrigger("RollDone");
         controller.enabled = true;
+        d.enabled = true;
         gameObject.StopTopDownController();
     }
 
