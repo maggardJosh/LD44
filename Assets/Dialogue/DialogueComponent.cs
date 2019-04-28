@@ -21,6 +21,7 @@ public class DialogueComponent : MonoBehaviour
         {
             canInteract = true;
             interactIndicator.gameObject.SetActive(true);
+            SoundManager.CallChangeMusic(SoundManager.Sound.Music_TownTheme, SoundManager.Sound.Music_MemoryTheme, .05f);
         }
     }
 
@@ -43,6 +44,7 @@ public class DialogueComponent : MonoBehaviour
             Npc npc = GetComponentInParent<Npc>();
             if (npc != null) //Check just in case they were removed based on quest this frame
                 npc.StopInteracting();
+            SoundManager.CallChangeMusic(SoundManager.Sound.Music_MemoryTheme, SoundManager.Sound.Music_TownTheme, .05f);
         }
     }
 

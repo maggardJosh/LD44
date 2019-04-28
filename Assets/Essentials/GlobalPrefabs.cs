@@ -23,6 +23,7 @@ public class GlobalPrefabs : MonoBehaviour
     public GameObject HealthCanvas;
     public GameObject TransitionCanvas;
     public GameObject PauseCanvas;
+    public GameObject SoundManager;
 
     [Header("SharedPrefabs")]
     public GameObject ShadowPrefab;
