@@ -77,6 +77,8 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(StartDive());
         if (Input.GetButtonDown("Pause"))
             PauseMenuManager.Instance.PressPause();
+        if (Input.GetButtonDown("Mute"))
+            SoundManager.ToggleMute();
     }
 
     public void EnterRoll()

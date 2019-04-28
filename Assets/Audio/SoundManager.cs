@@ -30,13 +30,21 @@ public class SoundManager : MonoBehaviour
         SFX
     }
 
-    public int Priority;
-    [SerializeField]
+    public AudioSource Music;
+    public AudioSource SFX;
+
     public static List<Track> TrackList;
     public static AudioMixer MainMixer;
 
     private static bool keepFadingIn;
     private static bool keepFadingOut;
+
+    private static bool isMuted = false;
+
+    private static float onHoldClipMarker = 0;
+    private static Sound onHoldSong = new Sound();
+
+    private const float FADE_RATE = .05f;
 
     public static void AddTracks(List<Track> tracks)
     {
@@ -55,15 +63,39 @@ public class SoundManager : MonoBehaviour
         settingTrack.AudioSource.outputAudioMixerGroup = mainMix.FindMatchingGroups(GetMixerGroup(settingTrack.ClipType))[0];
         settingTrack.TrackVolume = trackVolume;
     }
-
-    public static void PlaySound(Sound soundName)
+    
+    public static bool PlaySound(Sound soundName, float startingTime = 0)
     {
         Track trackToPlay = GetTrack(soundName);
         if (!trackToPlay.AudioSource.isPlaying)
         {
+            trackToPlay.AudioSource.time = startingTime;
             trackToPlay.AudioSource.PlayOneShot(trackToPlay.Clip, trackToPlay.TrackVolume);
-            
+            return true;
         }
+        return false;
+    }
+
+    public static void ToggleMute()
+    {
+        Instance.Music.mute = !Instance.Music.mute;
+        Instance.SFX.mute = !Instance.SFX.mute;
+    }
+
+    public static void CallChangeMusic(Sound soundToStop, Sound soundToStart)
+    {
+        //Putting in the FADE_RATE for now
+        Instance.StartCoroutine(ChangeMusic(soundToStop, soundToStart, FADE_RATE));
+    }
+
+    public static void CallChangeMusicHold(Sound interruptingMusic)
+    {
+        Instance.StartCoroutine(ChangeMusicHold(interruptingMusic));
+    }
+
+    public static void CallChangeMusicResume()
+    {
+        Instance.StartCoroutine(ChangeMusicResume());
     }
 
     private static AudioClip GetSound(Sound soundName)
@@ -75,86 +107,71 @@ public class SoundManager : MonoBehaviour
     {
         return TrackList.Single(s => s.ClipName == soundName);
     }
-
-    private AudioSource Source()
-    {
-        return gameObject.GetComponent<AudioSource>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     
-    public static void CallLoop(Sound soundToLoop, float clipLength)
-    {
-        Instance.StartCoroutine(Loop(soundToLoop, clipLength));
-    }
-
-    public static void CallChangeMusic(Sound soundToStop, Sound soundToStart, float speedToChange)
-    {
-        Instance.StartCoroutine(ChangeMusic(soundToStop, soundToStart, speedToChange));
-    }
-
-    private static  IEnumerator FadeIn (Sound soundToPlay, float speed, float maxVolume)
+    private static  IEnumerator FadeInMusic (float speed, float maxVolume)
     {
         keepFadingIn = true;
         keepFadingOut = false;
 
-        GetTrack(soundToPlay).AudioSource.volume = 0;
-        float audioVolume = GetTrack(soundToPlay).AudioSource.volume;
+        Instance.Music.volume = 0;
+        float audioVolume = Instance.Music.volume;
 
-        while (GetTrack(soundToPlay).AudioSource.volume < maxVolume && keepFadingIn)
+        while (Instance.Music.volume < maxVolume && keepFadingIn)
         {
             audioVolume += speed;
-            GetTrack(soundToPlay).AudioSource.volume = audioVolume;
-            yield return new WaitForFixedUpdate();
+            Instance.Music.volume = audioVolume;
+            yield return null;
         }
     }
 
-    private static IEnumerator FadeOut(Sound sound, float speed)
+    private static IEnumerator FadeOutMusic(float speed)
     {
         keepFadingIn = false;
         keepFadingOut = true;
-        Track soundToFade = GetTrack(sound);
         
-        float audioVolume = GetTrack(sound).AudioSource.volume;
+        float audioVolume = Instance.Music.volume;
 
-        while (soundToFade.AudioSource.volume >= speed && keepFadingOut)
+        while (Instance.Music.volume >= speed && keepFadingOut)
         {
             audioVolume -= speed;
-            soundToFade.AudioSource.volume = audioVolume;
+            Instance.Music.volume = audioVolume;
             yield return null;
         }
 
-        soundToFade.AudioSource.Stop();
+        Instance.Music.Stop();
     }
-
-    private static IEnumerator Loop(Sound soundToLoop, float clipLength)
-    {
-        yield return new WaitForSeconds(clipLength);
-
-        PlaySound(soundToLoop);
-    }
-
+    
     private static IEnumerator ChangeMusic(Sound soundToStop, Sound soundToStart, float speedToChange)
     {
-        yield return FadeOut(soundToStop, speedToChange);
+        yield return FadeOutMusic(speedToChange);
         
+        if (PlaySound(soundToStart))
+            yield return FadeInMusic(FADE_RATE, GetTrack(soundToStart).TrackVolume);
+        
+    }
 
-        Track trackToPlay = GetTrack(soundToStart);
-        if (!trackToPlay.AudioSource.isPlaying)
-        {
-            trackToPlay.AudioSource.PlayOneShot(trackToPlay.Clip, trackToPlay.TrackVolume);
-            yield return FadeIn(soundToStart, speedToChange, trackToPlay.TrackVolume);
-        }
+    private static IEnumerator ChangeMusicHold(Sound interruptingMusic)
+    {
+        onHoldClipMarker = 0;
+
+        onHoldSong = TrackList.Single(s => s.Clip.name == Instance.Music.clip.name).ClipName;
+
+        onHoldClipMarker = Instance.Music.time;
+
+        yield return FadeOutMusic(FADE_RATE);
+
+        if (PlaySound(interruptingMusic))
+            yield return FadeInMusic(FADE_RATE, GetTrack(interruptingMusic).TrackVolume);
+        
+    }
+
+    private static IEnumerator ChangeMusicResume()
+    {
+        yield return FadeOutMusic(FADE_RATE);
+
+        if (PlaySound(onHoldSong, onHoldClipMarker))
+            yield return FadeInMusic(FADE_RATE, GetTrack(onHoldSong).TrackVolume);
+        
     }
 
     private static string GetMixerGroup(SoundType type)
@@ -169,4 +186,5 @@ public class SoundManager : MonoBehaviour
                 return "Music";
         }
     }
+    
 }
