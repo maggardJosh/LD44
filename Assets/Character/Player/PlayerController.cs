@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,11 @@ public class PlayerController : MonoBehaviour
     public bool hasLeftWarp = false;
     public string targetWarp = "";
     private Animator animController;
+    private float normalSpeed;
+    public float diveDistance = 2;
+    public float diveTime = .5f;
+    public float rollDistance = 2;
+    public float rollTime = .5f;
 
     public BoxCollider2D horizontalHitBoxLeft;
     public BoxCollider2D horizontalHitBoxRight;
@@ -18,6 +24,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<TopDownController>();
+        normalSpeed = controller.speed;
         animController = GetComponent<Animator>();
         SceneManager.sceneLoaded += LevelLoaded;
         DisableHitboxes();
@@ -57,17 +64,70 @@ public class PlayerController : MonoBehaviour
         DisableHitboxes();
         if (animController.GetCurrentAnimatorStateInfo(0).IsName("Whip"))
             return;
+        if (animController.GetCurrentAnimatorStateInfo(0).IsName("Dive"))
+            return;
+        if (animController.GetCurrentAnimatorStateInfo(0).IsName("Roll"))
+            return;
+
         controller.xMove = Input.GetAxisRaw("Horizontal");
         controller.yMove = Input.GetAxisRaw("Vertical");
         if (Input.GetButtonDown("Interact"))
             TestInteractAndWhip();
+        if (Input.GetButtonDown("Dive"))
+            StartCoroutine(StartDive());
         if (Input.GetButtonDown("Pause"))
             PauseMenuManager.Instance.PressPause();
     }
 
+    public void EnterRoll()
+    {
+        float xMove = Input.GetAxisRaw("Horizontal");
+        float yMove = Input.GetAxisRaw("Vertical");
+        if (xMove != 0 || yMove != 0)
+        {
+            controller.xMove = xMove;
+            controller.yMove = yMove;
+        }
+    }
+
+    private IEnumerator StartDive()
+    {
+        controller.enabled = false;
+        animController.SetTrigger("Dive");
+        yield return HandleRollOrDive(diveDistance, diveTime);
+        animController.SetTrigger("Roll");
+        yield return HandleRollOrDive(rollDistance, rollTime);
+        animController.SetTrigger("RollDone");
+        controller.enabled = true;
+    }
+
+    private IEnumerator HandleRollOrDive(float dist, float time)
+    {
+        float xMove = Input.GetAxisRaw("Horizontal");
+        float yMove = Input.GetAxisRaw("Vertical");
+        if (xMove == 0 && yMove == 0)
+        {
+            xMove = animController.GetFloat("lastXMove");
+            yMove = animController.GetFloat("lastYMove");
+        }
+
+        Vector3 startPos = transform.position;
+        Vector3 targetPos = transform.position + new Vector3(xMove, yMove) * dist;
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        float count = 0;
+        while (count < time)
+        {
+            count += Time.deltaTime;
+            Vector3 newPos = Vector3.Lerp(startPos, targetPos, count / time);
+            rb.MovePosition(newPos);
+            yield return null;
+        }
+        rb.MovePosition(targetPos);
+        yield return null;
+    }
+
     public void WhipHit(string hitboxToEnable)
     {
-        Debug.Log(hitboxToEnable);
         switch (hitboxToEnable)
         {
             case "WhipHorizontalHit":
