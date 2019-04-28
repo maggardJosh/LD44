@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TopDownController : MonoBehaviour
 {
@@ -30,7 +29,7 @@ public class TopDownController : MonoBehaviour
     public void PushBack(Vector3 position, float pushBackValue, float stunTime)
     {
         Vector3 diffNormalized = (transform.position - position).normalized;
-        rigidBody.velocity = diffNormalized  * pushBackValue;
+        rigidBody.velocity = diffNormalized * pushBackValue;
         animator.SetFloat("lastXMove", -diffNormalized.x);
         animator.SetFloat("lastYMove", -diffNormalized.y);
         sRend.flipX = -diffNormalized.x < 0;
@@ -46,6 +45,19 @@ public class TopDownController : MonoBehaviour
         animator.SetFloat("lastXMove", diffNormalized.x);
         animator.SetFloat("lastYMove", -diffNormalized.y);
         sRend.flipX = -diffNormalized.x < 0;
+    }
+
+    public void UpdateAnimationOnly()
+    {
+        if (Mathf.Abs(xMove) > 0 || Mathf.Abs(yMove) > 0)
+        {
+            if (Mathf.Abs(xMove) > 0)
+                sRend.flipX = xMove < 0;
+            animator.SetFloat("lastXMove", xMove);
+            animator.SetFloat("lastYMove", yMove);
+        }
+        animator.SetFloat("xMove", xMove);
+        animator.SetFloat("yMove", yMove);
     }
 
     void LateUpdate()

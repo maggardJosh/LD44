@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (FadeTransitionScreen.Instance.IsTransitioning)
+            return;
         DisableHitboxes();
         if (animController.GetCurrentAnimatorStateInfo(0).IsName("Whip"))
             return;

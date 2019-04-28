@@ -20,6 +20,7 @@ public class FadeTransitionScreen : MonoBehaviour
     public float fadeSpeed = .3f;
     private enum FadeState
     {
+        CINEMATIC,
         FADED_OUT,
         FADED_IN,
         FADING_OUT,
@@ -66,6 +67,14 @@ public class FadeTransitionScreen : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    public void SetCinematic(bool shouldSet)
+    {
+        if (shouldSet)
+            currentState = FadeState.CINEMATIC;
+        else
+            currentState = FadeState.FADED_IN;
     }
 
     public void Transition(Action transAction)

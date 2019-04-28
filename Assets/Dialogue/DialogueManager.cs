@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,45 +30,75 @@ public class DialogueManager : MonoBehaviour
         Instance.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    private Dialogue.DialogueSet GetCurrentDialogue(Dialogue dialogue)
     {
-        
+        foreach (var set in dialogue.dialogueEntries.OrderBy(s => (int)s.MinQuestLevel))
+            if (set.MinQuestLevel >= QuestSystem.Instance.CurrentState)
+                return set;
+
+        return dialogue.dialogueEntries.LastOrDefault();
     }
 
-    public void SetDialogueName(string dialogueName)
+    public void StartDialogue(Dialogue dialogue, bool setCinematic = true)
     {
-        CharacterName.text = dialogueName;
-    }
-
-    public void StartDialogue(Dialogue.DialogueSet dialogueSet)
-    {
-        //DialogueLines.text = dialogueSet.DialogueLines[0];
-        //display the queue of text and advance if we have more lines if the player hits interact
-        //dialogueQueue.Clear();
         gameObject.SetActive(true);
+        currentDialogue = dialogue;
+        CharacterName.text = dialogue.CharacterName;
 
-        foreach (string sentence in dialogueSet.DialogueLines)
+        foreach (string sentence in GetCurrentDialogue(dialogue).DialogueLines)
         {
             dialogueQueue.Enqueue(sentence);
         }
 
-        DisplayNextSentence();
+        StartCoroutine(RunDialogue(setCinematic));
     }
 
-    public void DisplayNextSentence()
+    public IEnumerator StartDialogueThreaded(Dialogue dialogue)
+    {
+        gameObject.SetActive(true);
+        currentDialogue = dialogue;
+        CharacterName.text = dialogue.CharacterName;
+
+        foreach (string sentence in GetCurrentDialogue(dialogue).DialogueLines)
+        {
+            dialogueQueue.Enqueue(sentence);
+        }
+        yield return RunDialogue(false);
+    }
+
+    private IEnumerator RunDialogue(bool setCinematic)
+    {
+        if (setCinematic)
+            FadeTransitionScreen.Instance.SetCinematic(true);
+        DisplayNextSentence();
+        yield return null;
+        while (dialogueQueue.Count >= 0)
+        {
+            if (Input.GetButtonDown("Interact"))
+                if (!DisplayNextSentence())
+                    break;
+            yield return null;
+        }
+        if (GetCurrentDialogue(currentDialogue).ShouldIncreaseQuest)
+            QuestSystem.Instance.CompleteQuest();
+        gameObject.SetActive(false);
+        if (setCinematic)
+            FadeTransitionScreen.Instance.SetCinematic(false);
+    }
+
+    private bool DisplayNextSentence()
     {
         if (dialogueQueue.Count == 0)
         {
             EndDialogue();
-            return;
+            return false;
         }
 
         DialogueLines.text = dialogueQueue.Dequeue();
-
+        return true;
     }
 
-    public void EndDialogue()
+    private void EndDialogue()
     {
         gameObject.SetActive(false);
     }

@@ -33,7 +33,7 @@ public class DialogueComponent : MonoBehaviour
             GetComponentInParent<Npc>().Interact(collision.gameObject);
         }
     }
-    
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -49,52 +49,9 @@ public class DialogueComponent : MonoBehaviour
     {
         if (canInteract && Input.GetButtonDown("Interact"))
         {
-            ShowDialogue();
+            DialogueManager.Instance.StartDialogue(Dialogue);
             return true;
         }
         return false;
-    }
-
-    private void ShowDialogue()
-    {
-        if (isFirstInteraction)
-            FirstDialogue();
-        else
-            ContinueDialogue();
-    }
-
-    private Dialogue.DialogueSet GetCurrentDialogue()
-    {
-        foreach (var set in Dialogue.dialogueEntries.OrderBy(s => (int)s.MinQuestLevel))
-            if (set.MinQuestLevel >= QuestSystem.Instance.CurrentState)
-                return set;
-
-        return Dialogue.dialogueEntries.LastOrDefault();
-    }
-
-    public void FirstDialogue()
-    {
-        DialogueManager.Instance.SetDialogueName(Dialogue.CharacterName);
-        DialogueManager.Instance.StartDialogue(GetCurrentDialogue());
-        isFirstInteraction = false;
-    }
-    
-    public void ContinueDialogue()
-    {
-        if (DialogueManager.Instance.dialogueQueue.Count == 0)
-            FinishDialogue();
-
-        if (Input.GetButtonDown("Interact"))
-            DialogueManager.Instance.DisplayNextSentence();
-
-    }
-
-    public void FinishDialogue()
-    {
-        isFirstInteraction = true;
-        DialogueManager.Instance.gameObject.SetActive(false);
-
-        if (GetCurrentDialogue().ShouldIncreaseQuest)
-            QuestSystem.Instance.CompleteQuest();
     }
 }
