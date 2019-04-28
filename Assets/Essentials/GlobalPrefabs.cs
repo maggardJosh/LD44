@@ -22,6 +22,8 @@ public class GlobalPrefabs : MonoBehaviour
     public GameObject DialogueCanvas;
     public GameObject HealthCanvas;
     public GameObject TransitionCanvas;
+    public GameObject PauseCanvas;
+
     [Header("SharedPrefabs")]
     public GameObject ShadowPrefab;
     public GameObject InteractIndicatorPrefab;

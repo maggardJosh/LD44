@@ -7,6 +7,7 @@ public class DialogueComponent : MonoBehaviour
     public Dialogue Dialogue;
     public bool canInteract = false;
     private InteractIndicator interactIndicator;
+    private GameObject player;
 
     private void Start()
     {
@@ -27,6 +28,7 @@ public class DialogueComponent : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            player = collision.gameObject;
             GetComponentInParent<Npc>().Interact(collision.gameObject);
         }
     }
@@ -35,6 +37,7 @@ public class DialogueComponent : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            player = null;
             canInteract = false;
             interactIndicator.gameObject.SetActive(false);
             GetComponentInParent<Npc>().StopInteracting();
@@ -45,6 +48,7 @@ public class DialogueComponent : MonoBehaviour
     {
         if (canInteract && Input.GetButtonDown("Interact"))
         {
+            player.StopTopDownController();
             DialogueManager.Instance.StartDialogue(Dialogue);
             return true;
         }

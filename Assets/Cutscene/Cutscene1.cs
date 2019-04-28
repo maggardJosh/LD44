@@ -21,20 +21,12 @@ public class Cutscene1 : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            StopTopDownController(collision.gameObject);
+            collision.gameObject.StopTopDownController();
             StartCutscene();
         }
     }
 
-    private static void StopTopDownController(GameObject collision)
-    {
-        var playerController = collision.GetComponent<TopDownController>();
-        playerController.xMove = 0;
-        playerController.yMove = 0;
-        playerController.UpdateAnimationOnly();
-    }
-
+  
     private IEnumerator CutsceneLogic()
     {
         yield return new WaitForSeconds(3f);
@@ -76,7 +68,7 @@ public class Cutscene1 : MonoBehaviour
             count += Time.deltaTime;
             yield return null;
         }
-        StopTopDownController(t.gameObject);
+        t.gameObject.StopTopDownController();
         t.transform.position = pos;
     }
 }

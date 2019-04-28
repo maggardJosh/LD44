@@ -63,7 +63,10 @@ public class TopDownController : MonoBehaviour
     void LateUpdate()
     {
         if (FadeTransitionScreen.Instance.IsTransitioning)
+        {
+            rigidBody.velocity = Vector2.zero;
             return;
+        }
         animator.SetFloat("StunLeft", StunTimeLeft);
         if (StunTimeLeft > 0)
         {

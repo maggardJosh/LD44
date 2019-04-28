@@ -75,7 +75,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 920, y: 640}
+  m_ReferenceResolution: {x: 960, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -136,7 +136,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 45.750183, y: -213.33298}
-  m_SizeDelta: {x: 920, y: 240}
+  m_SizeDelta: {x: 1106.96, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6143993469474942176
 CanvasRenderer:
@@ -380,6 +380,7 @@ MonoBehaviour:
   DialogueLines: {fileID: 6143993470094419124}
   CharacterName: {fileID: 6143993469992496011}
   animator: {fileID: 1689973521}
+  TypeSpeed: 0.1
 --- !u!95 &1689973521
 Animator:
   serializedVersion: 3

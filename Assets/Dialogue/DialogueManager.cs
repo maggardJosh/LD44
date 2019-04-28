@@ -48,7 +48,7 @@ public class DialogueManager : MonoBehaviour
             FadeTransitionScreen.Instance.SetCinematic(true);
         currentDialogue = dialogue;
         CharacterName.text = dialogue.CharacterName;
-        
+
         foreach (string sentence in GetCurrentDialogue(dialogue).DialogueLines)
         {
             dialogueQueue.Enqueue(sentence);
@@ -60,6 +60,7 @@ public class DialogueManager : MonoBehaviour
     public IEnumerator StartDialogueThreaded(Dialogue dialogue)
     {
         currentDialogue = dialogue;
+        CharacterName.text = dialogue.CharacterName;
         foreach (string sentence in GetCurrentDialogue(dialogue).DialogueLines)
         {
             dialogueQueue.Enqueue(sentence);
