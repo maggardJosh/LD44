@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
 
     private void LevelLoaded(Scene arg0, LoadSceneMode arg1)
     {
+        if (diveCoroutine != null)
+            CancelDive();
         List<WarpPoint> points = new List<WarpPoint>(FindObjectsOfType<WarpPoint>());
         foreach (WarpPoint p in points)
         {
@@ -55,8 +57,29 @@ public class PlayerController : MonoBehaviour
             }
         }
         FindObjectOfType<Cinemachine.CinemachineVirtualCamera>().Follow = transform;
+        float lastXMove = animController.GetFloat("lastXMove");
+        float lastYMove = animController.GetFloat("lastYMove");
+        GetComponent<Rigidbody2D>().velocity = new Vector2(lastXMove, lastYMove) * 10;
+        animController.SetFloat("xMove", lastXMove);
+        animController.SetFloat("yMove", lastYMove);
     }
 
+    private void CancelDive()
+    {
+        StopCoroutine(diveCoroutine);
+        if (animController.GetCurrentAnimatorStateInfo(0).IsName("Dive"))
+        {
+            animController.SetTrigger("Roll");
+            animController.SetTrigger("RollDone");
+        }
+        else
+        if (animController.GetCurrentAnimatorStateInfo(0).IsName("Roll"))
+        {
+            animController.SetTrigger("RollDone");
+        }
+        controller.enabled = true;
+    }
+    Coroutine diveCoroutine;
     void Update()
     {
         if (FadeTransitionScreen.Instance.IsTransitioning)
@@ -68,13 +91,15 @@ public class PlayerController : MonoBehaviour
             return;
         if (animController.GetCurrentAnimatorStateInfo(0).IsName("Roll"))
             return;
+        if (animController.GetCurrentAnimatorStateInfo(0).IsName("Stun"))
+            return;
 
         controller.xMove = Input.GetAxisRaw("Horizontal");
         controller.yMove = Input.GetAxisRaw("Vertical");
         if (Input.GetButtonDown("Interact"))
             TestInteractAndWhip();
         if (Input.GetButtonDown("Dive"))
-            StartCoroutine(StartDive());
+            diveCoroutine = StartCoroutine(StartDive());
         if (Input.GetButtonDown("Pause"))
             PauseMenuManager.Instance.PressPause();
         if (Input.GetButtonDown("Mute"))
