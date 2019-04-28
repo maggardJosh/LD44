@@ -73,6 +73,8 @@ MonoBehaviour:
     type: 3}
   PauseCanvas: {fileID: 5589504869874068861, guid: 7ea61f5e3d2d62d4ea0f0183036b2ba5,
     type: 3}
+  SoundManager: {fileID: 6783768504007678063, guid: 89b4ebd9a7615434b894963c56ef71ac,
+    type: 3}
   ShadowPrefab: {fileID: 3414744869417834552, guid: 9b50a23e91614744e8c2a69eda269aa8,
     type: 3}
   InteractIndicatorPrefab: {fileID: 1246078820509063622, guid: 0136457582bc952438309a180c614d0e,
