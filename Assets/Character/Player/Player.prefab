@@ -435,6 +435,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasLeftWarp: 1
   targetWarp: 
+  diveDistance: 4
+  diveTime: 0.4
+  rollDistance: 4
+  rollTime: 0.5
   horizontalHitBoxLeft: {fileID: 2814785639927420622}
   horizontalHitBoxRight: {fileID: 1241007108}
   hitBoxUp: {fileID: 89565758}
