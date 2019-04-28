@@ -1,34 +1,22 @@
 fileFormatVersion: 2
-guid: fef6126d7d29784498b5a57ad4965de7
+guid: 305d87f0544d6c14dad2eff45a6a8178
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8858148489411009008
-    second: player_walk_down_0
+      213: 9078430923107220899
+    second: player_whip_side_0
   - first:
-      213: 1397241024309930288
-    second: player_walk_down_1
+      213: -5835368044901149443
+    second: player_whip_side_1
   - first:
-      213: 5562484070443655820
-    second: player_walk_down_2
+      213: -1071183422909159290
+    second: player_whip_side_2
   - first:
-      213: -4060602870248184417
-    second: player_walk_down_3
+      213: 2068729943844231825
+    second: player_whip_side_3
   - first:
-      213: 3529534114109028559
-    second: player_whip_down_0
-  - first:
-      213: 1470673512859533209
-    second: player_whip_down_1
-  - first:
-      213: 3299591587197514302
-    second: player_whip_down_2
-  - first:
-      213: 1634703946239087574
-    second: player_whip_down_3
-  - first:
-      213: -800223631426415062
-    second: player_whip_down_4
+      213: 2728256340438928059
+    second: player_whip_side_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -144,106 +132,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_whip_down_0
+      name: player_whip_side_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 33
-        height: 62
+        width: 65
+        height: 27
       alignment: 9
-      pivot: {x: 0.65, y: 0.57}
+      pivot: {x: 0.3, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4a579fac0e1ca941aada783d0167947
-      internalID: 3529534114109028559
+      spriteID: 8bae89428be00da4191e5d9621792a78
+      internalID: 9078430923107220899
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_whip_down_1
+      name: player_whip_side_1
       rect:
         serializedVersion: 2
-        x: 33
+        x: 65
         y: 0
-        width: 33
-        height: 62
+        width: 65
+        height: 27
       alignment: 9
-      pivot: {x: 0.65, y: 0.57}
+      pivot: {x: 0.3, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c29922af3bfb1b149aa7b929ceb7aa02
-      internalID: 1470673512859533209
+      spriteID: 3b674370f7702cf428e8c6959fdb50f5
+      internalID: -5835368044901149443
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_whip_down_2
+      name: player_whip_side_2
       rect:
         serializedVersion: 2
-        x: 66
+        x: 130
         y: 0
-        width: 33
-        height: 62
+        width: 65
+        height: 27
       alignment: 9
-      pivot: {x: 0.65, y: 0.57}
+      pivot: {x: 0.3, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85a695641aabdf14281bf4261b63fe59
-      internalID: 3299591587197514302
+      spriteID: feb87337d41a1df4e89f49c2515e4c2a
+      internalID: -1071183422909159290
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_whip_down_3
+      name: player_whip_side_3
       rect:
         serializedVersion: 2
-        x: 99
+        x: 195
         y: 0
-        width: 33
-        height: 62
+        width: 65
+        height: 27
       alignment: 9
-      pivot: {x: 0.65, y: 0.57}
+      pivot: {x: 0.3, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f451ec117dd2b444c83ba68e50995a91
-      internalID: 1634703946239087574
+      spriteID: ab443ac0416c4f24a9ba2608907a56fb
+      internalID: 2068729943844231825
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_whip_down_4
+      name: player_whip_side_4
       rect:
         serializedVersion: 2
-        x: 132
+        x: 260
         y: 0
-        width: 33
-        height: 62
+        width: 65
+        height: 27
       alignment: 9
-      pivot: {x: 0.65, y: 0.57}
+      pivot: {x: 0.3, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 927e57cebf63b724ca2ef42760d4336b
-      internalID: -800223631426415062
+      spriteID: 7efb9eaccf525c64c91766d01c415188
+      internalID: 2728256340438928059
       vertices: []
       indices: 
       edges: []
@@ -251,7 +239,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: bb93b0fa74d26c24c97bb0cdb7f56ba0
+    spriteID: 22c1efeae0e93194697732376d7f1c20
     internalID: 0
     vertices: []
     indices: 

@@ -37,8 +37,6 @@ public class Cutscene1 : MonoBehaviour
 
     private IEnumerator CutsceneLogic()
     {
-        if (partSyst != null)
-            partSyst.Play();
         yield return new WaitForSeconds(3f);
 
         GameObject fargoth = GameObject.Find("Fargoth");
