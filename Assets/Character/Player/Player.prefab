@@ -162,7 +162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PushBackValue: 5
-  StunTime: 4
   Damage: 2
 --- !u!1 &713852483
 GameObject:
@@ -472,3 +471,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 6
+  invulnerableTime: 5
+  stunTime: 2
+  invulnerableTimeLeft: 0

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ThrowingEnemy : MonoBehaviour
 {
@@ -64,5 +63,17 @@ public class ThrowingEnemy : MonoBehaviour
     {
         animator.SetTrigger("Throw");
         RandomWaitForThrow();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            var damageComp = collision.gameObject.GetComponent<Damageable>();
+            if (damageComp != null)
+            {
+                damageComp.TakeDamage(1, transform.position, 2);
+            }
+        }
     }
 }
