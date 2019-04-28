@@ -87,7 +87,6 @@ GameObject:
   - component: {fileID: 9044198033848796745}
   - component: {fileID: 9044198033848796746}
   - component: {fileID: 9044198033848796763}
-  - component: {fileID: 5711040504747856548}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Essentials
@@ -241,18 +240,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0558821031aa9a24e8e244ce156b3691, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementBounds: {fileID: 0}
---- !u!114 &5711040504747856548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9044198033848796741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a8f663ecaf67a44787930ed2bae87ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -6,6 +6,7 @@ public class Cutscene1 : MonoBehaviour
 {
     public ParticleSystem partSyst;
     public Dialogue cutsceneDialogue;
+    private bool alreadyPlayed = false;
 
     private void Start()
     {
@@ -14,6 +15,9 @@ public class Cutscene1 : MonoBehaviour
     }
     public void StartCutscene()
     {
+        if (alreadyPlayed)
+            return;
+        alreadyPlayed = true;
         FadeTransitionScreen.Instance.SetCinematic(true);
         StartCoroutine(CutsceneLogic());
     }
