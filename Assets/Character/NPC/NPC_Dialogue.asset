@@ -20,7 +20,11 @@ MonoBehaviour:
     ShouldIncreaseQuest: 1
   - MinQuestLevel: 1
     DialogueLines:
-    - YO!
-    - Nice job on that quest
+    - Yo this is a really long sentence and will make it easier to test
+    - Yo this is a really long sentence and will make it easier to test
+    - Yo this is a really long sentence and will make it easier to test
+    - Yo this is a really long sentence and will make it easier to test
+    - Yo this is a really long sentence and will make it easier to test
+    - Yo this is a really long sentence and will make it easier to test
     ShouldIncreaseQuest: 0
   CharacterName: Character

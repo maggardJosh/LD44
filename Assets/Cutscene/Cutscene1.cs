@@ -54,7 +54,6 @@ public class Cutscene1 : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         yield return DialogueManager.Instance.StartDialogueThreaded(cutsceneDialogue);
-
         yield return MoveToPosition(fargoth.GetComponent<TopDownController>(), p.transform.position + Vector3.left * 2f + Vector3.up * 20f, 1f);
         if (partSyst != null)
             partSyst.Stop();

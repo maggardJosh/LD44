@@ -8,8 +8,6 @@ public class DialogueComponent : MonoBehaviour
     public bool canInteract = false;
     private InteractIndicator interactIndicator;
 
-    private bool isFirstInteraction = true;
-
     private void Start()
     {
         interactIndicator = Instantiate(GlobalPrefabs.Instance.InteractIndicatorPrefab, transform).GetComponent<InteractIndicator>();
@@ -18,7 +16,6 @@ public class DialogueComponent : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //TODO: Stop characters from walking around when we are near them, they should also turn towards us
         if (collision.CompareTag("Player"))
         {
             canInteract = true;
@@ -40,7 +37,6 @@ public class DialogueComponent : MonoBehaviour
         {
             canInteract = false;
             interactIndicator.gameObject.SetActive(false);
-            isFirstInteraction = true;
             GetComponentInParent<Npc>().StopInteracting();
         }
     }

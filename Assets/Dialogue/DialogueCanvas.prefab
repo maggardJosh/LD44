@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6143993469321460218}
   - component: {fileID: 6143993469321460213}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: DialogueCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -341,6 +341,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6143993470664442837}
   - component: {fileID: 6143993470664442842}
+  - component: {fileID: 1689973521}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -356,7 +357,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6143993470664442836}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -45.750183, y: 34.832977, z: -287.875}
+  m_LocalPosition: {x: -45.75018, y: 34.832977, z: -287.875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6143993469474942178}
@@ -378,3 +379,23 @@ MonoBehaviour:
   currentDialogue: {fileID: 0}
   DialogueLines: {fileID: 6143993470094419124}
   CharacterName: {fileID: 6143993469992496011}
+  animator: {fileID: 1689973521}
+--- !u!95 &1689973521
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6143993470664442836}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b8f5432567a9199419f3770a0ae0cbd9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
