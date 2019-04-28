@@ -99,6 +99,7 @@ public class PlayerController : MonoBehaviour
         yield return HandleRollOrDive(rollDistance, rollTime);
         animController.SetTrigger("RollDone");
         controller.enabled = true;
+        gameObject.StopTopDownController();
     }
 
     private IEnumerator HandleRollOrDive(float dist, float time)
@@ -110,20 +111,24 @@ public class PlayerController : MonoBehaviour
             xMove = animController.GetFloat("lastXMove");
             yMove = animController.GetFloat("lastYMove");
         }
+        else
+        {
+            animController.SetFloat("lastXMove", xMove);
+            animController.SetFloat("lastYMove", yMove);
+        }
 
         Vector3 startPos = transform.position;
-        Vector3 targetPos = transform.position + new Vector3(xMove, yMove) * dist;
+        Vector3 targetPos = transform.position + new Vector3(xMove, yMove).normalized * dist;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         float count = 0;
         while (count < time)
         {
+            //Todo: don't use physics to do this, it makes collision pretty broken
             count += Time.deltaTime;
             Vector3 newPos = Vector3.Lerp(startPos, targetPos, count / time);
             rb.MovePosition(newPos);
             yield return null;
         }
-        rb.MovePosition(targetPos);
-        yield return null;
     }
 
     public void WhipHit(string hitboxToEnable)
