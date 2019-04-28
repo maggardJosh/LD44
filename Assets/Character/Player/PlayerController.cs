@@ -59,6 +59,8 @@ public class PlayerController : MonoBehaviour
         controller.yMove = Input.GetAxisRaw("Vertical");
         if (Input.GetButtonDown("Interact"))
             TestInteractAndWhip();
+        if (Input.GetButtonDown("Pause"))
+            PauseMenuManager.Instance.PressPause();
     }
 
     public void WhipHit(string hitboxToEnable)
