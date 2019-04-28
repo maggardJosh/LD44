@@ -10,6 +10,7 @@ public class DialogueManager : MonoBehaviour
     public Dialogue currentDialogue;
     public Text DialogueLines;
     public Text CharacterName;
+    public Animator animator;
 
     private static DialogueManager _instance;
     public static DialogueManager Instance
@@ -27,7 +28,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         dialogueQueue = new Queue<string>();
-        Instance.gameObject.SetActive(false);
+        Instance.gameObject.SetActive(true);
     }
 
     private Dialogue.DialogueSet GetCurrentDialogue(Dialogue dialogue)
@@ -41,7 +42,10 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue, bool setCinematic = true)
     {
-        gameObject.SetActive(true);
+        if (FadeTransitionScreen.Instance.IsTransitioning)
+            return;
+        if (setCinematic)
+            FadeTransitionScreen.Instance.SetCinematic(true);
         currentDialogue = dialogue;
         CharacterName.text = dialogue.CharacterName;
 
@@ -55,10 +59,8 @@ public class DialogueManager : MonoBehaviour
 
     public IEnumerator StartDialogueThreaded(Dialogue dialogue)
     {
-        gameObject.SetActive(true);
         currentDialogue = dialogue;
         CharacterName.text = dialogue.CharacterName;
-
         foreach (string sentence in GetCurrentDialogue(dialogue).DialogueLines)
         {
             dialogueQueue.Enqueue(sentence);
@@ -68,38 +70,47 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator RunDialogue(bool setCinematic)
     {
-        if (setCinematic)
-            FadeTransitionScreen.Instance.SetCinematic(true);
-        DisplayNextSentence();
-        yield return null;
-        while (dialogueQueue.Count >= 0)
-        {
-            if (Input.GetButtonDown("Interact"))
-                if (!DisplayNextSentence())
-                    break;
+        DialogueLines.text = "";
+        animator.SetBool("IsOpen", true);
+        while (!animator.GetCurrentAnimatorStateInfo(0).IsName("DialogueBox_Open"))
             yield return null;
+
+
+        while (dialogueQueue.Count > 0)
+        {
+            yield return TypeSentence(dialogueQueue.Dequeue());
+            while (!Input.GetButtonDown("Interact"))
+                yield return null;
         }
+        animator.SetBool("IsOpen", false);
+        while (!animator.GetCurrentAnimatorStateInfo(0).IsName("DialogueBox_Close"))
+            yield return null;
+
         if (GetCurrentDialogue(currentDialogue).ShouldIncreaseQuest)
             QuestSystem.Instance.CompleteQuest();
-        gameObject.SetActive(false);
         if (setCinematic)
             FadeTransitionScreen.Instance.SetCinematic(false);
     }
 
-    private bool DisplayNextSentence()
+    public float TypeSpeed = .05f;
+    private IEnumerator TypeSentence(string sentence)
     {
-        if (dialogueQueue.Count == 0)
+        DialogueLines.text = "";
+        foreach (char letter in sentence.ToCharArray())
         {
-            EndDialogue();
-            return false;
+            DialogueLines.text += letter;
+            float count = 0;
+            while (count < TypeSpeed)
+            {
+                count += Time.deltaTime;
+                yield return null;
+                if (Input.GetButtonDown("Interact"))
+                {
+                    DialogueLines.text = sentence;
+                    yield return null;
+                    yield break;
+                }
+            }
         }
-
-        DialogueLines.text = dialogueQueue.Dequeue();
-        return true;
-    }
-
-    private void EndDialogue()
-    {
-        gameObject.SetActive(false);
     }
 }

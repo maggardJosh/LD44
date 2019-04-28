@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5349721362373313011}
   - component: {fileID: 272812245455087026}
   - component: {fileID: 1047038526288511172}
+  - component: {fileID: 309460792}
   m_Layer: 0
   m_Name: EssentialLoader
   m_TagString: Untagged
@@ -70,9 +71,27 @@ MonoBehaviour:
     type: 3}
   TransitionCanvas: {fileID: 6205160327632775127, guid: a4e09ee15c5565949b26ca9bdac11280,
     type: 3}
+  PauseCanvas: {fileID: 5589504869874068861, guid: 7ea61f5e3d2d62d4ea0f0183036b2ba5,
+    type: 3}
   ShadowPrefab: {fileID: 3414744869417834552, guid: 9b50a23e91614744e8c2a69eda269aa8,
     type: 3}
   InteractIndicatorPrefab: {fileID: 1246078820509063622, guid: 0136457582bc952438309a180c614d0e,
     type: 3}
   ThrownItemPrefab: {fileID: 4480813943179879866, guid: 9d0c2c695a16d824fb10953964d624bf,
     type: 3}
+--- !u!114 &309460792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501535647094673497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d14a4a464dd763341a5c6f8151df5294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneColor: {r: 1, g: 1, b: 1, a: 1}
+  playerColor: {r: 1, g: 1, b: 1, a: 1}
+  PlayerMat: {fileID: 2100000, guid: e22b74d458b4a944caca1ff5f9c61910, type: 2}
+  SceneMat: {fileID: 2100000, guid: 070cf2d9f3d7a624c8e2d5952900c49f, type: 2}

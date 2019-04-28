@@ -22,10 +22,13 @@ public class GlobalPrefabs : MonoBehaviour
     public GameObject DialogueCanvas;
     public GameObject HealthCanvas;
     public GameObject TransitionCanvas;
+    public GameObject PauseCanvas;
+
     [Header("SharedPrefabs")]
     public GameObject ShadowPrefab;
     public GameObject InteractIndicatorPrefab;
     public GameObject ThrownItemPrefab;
+
 
     // Start is called before the first frame update
     void Start()

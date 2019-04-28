@@ -26,6 +26,8 @@ public class QuestSystem : MonoBehaviour
         CurrentState++;
         if (!Enum.IsDefined(typeof(QuestState), CurrentState))
             CurrentState--;
+        foreach (QuestAffectedItem item in Resources.FindObjectsOfTypeAll<QuestAffectedItem>())
+            item.UpdateActiveBasedOnCurrentQuest();
     }
 
     public static string GetCurrentQuestHint(QuestState questState)

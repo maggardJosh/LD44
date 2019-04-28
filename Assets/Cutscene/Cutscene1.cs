@@ -6,6 +6,7 @@ public class Cutscene1 : MonoBehaviour
 {
     public ParticleSystem partSyst;
     public Dialogue cutsceneDialogue;
+    private bool alreadyPlayed = false;
 
     private void Start()
     {
@@ -14,6 +15,9 @@ public class Cutscene1 : MonoBehaviour
     }
     public void StartCutscene()
     {
+        if (alreadyPlayed)
+            return;
+        alreadyPlayed = true;
         FadeTransitionScreen.Instance.SetCinematic(true);
         StartCoroutine(CutsceneLogic());
     }
@@ -21,20 +25,12 @@ public class Cutscene1 : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            StopTopDownController(collision.gameObject);
+            collision.gameObject.StopTopDownController();
             StartCutscene();
         }
     }
 
-    private static void StopTopDownController(GameObject collision)
-    {
-        var playerController = collision.GetComponent<TopDownController>();
-        playerController.xMove = 0;
-        playerController.yMove = 0;
-        playerController.UpdateAnimationOnly();
-    }
-
+  
     private IEnumerator CutsceneLogic()
     {
         yield return new WaitForSeconds(3f);
@@ -54,7 +50,6 @@ public class Cutscene1 : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         yield return DialogueManager.Instance.StartDialogueThreaded(cutsceneDialogue);
-
         yield return MoveToPosition(fargoth.GetComponent<TopDownController>(), p.transform.position + Vector3.left * 2f + Vector3.up * 20f, 1f);
         if (partSyst != null)
             partSyst.Stop();
@@ -77,7 +72,7 @@ public class Cutscene1 : MonoBehaviour
             count += Time.deltaTime;
             yield return null;
         }
-        StopTopDownController(t.gameObject);
+        t.gameObject.StopTopDownController();
         t.transform.position = pos;
     }
 }

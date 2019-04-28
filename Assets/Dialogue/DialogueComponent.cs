@@ -7,8 +7,7 @@ public class DialogueComponent : MonoBehaviour
     public Dialogue Dialogue;
     public bool canInteract = false;
     private InteractIndicator interactIndicator;
-
-    private bool isFirstInteraction = true;
+    private GameObject player;
 
     private void Start()
     {
@@ -18,7 +17,6 @@ public class DialogueComponent : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //TODO: Stop characters from walking around when we are near them, they should also turn towards us
         if (collision.CompareTag("Player"))
         {
             canInteract = true;
@@ -31,6 +29,7 @@ public class DialogueComponent : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            player = collision.gameObject;
             GetComponentInParent<Npc>().Interact(collision.gameObject);
         }
     }
@@ -39,10 +38,12 @@ public class DialogueComponent : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            player = null;
             canInteract = false;
             interactIndicator.gameObject.SetActive(false);
-            isFirstInteraction = true;
-            GetComponentInParent<Npc>().StopInteracting();
+            Npc npc = GetComponentInParent<Npc>();
+            if (npc != null) //Check just in case they were removed based on quest this frame
+                npc.StopInteracting();
             SoundManager.CallChangeMusic(SoundManager.Sound.Music_MemoryTheme, SoundManager.Sound.Music_TownTheme, .05f);
         }
     }
@@ -51,6 +52,7 @@ public class DialogueComponent : MonoBehaviour
     {
         if (canInteract && Input.GetButtonDown("Interact"))
         {
+            player.StopTopDownController();
             DialogueManager.Instance.StartDialogue(Dialogue);
             return true;
         }

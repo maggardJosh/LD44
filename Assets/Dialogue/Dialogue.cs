@@ -12,7 +12,8 @@ public class Dialogue : ScriptableObject
         public List<string> DialogueLines = new List<string>();
         public bool ShouldIncreaseQuest = false;
     }
+    public string CharacterName = "Character";
+    [Header("Dialogue Entries")]
     [SerializeField]
     public List<DialogueSet> dialogueEntries;
-    public string CharacterName = "Character";
 }
