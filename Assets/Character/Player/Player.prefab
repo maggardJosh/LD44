@@ -473,4 +473,4 @@ MonoBehaviour:
   health: 6
   invulnerableTime: 5
   stunTime: 2
-  invulnerableTimeLeft: 0
+  invulnerableFrameSpeed: 0.2

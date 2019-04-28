@@ -68,6 +68,8 @@ public class PlayerController : MonoBehaviour
             return;
         if (animController.GetCurrentAnimatorStateInfo(0).IsName("Roll"))
             return;
+        if (animController.GetCurrentAnimatorStateInfo(0).IsName("Stun"))
+            return;
 
         controller.xMove = Input.GetAxisRaw("Horizontal");
         controller.yMove = Input.GetAxisRaw("Vertical");
