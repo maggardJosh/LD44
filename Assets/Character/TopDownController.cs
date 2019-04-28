@@ -62,11 +62,6 @@ public class TopDownController : MonoBehaviour
 
     void LateUpdate()
     {
-        if (FadeTransitionScreen.Instance.IsTransitioning)
-        {
-           // rigidBody.velocity = Vector2.zero;
-            return;
-        }
         animator.SetFloat("StunLeft", StunTimeLeft);
         if (StunTimeLeft > 0)
         {
@@ -80,7 +75,7 @@ public class TopDownController : MonoBehaviour
             animator.SetFloat("lastXMove", xMove);
             animator.SetFloat("lastYMove", yMove);
 
-            if (Mathf.Abs(xMove) > 0)
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("WhipHold") && Mathf.Abs(xMove) > 0)
                 sRend.flipX = xMove < 0;
             rigidBody.velocity = (new Vector2(xMove, yMove) * speed);
         }
