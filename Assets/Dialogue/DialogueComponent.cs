@@ -39,7 +39,7 @@ public class DialogueComponent : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             canInteract = false;
-            interactIndicator.gameObject.SetActive(false);
+            //interactIndicator.gameObject.SetActive(false);
             isFirstInteraction = true;
             GetComponentInParent<Npc>().StopInteracting();
         }
@@ -92,7 +92,7 @@ public class DialogueComponent : MonoBehaviour
     public void FinishDialogue()
     {
         isFirstInteraction = true;
-        DialogueManager.Instance.gameObject.SetActive(false);
+        //DialogueManager.Instance.gameObject.SetActive(false);
 
         if (GetCurrentDialogue().ShouldIncreaseQuest)
             QuestSystem.Instance.CompleteQuest();

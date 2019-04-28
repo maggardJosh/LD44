@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
     public Dialogue currentDialogue;
     public Text DialogueLines;
     public Text CharacterName;
+    public Animator animator;
 
     private static DialogueManager _instance;
     public static DialogueManager Instance
@@ -26,7 +27,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         dialogueQueue = new Queue<string>();
-        Instance.gameObject.SetActive(false);
+        Instance.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -42,10 +43,9 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue.DialogueSet dialogueSet)
     {
-        //DialogueLines.text = dialogueSet.DialogueLines[0];
-        //display the queue of text and advance if we have more lines if the player hits interact
-        //dialogueQueue.Clear();
-        gameObject.SetActive(true);
+        //gameObject.SetActive(true);
+        animator.SetBool("IsOpen", true);
+
 
         foreach (string sentence in dialogueSet.DialogueLines)
         {
@@ -63,12 +63,24 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        DialogueLines.text = dialogueQueue.Dequeue();
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(dialogueQueue.Dequeue()));
 
     }
 
     public void EndDialogue()
     {
-        gameObject.SetActive(false);
+        animator.SetBool("IsOpen", false);
+        //gameObject.SetActive(false);
+    }
+
+    private IEnumerator TypeSentence(string sentence)
+    {
+        DialogueLines.text = "";
+        foreach (char letter in sentence.ToCharArray())
+        {
+            DialogueLines.text += letter;
+            yield return null;
+        }
     }
 }
