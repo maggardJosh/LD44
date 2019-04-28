@@ -5,7 +5,6 @@ using UnityEngine.Audio;
 
 public class Jukebox : MonoBehaviour
 {
-    public AudioSource Speaker;
     public AudioMixer MainMixer;
     public List<Track> Tracks;
 
@@ -20,8 +19,6 @@ public class Jukebox : MonoBehaviour
     void Start()
     {
         SoundManager.PlaySound(SoundManager.Sound.Music_TownTheme);
-        //SoundManager.CallFadeIn(SoundManager.Sound.Music_TownTheme, 0.01f, 1);
-        //SoundManager.PlaySound(SoundManager.Sound.Music_MemoryTheme);
     }
 
     // Update is called once per frame

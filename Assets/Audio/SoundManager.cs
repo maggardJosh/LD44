@@ -54,7 +54,6 @@ public class SoundManager : MonoBehaviour
         Track settingTrack = GetTrack(soundToPlay);
         settingTrack.AudioSource.outputAudioMixerGroup = mainMix.FindMatchingGroups(GetMixerGroup(settingTrack.ClipType))[0];
         settingTrack.TrackVolume = trackVolume;
-        settingTrack.ShouldLoop = loop;
     }
 
     public static void PlaySound(Sound soundName)
@@ -63,9 +62,7 @@ public class SoundManager : MonoBehaviour
         if (!trackToPlay.AudioSource.isPlaying)
         {
             trackToPlay.AudioSource.PlayOneShot(trackToPlay.Clip, trackToPlay.TrackVolume);
-
-            if (trackToPlay.ShouldLoop)
-                CallLoop(soundName, trackToPlay.Clip.length); 
+            
         }
     }
 
@@ -95,17 +92,7 @@ public class SoundManager : MonoBehaviour
     {
         
     }
-
-    public static void CallFadeIn(Sound soundToPlay, float speed, float maxVolume)
-    {
-        Instance.StartCoroutine(FadeIn(soundToPlay, speed, maxVolume));
-    }
-
-    public static void CallFadeOut(Sound soundToPlay, float speed)
-    {
-        Instance.StartCoroutine(FadeOut(soundToPlay, speed));
-    }
-
+    
     public static void CallLoop(Sound soundToLoop, float clipLength)
     {
         Instance.StartCoroutine(Loop(soundToLoop, clipLength));
@@ -132,19 +119,22 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    private static IEnumerator FadeOut(Sound soundToPlay, float speed)
+    private static IEnumerator FadeOut(Sound sound, float speed)
     {
         keepFadingIn = false;
         keepFadingOut = true;
+        Track soundToFade = GetTrack(sound);
         
-        float audioVolume = GetTrack(soundToPlay).AudioSource.volume;
+        float audioVolume = GetTrack(sound).AudioSource.volume;
 
-        while (GetTrack(soundToPlay).AudioSource.volume >= speed && keepFadingOut)
+        while (soundToFade.AudioSource.volume >= speed && keepFadingOut)
         {
             audioVolume -= speed;
-            GetTrack(soundToPlay).AudioSource.volume = audioVolume;
-            yield return new WaitForFixedUpdate();
+            soundToFade.AudioSource.volume = audioVolume;
+            yield return null;
         }
+
+        soundToFade.AudioSource.Stop();
     }
 
     private static IEnumerator Loop(Sound soundToLoop, float clipLength)
@@ -156,22 +146,14 @@ public class SoundManager : MonoBehaviour
 
     private static IEnumerator ChangeMusic(Sound soundToStop, Sound soundToStart, float speedToChange)
     {
-        CallFadeOut(soundToStop, speedToChange);
-        Track trackToStop = GetTrack(soundToStop);
-        while (trackToStop.AudioSource.volume >= speedToChange)
-        {
-            yield return new WaitForFixedUpdate();
-        }
-
-        trackToStop.AudioSource.Stop();
+        yield return FadeOut(soundToStop, speedToChange);
+        
 
         Track trackToPlay = GetTrack(soundToStart);
         if (!trackToPlay.AudioSource.isPlaying)
         {
             trackToPlay.AudioSource.PlayOneShot(trackToPlay.Clip, trackToPlay.TrackVolume);
-            CallFadeIn(soundToStart, speedToChange, trackToPlay.TrackVolume);
-            if (trackToPlay.ShouldLoop)
-                CallLoop(soundToStart, trackToPlay.Clip.length);
+            yield return FadeIn(soundToStart, speedToChange, trackToPlay.TrackVolume);
         }
     }
 

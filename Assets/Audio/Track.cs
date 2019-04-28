@@ -10,5 +10,4 @@ public class Track
     public AudioClip Clip;
     public AudioSource AudioSource;
     public float TrackVolume;
-    public bool ShouldLoop;
 }
