@@ -308,7 +308,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 070cf2d9f3d7a624c8e2d5952900c49f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3916,7 +3916,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 070cf2d9f3d7a624c8e2d5952900c49f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5034,7 +5034,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 070cf2d9f3d7a624c8e2d5952900c49f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5878,6 +5878,30 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 309460792, guid: d47be49b4ea9db34b9e97e815913b510, type: 3}
+      propertyPath: sceneColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 309460792, guid: d47be49b4ea9db34b9e97e815913b510, type: 3}
+      propertyPath: sceneColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 309460792, guid: d47be49b4ea9db34b9e97e815913b510, type: 3}
+      propertyPath: sceneColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 309460792, guid: d47be49b4ea9db34b9e97e815913b510, type: 3}
+      propertyPath: playerColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 309460792, guid: d47be49b4ea9db34b9e97e815913b510, type: 3}
+      propertyPath: playerColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 309460792, guid: d47be49b4ea9db34b9e97e815913b510, type: 3}
+      propertyPath: playerColor.b
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d47be49b4ea9db34b9e97e815913b510, type: 3}

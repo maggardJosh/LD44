@@ -29,6 +29,7 @@ public class GlobalPrefabs : MonoBehaviour
     public GameObject InteractIndicatorPrefab;
     public GameObject ThrownItemPrefab;
 
+
     // Start is called before the first frame update
     void Start()
     {
