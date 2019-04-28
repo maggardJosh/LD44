@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 9022918594306731986}
   - component: {fileID: 5761541547081235260}
   - component: {fileID: 2731947374925293753}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Essentials
   m_Icon: {fileID: 0}
@@ -171,6 +171,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  invulnerableTime: 2
+  stunTime: 2
+  invulnerableFrameSpeed: 0.1
 --- !u!114 &2731947374925293753
 MonoBehaviour:
   m_ObjectHideFlags: 0

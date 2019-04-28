@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
 
     private void CancelDive()
     {
+        gameObject.layer = LayerMask.NameToLayer("Default");
         StopCoroutine(diveCoroutine);
         if (animController.GetCurrentAnimatorStateInfo(0).IsName("Dive"))
         {
@@ -121,6 +122,7 @@ public class PlayerController : MonoBehaviour
     public Damageable d;
     private IEnumerator StartDive()
     {
+        gameObject.layer = LayerMask.NameToLayer("Rolling");
         controller.enabled = false;
         d = GetComponent<Damageable>();
         d.enabled = false;
@@ -132,6 +134,7 @@ public class PlayerController : MonoBehaviour
         controller.enabled = true;
         d.enabled = true;
         gameObject.StopTopDownController();
+        gameObject.layer = LayerMask.NameToLayer("Default");
     }
 
     private IEnumerator HandleRollOrDive(float dist, float time)
