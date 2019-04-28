@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public string targetWarp = "";
     private Animator animController;
     private float normalSpeed;
+    public float WhipStrafeSpeed = 2f;
     public float diveDistance = 2;
     public float diveTime = .5f;
     public float rollDistance = 2;
@@ -66,6 +67,7 @@ public class PlayerController : MonoBehaviour
 
     private void CancelDive()
     {
+        gameObject.layer = LayerMask.NameToLayer("Default");
         StopCoroutine(diveCoroutine);
         if (animController.GetCurrentAnimatorStateInfo(0).IsName("Dive"))
         {
@@ -78,6 +80,7 @@ public class PlayerController : MonoBehaviour
             animController.SetTrigger("RollDone");
         }
         controller.enabled = true;
+        damageableComponent.enabled = true;
     }
     Coroutine diveCoroutine;
     void Update()
@@ -85,6 +88,22 @@ public class PlayerController : MonoBehaviour
         if (FadeTransitionScreen.Instance.IsTransitioning)
             return;
         DisableHitboxes();
+        if (animController.GetCurrentAnimatorStateInfo(0).IsName("WhipHold"))
+        {
+            if (!Input.GetButton("Interact"))
+            {
+                animController.SetTrigger("WhipHoldDone");
+                animController.SetFloat("lastXMove", animController.GetFloat("whipX"));
+                animController.SetFloat("lastYMove", animController.GetFloat("whipY"));
+                controller.yMove = Input.GetAxisRaw("Vertical");
+            }
+            else
+            {
+                controller.xMove = Input.GetAxisRaw("Horizontal");
+                controller.yMove = Input.GetAxisRaw("Vertical");
+            }
+            return;
+        }
         if (animController.GetCurrentAnimatorStateInfo(0).IsName("Whip"))
             return;
         if (animController.GetCurrentAnimatorStateInfo(0).IsName("Dive"))
@@ -117,16 +136,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public Damageable damageableComponent;
     private IEnumerator StartDive()
     {
+        gameObject.layer = LayerMask.NameToLayer("Rolling");
         controller.enabled = false;
+        damageableComponent = GetComponent<Damageable>();
+        damageableComponent.enabled = false;
         animController.SetTrigger("Dive");
         yield return HandleRollOrDive(diveDistance, diveTime);
         animController.SetTrigger("Roll");
         yield return HandleRollOrDive(rollDistance, rollTime);
         animController.SetTrigger("RollDone");
         controller.enabled = true;
+        damageableComponent.enabled = true;
         gameObject.StopTopDownController();
+        gameObject.layer = LayerMask.NameToLayer("Default");
     }
 
     private IEnumerator HandleRollOrDive(float dist, float time)
@@ -160,6 +185,7 @@ public class PlayerController : MonoBehaviour
 
     public void WhipHit(string hitboxToEnable)
     {
+        controller.speed = normalSpeed;
         switch (hitboxToEnable)
         {
             case "WhipHorizontalHit":
@@ -182,6 +208,9 @@ public class PlayerController : MonoBehaviour
         foreach (var dialogueComp in FindObjectsOfType<DialogueComponent>())
             if (dialogueComp.TryInteract())
                 return;
+        controller.speed = WhipStrafeSpeed;
         animController.SetTrigger("Whip");
+        animController.SetFloat("whipX", animController.GetFloat("lastXMove"));
+        animController.SetFloat("whipY", animController.GetFloat("lastYMove"));
     }
 }
