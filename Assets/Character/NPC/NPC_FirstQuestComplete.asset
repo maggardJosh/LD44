@@ -10,17 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0631a019bd506a4eba0cb3aa00cd935, type: 3}
-  m_Name: NPC_Dialogue_Fargoth
+  m_Name: NPC_FirstQuestComplete
   m_EditorClassIdentifier: 
-  CharacterName: Fargoth
+  CharacterName: Character
   dialogueEntries:
   - MinQuestLevel: 0
     DialogueLines:
-    - Hello friend!
-    - Have you seen my ring?
-    ShouldIncreaseQuest: 0
-  - MinQuestLevel: 1
-    DialogueLines:
-    - Greetings friend.
-    - Are you sure you haven't seen my ring?
-    ShouldIncreaseQuest: 0
+    - Good job! I'll increase your current quest brah.
+    - '... I won''t be here when you come back.'
+    ShouldIncreaseQuest: 1

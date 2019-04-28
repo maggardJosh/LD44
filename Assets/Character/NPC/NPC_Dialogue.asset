@@ -12,19 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0631a019bd506a4eba0cb3aa00cd935, type: 3}
   m_Name: NPC_Dialogue
   m_EditorClassIdentifier: 
+  CharacterName: Character
   dialogueEntries:
   - MinQuestLevel: 0
     DialogueLines:
     - Hey you just started!
     - '... and you haven''t completed any quests yet...'
-    ShouldIncreaseQuest: 1
+    ShouldIncreaseQuest: 0
   - MinQuestLevel: 1
     DialogueLines:
-    - Yo this is a really long sentence and will make it easier to test
-    - Yo this is a really long sentence and will make it easier to test
-    - Yo this is a really long sentence and will make it easier to test
-    - Yo this is a really long sentence and will make it easier to test
-    - Yo this is a really long sentence and will make it easier to test
-    - Yo this is a really long sentence and will make it easier to test
+    - You are already done with a quest!?
     ShouldIncreaseQuest: 0
-  CharacterName: Character

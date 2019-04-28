@@ -40,7 +40,9 @@ public class DialogueComponent : MonoBehaviour
             player = null;
             canInteract = false;
             interactIndicator.gameObject.SetActive(false);
-            GetComponentInParent<Npc>().StopInteracting();
+            Npc npc = GetComponentInParent<Npc>();
+            if (npc != null) //Check just in case they were removed based on quest this frame
+                npc.StopInteracting();
         }
     }
 
