@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class QuestSystem : MonoBehaviour
@@ -27,5 +28,19 @@ public class QuestSystem : MonoBehaviour
             CurrentState--;
     }
 
+    public static string GetCurrentQuestHint(QuestState questState)
+    {
+
+        if (QuestHints.TryGetValue(questState, out string hint))
+            return hint;
+        else
+            return "";
+    }
+
+    private static Dictionary<QuestState, string> QuestHints = new Dictionary<QuestState, string>
+    {
+        {QuestState.A_JUST_STARTED, "You should totally go talk to one of the dues.\nOne that isn't Fargoth or that Miner guy." },
+        {QuestState.B_FIRST_QUEST_DONE, "NICE\nNow you gotta wait for us to add more stuff" }
+    };
 
 }
