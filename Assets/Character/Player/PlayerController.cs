@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         SceneManager.sceneLoaded -= LevelLoaded;
     }
+    public Transform followTransform;
 
     private void LevelLoaded(Scene scene, LoadSceneMode arg1)
     {
@@ -73,7 +74,7 @@ public class PlayerController : MonoBehaviour
         else
             SpawnPlayerAtWarpPoint();
 
-        FindObjectOfType<Cinemachine.CinemachineVirtualCamera>().Follow = transform;
+        FindObjectOfType<Cinemachine.CinemachineVirtualCamera>().Follow = followTransform;
         float lastXMove = animController.GetFloat("lastXMove");
         float lastYMove = animController.GetFloat("lastYMove");
         GetComponent<Rigidbody2D>().velocity = new Vector2(lastXMove, lastYMove) * 10;
