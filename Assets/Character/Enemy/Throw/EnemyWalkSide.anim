@@ -20,16 +20,16 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 6901298493506703051, guid: 3465f7c12ab14014f85b51a0503163a3,
+      value: {fileID: -389494902419281310, guid: 08c531f4ee6d2e34480aed568db0cadd,
         type: 3}
     - time: 0.083333336
-      value: {fileID: -2730513141418803805, guid: 3465f7c12ab14014f85b51a0503163a3,
+      value: {fileID: 1346377158676211180, guid: 08c531f4ee6d2e34480aed568db0cadd,
         type: 3}
     - time: 0.16666667
-      value: {fileID: 6901298493506703051, guid: 3465f7c12ab14014f85b51a0503163a3,
+      value: {fileID: 8069528858648329439, guid: 08c531f4ee6d2e34480aed568db0cadd,
         type: 3}
     - time: 0.25
-      value: {fileID: 4195384793672809155, guid: 3465f7c12ab14014f85b51a0503163a3,
+      value: {fileID: -5790973418640397892, guid: 08c531f4ee6d2e34480aed568db0cadd,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -50,10 +50,10 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 6901298493506703051, guid: 3465f7c12ab14014f85b51a0503163a3, type: 3}
-    - {fileID: -2730513141418803805, guid: 3465f7c12ab14014f85b51a0503163a3, type: 3}
-    - {fileID: 6901298493506703051, guid: 3465f7c12ab14014f85b51a0503163a3, type: 3}
-    - {fileID: 4195384793672809155, guid: 3465f7c12ab14014f85b51a0503163a3, type: 3}
+    - {fileID: -389494902419281310, guid: 08c531f4ee6d2e34480aed568db0cadd, type: 3}
+    - {fileID: 1346377158676211180, guid: 08c531f4ee6d2e34480aed568db0cadd, type: 3}
+    - {fileID: 8069528858648329439, guid: 08c531f4ee6d2e34480aed568db0cadd, type: 3}
+    - {fileID: -5790973418640397892, guid: 08c531f4ee6d2e34480aed568db0cadd, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -78,4 +78,18 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: PlayStepSound
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.16666667
+    functionName: PlayStepSound
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class ThrowingEnemy : MonoBehaviour
 {
@@ -150,5 +151,11 @@ public class ThrowingEnemy : MonoBehaviour
                 damageComp.TakeDamage(1, transform.position, 2);
             }
         }
+    }
+
+    List<SoundManager.Sound> StepCollection = new List<SoundManager.Sound> { SoundManager.Sound.SFX_Enemy_EnergyWalk1, SoundManager.Sound.SFX_Enemy_EnergyWalk2 };
+    private void PlayStepSound()
+    {
+        SoundManager.Instance.PlaySound(StepCollection[UnityEngine.Random.Range(0, StepCollection.Count)]);
     }
 }
