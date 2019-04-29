@@ -4,6 +4,11 @@ public class LoadEssentials : MonoBehaviour
 {
     void Awake()
     {
+        if (CutsceneEffectManager.Instance == null)
+        {
+            GameObject cutsceneBorder = Instantiate(GlobalPrefabs.Instance.CutsceneBorder);
+            DontDestroyOnLoad(cutsceneBorder);
+        }
         if (SoundManager.Instance == null)
         {
             GameObject soundManager = Instantiate(GlobalPrefabs.Instance.SoundManager);
