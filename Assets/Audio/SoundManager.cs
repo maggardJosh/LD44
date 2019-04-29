@@ -112,7 +112,6 @@ public class SoundManager : MonoBehaviour
 
     private void HandleBattleState()
     {
-        Debug.Log($"State: {currentState.ToString()}\tVolume: {GetSceneTrack().AudioSource.volume}");
         switch (currentState)
         {
             case BattleState.PLAYING_SCENE:
