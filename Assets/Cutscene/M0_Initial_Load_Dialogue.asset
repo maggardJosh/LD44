@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0631a019bd506a4eba0cb3aa00cd935, type: 3}
-  m_Name: Q1_Access_Memory
+  m_Name: M0_Initial_Load_Dialogue
   m_EditorClassIdentifier: 
   CharacterName: 
   dialogueEntries:
   - MinQuestLevel: 0
     DialogueLines:
-    - I uhh, forgot
-    - who
-    - I be...
+    - WHOA!....
+    - This seems familiar...
+    - . . . . .
     ShouldIncreaseQuest: 0

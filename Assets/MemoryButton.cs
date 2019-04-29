@@ -11,7 +11,7 @@ public class MemoryButton : MonoBehaviour
     {
         var player = FindObjectOfType<PlayerController>();
         player.SaveScenePositionForMemory();
-        Debug.Log(SceneManager.GetActiveScene().name);
+        SoundManager.Instance.PlaySound(SoundManager.Sound.Music_Transition1);
 
         PauseMenuManager.Instance.PressPause();
         FadeTransitionScreen.Instance.Transition(() =>
