@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     public BoxCollider2D hitBoxUp;
     public BoxCollider2D hitBoxDown;
 
+    public bool CanWhip { get { return QuestSystem.Instance.CurrentState > QuestSystem.QuestState.B_WHIP_GOT; } }
+    public bool CanDive { get { return QuestSystem.Instance.CurrentState > QuestSystem.QuestState.C_DIVE_GOT; } }
+
     void Start()
     {
         controller = GetComponent<TopDownController>();
@@ -131,7 +134,7 @@ public class PlayerController : MonoBehaviour
         controller.yMove = Input.GetAxisRaw("Vertical");
         if (Input.GetButtonDown("Interact"))
             TestInteractAndWhip();
-        if (Input.GetButtonDown("Dive"))
+        if (CanDive && Input.GetButtonDown("Dive"))
             diveCoroutine = StartCoroutine(StartDive());
         if (Input.GetButtonDown("Pause"))
             PauseMenuManager.Instance.PressPause();
@@ -222,6 +225,8 @@ public class PlayerController : MonoBehaviour
         foreach (var dialogueComp in FindObjectsOfType<DialogueComponent>())
             if (dialogueComp.TryInteract())
                 return;
+        if (!CanWhip)
+            return;
         controller.speed = WhipStrafeSpeed;
         animController.SetTrigger("Whip");
         float xMove = Input.GetAxisRaw("Horizontal");
