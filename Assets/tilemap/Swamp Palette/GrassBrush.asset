@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GrassBrush
   m_EditorClassIdentifier: 
   m_Cells:
-  - m_Tile: {fileID: 11400000, guid: bc5f4bc743c64d94d8ba0270050135f9, type: 2}
+  - m_Tile: {fileID: 11400000, guid: d3b18c63f661fe94cb631e71656d36e7, type: 2}
     m_Matrix:
       e00: 1
       e01: 0
@@ -39,11 +39,11 @@ MonoBehaviour:
   - randomTiles:
     - {fileID: 11400000, guid: 0e3ed6f9f395c4f44853c2311c850a9c, type: 2}
   - randomTiles:
-    - {fileID: 11400000, guid: 95eb95b13d0bffb43b96db3bce11ce8f, type: 2}
-  - randomTiles:
     - {fileID: 11400000, guid: e230ede4effc47d4cafcc6130edaaaf9, type: 2}
   - randomTiles:
     - {fileID: 11400000, guid: b538b7cf76a96844c889273521b570a7, type: 2}
+  - randomTiles:
+    - {fileID: 11400000, guid: 95eb95b13d0bffb43b96db3bce11ce8f, type: 2}
   - randomTiles:
     - {fileID: 11400000, guid: c3921685520e42a45acf56c9ac33bd47, type: 2}
   - randomTiles:
