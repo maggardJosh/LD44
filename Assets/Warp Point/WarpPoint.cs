@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(BoxCollider2D))]
 public class WarpPoint : MonoBehaviour
 {
-    public string warpPointToSpawnAt;
     public string sceneToWarpTo;
+    public string warpPointToSpawnAt;
 
     public void LoadScene()
     {
@@ -16,7 +16,7 @@ public class WarpPoint : MonoBehaviour
     {
         //check to see if the object colliding with me is the player
         //warp the player to the new scene
-        if (collision.gameObject.tag == "Player")
+        if (!string.IsNullOrWhiteSpace(sceneToWarpTo) && collision.gameObject.tag == "Player")
         {
             if (!collision.GetComponent<PlayerController>().hasLeftWarp)
                 return;

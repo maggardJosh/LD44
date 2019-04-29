@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(TopDownController))]
@@ -17,6 +18,9 @@ public class PlayerController : MonoBehaviour
     public float diveTime = .5f;
     public float rollDistance = 2;
     public float rollTime = .5f;
+
+    public string sceneToWarpBackTo = "";
+    public Vector3 lastPos = Vector3.zero;
 
     public BoxCollider2D horizontalHitBoxLeft;
     public BoxCollider2D horizontalHitBoxRight;
@@ -50,11 +54,14 @@ public class PlayerController : MonoBehaviour
         SceneManager.sceneLoaded -= LevelLoaded;
     }
 
-    private void LevelLoaded(Scene arg0, LoadSceneMode arg1)
+    private void LevelLoaded(Scene scene, LoadSceneMode arg1)
     {
         if (diveCoroutine != null)
             CancelDive();
-        SpawnPlayerAtWarpPoint();
+        if (scene.name == sceneToWarpBackTo)
+            SpawnPlayerBackToLastScene();
+        else
+            SpawnPlayerAtWarpPoint();
 
         FindObjectOfType<Cinemachine.CinemachineVirtualCamera>().Follow = transform;
         float lastXMove = animController.GetFloat("lastXMove");
@@ -62,6 +69,13 @@ public class PlayerController : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = new Vector2(lastXMove, lastYMove) * 10;
         animController.SetFloat("xMove", lastXMove);
         animController.SetFloat("yMove", lastYMove);
+    }
+
+    private void SpawnPlayerBackToLastScene()
+    {
+        hasLeftWarp = false;
+        transform.position = lastPos;
+        sceneToWarpBackTo = "";
     }
 
     private void SpawnPlayerAtWarpPoint()
@@ -222,6 +236,8 @@ public class PlayerController : MonoBehaviour
 
     private void TestInteractAndWhip()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
         foreach (var dialogueComp in FindObjectsOfType<DialogueComponent>())
             if (dialogueComp.TryInteract())
                 return;
