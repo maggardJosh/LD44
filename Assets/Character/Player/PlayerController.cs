@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private TopDownController controller;
     public bool hasLeftWarp = false;
 
-    internal void SaveScenePositionForMemory()
+    public void SaveScenePositionForMemory()
     {
         lastHasLeftWarp = hasLeftWarp;
         lastPos = transform.position;
