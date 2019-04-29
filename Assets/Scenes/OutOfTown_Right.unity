@@ -5582,7 +5582,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 21.479338, y: 15.049529}
+  m_Size: {x: 23, y: 15}
   m_EdgeRadius: 0
 --- !u!4 &969659022
 Transform:
@@ -5636,20 +5636,20 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 969659021}
     m_ColliderPaths:
-    - - X: 116869872
-        Y: 105022424
-      - X: -97923504
-        Y: 105022424
-      - X: -97923504
-        Y: -45472868
-      - X: 116869872
-        Y: -45472868
+    - - X: 124473184
+        Y: 104774784
+      - X: -105526816
+        Y: 104774784
+      - X: -105526816
+        Y: -45225224
+      - X: 124473184
+        Y: -45225224
   m_CompositePaths:
     m_Paths:
-    - - {x: 11.686987, y: 10.502242}
-      - {x: -9.792351, y: 10.502242}
-      - {x: -9.792351, y: -4.547287}
-      - {x: 11.686987, y: -4.547287}
+    - - {x: 12.447318, y: 10.477479}
+      - {x: -10.552682, y: 10.477479}
+      - {x: -10.552682, y: -4.5225224}
+      - {x: 12.447318, y: -4.5225224}
   m_VertexDistance: 0.0005
 --- !u!4 &1184826490
 Transform:
@@ -5659,7 +5659,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184826488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.61, y: -0.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 969659022}

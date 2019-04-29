@@ -6,15 +6,45 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Outside.unity
-    guid: 7aaa09eecd284364c84ee6471cc6f84a
-  - enabled: 1
-    path: Assets/Scenes/Inside.unity
-    guid: b680de976e527004598336f739a34e41
+    path: Assets/Scenes/Town.unity
+    guid: f410d72a529a88f4ab0bf98ed98dac7d
   - enabled: 1
     path: Assets/Scenes/Cutscene1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/EnemyScene.unity
-    guid: 6e665b9af5838574da552a874c4fd22d
+    path: Assets/Scenes/BossArea.unity
+    guid: 5f3416eb1255c494c8bf9168601b40fa
+  - enabled: 1
+    path: Assets/Scenes/_StarterScene.unity
+    guid: a8efd859f700bf64db69fbcd96372cb4
+  - enabled: 1
+    path: Assets/Scenes/ActualBossArea.unity
+    guid: 231f4644928d12744a63fb6edfdf760b
+  - enabled: 1
+    path: Assets/Scenes/BossArea_1.unity
+    guid: 207d7ae49218d704cabe51fcfefc7858
+  - enabled: 1
+    path: Assets/Scenes/BossArea_2.unity
+    guid: b8e388b5291ec4a40836941242015d77
+  - enabled: 1
+    path: Assets/Scenes/Graveyard.unity
+    guid: 0e07b0fb82a1b494e9db010ce7004d7d
+  - enabled: 1
+    path: Assets/Scenes/Graveyard_1.unity
+    guid: 929043732254eda47955a4a2869d090a
+  - enabled: 1
+    path: Assets/Scenes/Graveyard_2.unity
+    guid: d8f14b3723a7ee24d85c7829976d33ba
+  - enabled: 1
+    path: Assets/Scenes/OutOfTown.unity
+    guid: 86b4060d8d964464e9ade5ee18219cd6
+  - enabled: 1
+    path: Assets/Scenes/OutOfTown_Down.unity
+    guid: 44d1230ddd605ef4197e5ca639f2f205
+  - enabled: 1
+    path: Assets/Scenes/OutOfTown_Right.unity
+    guid: 6eb523f8b04c72849a15879841b64287
+  - enabled: 1
+    path: Assets/Scenes/OutOfTown_Up.unity
+    guid: c8358b63d3f365f459c0391cdc829483
   m_configObjects: {}

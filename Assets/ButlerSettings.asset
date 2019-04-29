@@ -12,12 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c4349d15b721042b8a02c7b3b019de, type: 3}
   m_Name: ButlerSettings
   m_EditorClassIdentifier: 
+  sceneList:
+  - m_Handle: 0
   GameName: ld44
   UserName: maggardJosh
   Scenes:
-  - Assets\Scenes\EnemyScene.unity
-  - Assets\Scenes\Inside.unity
-  - Assets\Scenes\Outside.unity
+  - Assets\Scenes\Town.unity
+  - Assets\Scenes\OutOfTown.unity
+  - Assets\Scenes\OutOfTown_Down.unity
+  - Assets\Scenes\OutOfTown_Right.unity
+  - Assets\Scenes\OutOfTown_Up.unity
+  - Assets\Scenes\Graveyard.unity
+  - Assets\Scenes\Graveyard_1.unity
+  - Assets\Scenes\Graveyard_2.unity
+  - Assets\Scenes\Cutscene1.unity
+  - Assets\Scenes\BossArea.unity
+  - Assets\Scenes\BossArea_1.unity
+  - Assets\Scenes\BossArea_2.unity
+  - Assets\Scenes\ActualBossArea.unity
   BuildAndroid: 0
   BuildWeb: 1
   BuildPC: 1
