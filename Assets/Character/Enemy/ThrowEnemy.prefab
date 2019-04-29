@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5761541547081235260}
   - component: {fileID: 2731947374925293753}
   m_Layer: 8
-  m_Name: Enemy
+  m_Name: ThrowEnemy
   m_TagString: Essentials
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,8 +186,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d426de702fe1a42821993d275bf766, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThrowSpeed: 1
+  ThrowSpeed: 0.8
   ThrowHeight: 1
-  minThrowTime: 3
-  maxThrowTime: 5
-  jitterRandom: 0.4
+  ThrowDist: 4
+  AggroDist: 6
+  minThrowTime: 1
+  maxThrowTime: 3
+  jitterRandom: 0.3

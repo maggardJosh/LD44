@@ -8,6 +8,17 @@ public class ThrowingEnemy : MonoBehaviour
     private PlayerController player;
     public float ThrowSpeed = 1;
     public float ThrowHeight = 1;
+    public float ThrowDist = 5;
+    public float AggroDist = 7;
+
+    private enum State
+    {
+        IDLE,
+        AGGRO_OUT_OF_DISTANCE,
+        AGGRO_IN_DISTANCE,
+        SHOOTING
+    }
+    private State currentState = State.IDLE;
 
     private TopDownController controller;
     public void Throw()
@@ -39,16 +50,66 @@ public class ThrowingEnemy : MonoBehaviour
 
     void Update()
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Throw"))    //Are we throwing?
-            return;
-        if (controller.StunTimeLeft > 0)
-            return;
 
-        timeUntilThrow -= Time.deltaTime;
-        if (timeUntilThrow > 0)
-            JitterLogic();
-        else
-            ThrowLogic();
+        if (controller.StunTimeLeft > 0)
+        {
+            currentState = State.IDLE;
+            return;
+        }
+        Vector3 playerDiff;
+        switch (currentState)
+        {
+            case State.IDLE:
+                playerDiff = (player.transform.position - transform.position);
+                if (playerDiff.magnitude < AggroDist)
+                {
+                    currentState = State.AGGRO_OUT_OF_DISTANCE;
+                    break;
+                }
+                break;
+            case State.AGGRO_OUT_OF_DISTANCE:
+
+                playerDiff = (player.transform.position - transform.position);
+                if (playerDiff.magnitude < ThrowDist*.9f)
+                {
+                    currentState = State.AGGRO_IN_DISTANCE;
+                    gameObject.StopTopDownController();
+                    startPos = transform.position;
+                    RandomWaitForThrow();
+                    break;
+                }
+                if (playerDiff.magnitude > AggroDist)
+                {
+                    gameObject.StopTopDownController();
+                    currentState = State.IDLE;
+                    break;
+                }
+                Vector3 move = playerDiff.normalized;
+                controller.xMove = move.x;
+                controller.yMove = move.y;
+                break;
+            case State.AGGRO_IN_DISTANCE:
+                timeUntilThrow -= Time.deltaTime;
+
+                playerDiff = (player.transform.position - transform.position);
+                if (playerDiff.magnitude > ThrowDist)
+                {
+                    currentState = State.AGGRO_OUT_OF_DISTANCE;
+                    break;
+                }
+                if (timeUntilThrow > 0)
+                    JitterLogic();
+                else
+                    ThrowLogic();
+                break;
+            case State.SHOOTING:
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Throw"))    //Are we throwing?
+                    return;
+
+                currentState = State.AGGRO_IN_DISTANCE;
+                break;
+        }
+
     }
     private const float MAX_TILE_DIST_FROM_START_SQR = 2 * 2;
     public float jitterRandom = .4f;
@@ -63,6 +124,7 @@ public class ThrowingEnemy : MonoBehaviour
     {
         animator.SetTrigger("Throw");
         RandomWaitForThrow();
+        currentState = State.SHOOTING;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

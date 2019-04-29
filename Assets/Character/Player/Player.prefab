@@ -434,6 +434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasLeftWarp: 1
   targetWarp: 
+  WhipStrafeSpeed: 2
   diveDistance: 4
   diveTime: 0.4
   rollDistance: 4
@@ -442,6 +443,7 @@ MonoBehaviour:
   horizontalHitBoxRight: {fileID: 1241007108}
   hitBoxUp: {fileID: 89565758}
   hitBoxDown: {fileID: 870572688}
+  damageableComponent: {fileID: 0}
 --- !u!58 &537303968286632713
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -471,6 +473,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 6
-  invulnerableTime: 5
-  stunTime: 2
+  invulnerableTime: 4
+  stunTime: 1
   invulnerableFrameSpeed: 0.2
