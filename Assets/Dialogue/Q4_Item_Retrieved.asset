@@ -18,3 +18,4 @@ MonoBehaviour:
     DialogueLines:
     - ITEM retrieved
     ShouldIncreaseQuest: 1
+    MemoryToSpawn: 

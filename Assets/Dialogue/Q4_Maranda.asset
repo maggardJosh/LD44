@@ -18,13 +18,16 @@ MonoBehaviour:
     DialogueLines:
     - My Item is in the east side of town
     ShouldIncreaseQuest: 0
+    MemoryToSpawn: 
   - MinQuestLevel: 3
     DialogueLines:
     - MY ITEM!
     - THANK YOU!!
     - '.... You should go retrieve the whip from east of town'
     ShouldIncreaseQuest: 1
+    MemoryToSpawn: 
   - MinQuestLevel: 4
     DialogueLines:
     - Thanks again for helping me with my ITEM
     ShouldIncreaseQuest: 0
+    MemoryToSpawn: 
