@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
+        //TODO: handle player death
         SceneManager.sceneLoaded -= LevelLoaded;
     }
 
@@ -62,6 +63,7 @@ public class PlayerController : MonoBehaviour
 
     private void SpawnPlayerAtWarpPoint()
     {
+        hasLeftWarp = false;
         List<WarpPoint> points = new List<WarpPoint>(FindObjectsOfType<WarpPoint>());
         bool warped = false;
         foreach (WarpPoint p in points)

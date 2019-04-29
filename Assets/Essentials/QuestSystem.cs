@@ -7,7 +7,9 @@ public class QuestSystem : MonoBehaviour
     public enum QuestState
     {
         A_JUST_STARTED = 0,
-        B_FIRST_QUEST_DONE = 1
+        B_WHIP_GOT = 1,
+        C_DIVE_GOT = 2,
+        D_UNKNOWN =3
     }
     private static QuestSystem _instance;
     public static QuestSystem Instance
@@ -42,7 +44,9 @@ public class QuestSystem : MonoBehaviour
     private static Dictionary<QuestState, string> QuestHints = new Dictionary<QuestState, string>
     {
         {QuestState.A_JUST_STARTED, "You should totally go talk to one of the dues.\nOne that isn't Fargoth or that Miner guy." },
-        {QuestState.B_FIRST_QUEST_DONE, "NICE\nNow you gotta wait for us to add more stuff" }
+        {QuestState.B_WHIP_GOT, "You should go find your whip bro" },
+        {QuestState.C_DIVE_GOT, "You should go find your dive bruv" },
+        {QuestState.D_UNKNOWN, "All done for now" }
     };
 
 }

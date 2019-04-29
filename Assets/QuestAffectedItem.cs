@@ -2,12 +2,22 @@
 
 public class QuestAffectedItem : MonoBehaviour
 {
+    [Header("General Config")]
     [SerializeField]
-    private bool activeSettingWhenQuestComplete = false;
+    private QuestSystem.QuestState questState = QuestSystem.QuestState.B_WHIP_GOT;
     [SerializeField]
     private bool shouldHappenImmediately = false;
-    [SerializeField]
-    private QuestSystem.QuestState questState = QuestSystem.QuestState.B_FIRST_QUEST_DONE;
+    
+    [Header("Conditions")]
+    public bool shouldHideBeforeComplete = false;
+    public bool shouldHideAsCurrent = false;
+    public bool shouldHideAfterComplete = false;
+    
+    public bool shouldShowBeforeComplete = false;
+    public bool shouldShowAsCurrent = false;
+    public bool shouldShowAfterComplete = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +28,28 @@ public class QuestAffectedItem : MonoBehaviour
     {
         if (!shouldHappenImmediately && !onStart)
             return;
-        if (QuestSystem.Instance.CurrentState > questState)
-            gameObject.SetActive(activeSettingWhenQuestComplete);
-        else
-            gameObject.SetActive(!activeSettingWhenQuestComplete);
+
+        bool result = GetShouldShow();
+
+        gameObject.SetActive(result);
+    }
+
+    private bool GetShouldShow()
+    {
+        if (shouldHideBeforeComplete && QuestSystem.Instance.CurrentState < questState)
+            return false;
+        if (shouldHideAsCurrent && QuestSystem.Instance.CurrentState == questState)
+            return false;
+        if (shouldHideAfterComplete && QuestSystem.Instance.CurrentState > questState)
+            return false;
+
+        if (shouldShowBeforeComplete && QuestSystem.Instance.CurrentState < questState)
+            return true;
+        if (shouldShowAsCurrent && QuestSystem.Instance.CurrentState == questState)
+            return true;
+        if (shouldShowAfterComplete && QuestSystem.Instance.CurrentState > questState)
+            return true;
+
+        return false;
     }
 }
