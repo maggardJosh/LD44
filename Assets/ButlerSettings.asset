@@ -15,9 +15,9 @@ MonoBehaviour:
   GameName: ld44
   UserName: maggardJosh
   Scenes:
-  - Assets\Scenes\Outside.unity
-  - Assets\Scenes\Inside.unity
   - Assets\Scenes\EnemyScene.unity
+  - Assets\Scenes\Inside.unity
+  - Assets\Scenes\Outside.unity
   BuildAndroid: 0
   BuildWeb: 1
   BuildPC: 1
