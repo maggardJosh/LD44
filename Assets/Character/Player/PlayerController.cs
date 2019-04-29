@@ -216,6 +216,7 @@ public class PlayerController : MonoBehaviour
 
     public void WhipHit(string hitboxToEnable)
     {
+        SoundManager.Instance.PlaySound(SoundManager.Sound.SFX_LaserWhip);
         controller.speed = normalSpeed;
         switch (hitboxToEnable)
         {
@@ -256,5 +257,16 @@ public class PlayerController : MonoBehaviour
         }
         animController.SetFloat("whipX", xMove);
         animController.SetFloat("whipY", yMove);
+    }
+
+    private List<SoundManager.Sound> StepCollection = new List<SoundManager.Sound> { SoundManager.Sound.SFX_Player_Walk1, SoundManager.Sound.SFX_Player_Walk2, SoundManager.Sound.SFX_Player_Walk3 };
+    private void PlayStepSound()
+    {
+        SoundManager.Instance.PlaySound(StepCollection[Random.Range(0, 3)]);
+    }
+
+    private void PlayDiveSound()
+    {
+        SoundManager.Instance.PlaySound(SoundManager.Sound.SFX_Player_DodgeRoll);
     }
 }
