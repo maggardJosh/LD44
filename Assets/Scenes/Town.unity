@@ -316,6 +316,12 @@ PrefabInstance:
       propertyPath: isDefaultWarp
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8148226193897643613, guid: 1e97c4ff2eef50c41b3023cc78a2c5ee,
+        type: 3}
+      propertyPath: spawnDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: c88ecb2b63595114893894da7558f133,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e97c4ff2eef50c41b3023cc78a2c5ee, type: 3}
 --- !u!4 &94865400 stripped
@@ -435,11 +441,6 @@ PrefabInstance:
         type: 3}
       propertyPath: warpPointToSpawnAt
       value: Town
-      objectReference: {fileID: 0}
-    - target: {fileID: 8148226193897643613, guid: 1e97c4ff2eef50c41b3023cc78a2c5ee,
-        type: 3}
-      propertyPath: isDefaultWarp
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e97c4ff2eef50c41b3023cc78a2c5ee, type: 3}

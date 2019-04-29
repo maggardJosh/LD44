@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -93,21 +91,37 @@ public class PlayerController : MonoBehaviour
     {
         hasLeftWarp = false;
         List<WarpPoint> points = new List<WarpPoint>(FindObjectsOfType<WarpPoint>());
-        bool warped = false;
-        WarpPoint defaultPoint = new WarpPoint();
+        WarpPoint result = GetPoint(points);
+        if (result != null)
+        {
+            transform.position = result.transform.position;
+            if (result.spawnDialogue != null)
+                StartCoroutine(ShowDialogue(result.spawnDialogue));
+        }
+    }
+
+    private IEnumerator ShowDialogue(Dialogue spawnDialogue)
+    {
+        while (FadeTransitionScreen.Instance.IsTransitioning)
+            yield return null;
+        DialogueManager.Instance.StartDialogue(spawnDialogue);
+    }
+
+    private WarpPoint GetPoint(List<WarpPoint> points)
+    {
+        WarpPoint defaultPoint = null;
         foreach (WarpPoint p in points)
         {
             if (p.gameObject.name == targetWarp)
             {
-                transform.position = p.transform.position;
-                warped = true;
-                break;
+                return p;
             }
             if (p.isDefaultWarp)
                 defaultPoint = p;
         }
-        if (!warped && points.Any())
-            transform.position = defaultPoint.transform.position;
+        if (defaultPoint != null)
+            return defaultPoint;
+        return null;
     }
 
     private void CancelDive()
