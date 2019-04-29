@@ -10,8 +10,7 @@ public class MemoryButton : MonoBehaviour
     public void LoadMemory()
     {
         var player = FindObjectOfType<PlayerController>();
-        player.lastPos = player.transform.position;
-        player.sceneToWarpBackTo = SceneManager.GetActiveScene().name;
+        player.SaveScenePositionForMemory();
         Debug.Log(SceneManager.GetActiveScene().name);
 
         PauseMenuManager.Instance.PressPause();

@@ -62,6 +62,8 @@ public class TopDownController : MonoBehaviour
 
     void LateUpdate()
     {
+        if (animator.GetBool("IsDead"))
+            return;
         animator.SetFloat("StunLeft", StunTimeLeft);
         if (StunTimeLeft > 0)
         {

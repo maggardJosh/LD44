@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class Damageable : MonoBehaviour
@@ -58,19 +59,27 @@ public class Damageable : MonoBehaviour
             return;
         if (controller.StunTimeLeft <= 0 && !invulnerable)
         {
-            TakeDamage(damage);
             PushBack(position, pushBackValue);
+            TakeDamage(damage);
         }
+    }
+
+    public void ResetHealth(int amount)
+    {
+        health = amount;
+        GetComponent<Animator>().SetBool("IsDead", false);
     }
 
     private void TakeDamage(int damage)
     {
         health -= damage;
-        //TODO: Decide if this is how we wanna handle death sounds
+        //TODO: Decide if this is how we wanna handle death sounds (maybe move it into the death anim)
         PlayDamageSfx(gameObject.tag, health);
         if (health <= 0)
         {
-            Destroy(gameObject);
+            GetComponent<Animator>().SetBool("IsDead", true);
+            controller.StunTimeLeft = 0;
+            return;
         }
         invulnerable = true;
         StartCoroutine(Flash(invulnerableTime));

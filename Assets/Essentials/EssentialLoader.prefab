@@ -82,6 +82,8 @@ MonoBehaviour:
     type: 3}
   ThrownItemPrefab: {fileID: 4480813943179879866, guid: 9d0c2c695a16d824fb10953964d624bf,
     type: 3}
+  ExplosionPrefab: {fileID: 431840176171706675, guid: 10be62b6259ba2c418b44366f0ae6183,
+    type: 3}
 --- !u!114 &309460792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,3 +112,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193e7fc3cc83a5340bcbc19c6bfaf22a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SceneSong: 0
+  SceneAmbience: 0
