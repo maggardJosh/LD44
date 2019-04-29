@@ -299,13 +299,7 @@ public class PlayerController : MonoBehaviour
         animController.SetFloat("whipX", xMove);
         animController.SetFloat("whipY", yMove);
     }
-
-    private List<SoundManager.Sound> StepCollection = new List<SoundManager.Sound> { SoundManager.Sound.SFX_Player_Walk1, SoundManager.Sound.SFX_Player_Walk2, SoundManager.Sound.SFX_Player_Walk3 };
-    private void PlayStepSound()
-    {
-        SoundManager.Instance.PlaySound(StepCollection[UnityEngine.Random.Range(0, 3)]);
-    }
-
+    
     private void PlayDiveSound()
     {
         SoundManager.Instance.PlaySound(SoundManager.Sound.SFX_Player_DodgeRoll);
