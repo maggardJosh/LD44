@@ -18,6 +18,9 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField]
     private Sprite itemOneSprite;
 
+    [SerializeField]
+    private Sprite locketSprite;
+
     private enum State
     {
         MenuOpen,
@@ -66,21 +69,40 @@ public class PauseMenuManager : MonoBehaviour
         HideAllMemories();
         switch (qLevel)
         {
-            case QuestSystem.QuestState.A_JUST_STARTED:
+            case QuestSystem.QuestState.Q1_ACCESS_MEMORY:
+            case QuestSystem.QuestState.Q2_GO_TO_GRAVEYARD:
+            case QuestSystem.QuestState.Q3_RETRIEVE_NPC_ITEM:
                 ShowMemoriesUpTo(1);
                 break;
-            case QuestSystem.QuestState.B_WHIP_GOT:
+            case QuestSystem.QuestState.Q4_RETURN_NPC_ITEM:
                 ShowMemoriesUpTo(1);
                 ShowImage(0, itemOneSprite);
                 break;
-            case QuestSystem.QuestState.C_DIVE_GOT:
+            case QuestSystem.QuestState.Q5_RETRIEVE_WHIP:
+                ShowMemoriesUpTo(1);
+                break;
+            case QuestSystem.QuestState.Q6_WANDER_TOWN:
+            case QuestSystem.QuestState.Q7_TALK_TO_JIM:
+            case QuestSystem.QuestState.Q8_RESCUE_RALPH:
                 ShowMemoriesUpTo(2);
                 ShowImage(0, whipSprite);
-
+                break;
+            case QuestSystem.QuestState.Q9_RETURN_TO_JIM:
+                ShowMemoriesUpTo(3);
+                ShowImage(0, whipSprite);
+                break;
+            case QuestSystem.QuestState.Q10_GET_LOCKET:
+                ShowMemoriesUpTo(4);
+                ShowImage(0, whipSprite);
+                break;
+            case QuestSystem.QuestState.Q11_FIGHT_BOSS:
+                ShowMemoriesUpTo(5);
+                ShowImage(0, whipSprite);
+                ShowImage(1, locketSprite);
                 break;
             default:
                 ShowMemoriesUpTo(8);
-                ShowImage(0, itemOneSprite);
+                ShowImage(0, whipSprite);
                 ShowImage(1, whipSprite);
                 break;
         }

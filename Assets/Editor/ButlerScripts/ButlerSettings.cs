@@ -21,7 +21,7 @@ namespace Editor.ButlerScripts
                 return butlerAsset;
             }
         }
-        public Scene[] sceneList;
+
         public string GameName = "square-slide";
         public string UserName = "maggardJosh";
         public string[] Scenes;

@@ -7,6 +7,7 @@ public class WarpPoint : MonoBehaviour
     public string sceneToWarpTo;
     public string warpPointToSpawnAt;
     public bool isDefaultWarp;
+    public Dialogue spawnDialogue;
 
     public void LoadScene()
     {

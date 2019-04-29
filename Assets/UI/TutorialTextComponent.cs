@@ -18,6 +18,11 @@ public class TutorialTextComponent : MonoBehaviour
         
     }
 
+    private void OnDestroy()
+    {
+        TutorialTextManager.Instance.HideText();
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
