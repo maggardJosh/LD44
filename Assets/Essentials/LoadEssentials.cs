@@ -4,6 +4,11 @@ public class LoadEssentials : MonoBehaviour
 {
     void Awake()
     {
+        if (TutorialTextManager.Instance == null)
+        {
+            GameObject tutorialText = Instantiate(GlobalPrefabs.Instance.TutorialTextManager);
+            DontDestroyOnLoad(tutorialText);
+        }
         if (CutsceneEffectManager.Instance == null)
         {
             GameObject cutsceneBorder = Instantiate(GlobalPrefabs.Instance.CutsceneBorder);
