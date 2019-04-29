@@ -24,6 +24,7 @@ public class GlobalPrefabs : MonoBehaviour
     public GameObject TransitionCanvas;
     public GameObject PauseCanvas;
     public GameObject SoundManager;
+    public GameObject CutsceneBorder;
 
     [Header("SharedPrefabs")]
     public GameObject ShadowPrefab;

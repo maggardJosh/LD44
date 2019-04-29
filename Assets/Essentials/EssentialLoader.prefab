@@ -76,6 +76,8 @@ MonoBehaviour:
     type: 3}
   SoundManager: {fileID: 6783768504007678063, guid: 89b4ebd9a7615434b894963c56ef71ac,
     type: 3}
+  CutsceneBorder: {fileID: 49540895178174757, guid: 995f59b965b308741b043f81f22a562c,
+    type: 3}
   ShadowPrefab: {fileID: 3414744869417834552, guid: 9b50a23e91614744e8c2a69eda269aa8,
     type: 3}
   InteractIndicatorPrefab: {fileID: 1246078820509063622, guid: 0136457582bc952438309a180c614d0e,

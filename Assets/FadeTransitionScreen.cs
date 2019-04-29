@@ -18,7 +18,7 @@ public class FadeTransitionScreen : MonoBehaviour
 
     public bool IsTransitioning { get { return currentState != FadeState.FADED_IN; } }
     public float fadeSpeed = .3f;
-    private enum FadeState
+    public enum FadeState
     {
         CINEMATIC,
         FADED_OUT,
@@ -31,7 +31,7 @@ public class FadeTransitionScreen : MonoBehaviour
         image = GetComponent<Image>();
         image.color = Color.black;
     }
-    private FadeState currentState = FadeState.FADING_IN;
+    public FadeState currentState = FadeState.FADING_IN;
     private Action LoadAction;
 
     void Update()
