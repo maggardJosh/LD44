@@ -6,6 +6,7 @@ public class WarpPoint : MonoBehaviour
 {
     public string sceneToWarpTo;
     public string warpPointToSpawnAt;
+    public bool isDefaultWarp;
 
     public void LoadScene()
     {
