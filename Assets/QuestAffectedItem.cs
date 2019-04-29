@@ -4,7 +4,7 @@ public class QuestAffectedItem : MonoBehaviour
 {
     [Header("General Config")]
     [SerializeField]
-    private QuestSystem.QuestState questState = QuestSystem.QuestState.B_WHIP_GOT;
+    private QuestSystem.QuestState questState = QuestSystem.QuestState.Q2_GO_TO_GRAVEYARD;
     [SerializeField]
     private bool shouldHappenImmediately = false;
     

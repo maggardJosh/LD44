@@ -7,7 +7,7 @@ public class Dialogue : ScriptableObject
     [Serializable]
     public class DialogueSet
     {
-        public QuestSystem.QuestState MinQuestLevel = QuestSystem.QuestState.A_JUST_STARTED;
+        public QuestSystem.QuestState MinQuestLevel = QuestSystem.QuestState.Q1_ACCESS_MEMORY;
         [TextArea(2,8)]
         public List<string> DialogueLines = new List<string>();
         public bool ShouldIncreaseQuest = false;

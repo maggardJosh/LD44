@@ -37,8 +37,8 @@ public class PlayerController : MonoBehaviour
     public BoxCollider2D hitBoxUp;
     public BoxCollider2D hitBoxDown;
 
-    public bool CanWhip { get { return QuestSystem.Instance.CurrentState > QuestSystem.QuestState.B_WHIP_GOT; } }
-    public bool CanDive { get { return QuestSystem.Instance.CurrentState > QuestSystem.QuestState.C_DIVE_GOT; } }
+    public bool CanWhip { get { return QuestSystem.Instance.CurrentState > QuestSystem.QuestState.Q5_RETRIEVE_WHIP; } }
+    public bool CanDive { get { return QuestSystem.Instance.CurrentState > QuestSystem.QuestState.Q8_RESCUE_RALPH; } }
 
     void Start()
     {
