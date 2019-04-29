@@ -9,7 +9,7 @@ public class QuestSystem : MonoBehaviour
         A_JUST_STARTED = 0,
         B_WHIP_GOT = 1,
         C_DIVE_GOT = 2,
-        D_UNKNOWN =3
+        D_UNKNOWN = 3
     }
     private static QuestSystem _instance;
     public static QuestSystem Instance
@@ -22,12 +22,17 @@ public class QuestSystem : MonoBehaviour
         }
     }
 
-    public QuestState CurrentState { get; private set; } = QuestState.A_JUST_STARTED;
+    [SerializeField]
+    private QuestState _currentState = QuestState.A_JUST_STARTED;
+    public QuestState CurrentState
+    {
+        get { return _currentState; }
+    }
     public void CompleteQuest()
     {
-        CurrentState++;
+        _currentState++;
         if (!Enum.IsDefined(typeof(QuestState), CurrentState))
-            CurrentState--;
+            _currentState--;
         foreach (QuestAffectedItem item in Resources.FindObjectsOfTypeAll<QuestAffectedItem>())
             item.UpdateActiveBasedOnCurrentQuest();
     }
