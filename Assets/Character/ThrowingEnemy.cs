@@ -23,6 +23,8 @@ public class ThrowingEnemy : MonoBehaviour
     private TopDownController controller;
     public void Throw()
     {
+        //TODO: Decide if this is where the throwing sound should be played
+        SoundManager.Instance.PlaySound(SoundManager.Sound.SFX_Enemy_EnergyMortar);
         var item = Instantiate(GlobalPrefabs.Instance.ThrownItemPrefab);
         item.transform.position = transform.position;
 
