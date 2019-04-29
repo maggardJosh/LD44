@@ -13,6 +13,7 @@ public class ThrowingEnemy : MonoBehaviour
     public float AggroDist = 7;
     public float ReEnterDist = 4;
     public float ThrowRandom = .3f;
+    public Transform ThrowLaunchPoint;
 
     private enum State
     {
@@ -29,7 +30,7 @@ public class ThrowingEnemy : MonoBehaviour
         //TODO: Decide if this is where the throwing sound should be played
         SoundManager.Instance.PlaySound(SoundManager.Sound.SFX_Enemy_EnergyMortar);
         var item = Instantiate(GlobalPrefabs.Instance.ThrownItemPrefab);
-        item.transform.position = transform.position;
+        item.transform.position = ThrowLaunchPoint.position;
         var player = FindObjectOfType<PlayerController>();
         Vector3 randomDisp = Random.insideUnitCircle * ThrowRandom;
         Vector3 target = player.transform.position + new Vector3(player.GetComponent<Rigidbody2D>().velocity.x, player.GetComponent<Rigidbody2D>().velocity.y) * ThrowSpeed + randomDisp;
