@@ -63,7 +63,8 @@ public class SoundManager : MonoBehaviour
     public enum SoundType
     {
         Music,
-        SFX
+        SFX,
+        Ambient
     }
 
     public enum MusicSate
@@ -248,6 +249,8 @@ public class SoundManager : MonoBehaviour
                 return "Music";
             case SoundType.SFX:
                 return "SFX";
+            case SoundType.Ambient:
+                return "Ambient";
             default:
                 return "Music";
         }
