@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
         animController = GetComponent<Animator>();
         SceneManager.sceneLoaded += LevelLoaded;
         DisableHitboxes();
+        SpawnPlayerAtWarpPoint();
     }
 
     private void DisableHitboxes()
@@ -48,21 +50,31 @@ public class PlayerController : MonoBehaviour
     {
         if (diveCoroutine != null)
             CancelDive();
-        List<WarpPoint> points = new List<WarpPoint>(FindObjectsOfType<WarpPoint>());
-        foreach (WarpPoint p in points)
-        {
-            if (p.gameObject.name == targetWarp)
-            {
-                transform.position = p.transform.position;
-                break;
-            }
-        }
+        SpawnPlayerAtWarpPoint();
+
         FindObjectOfType<Cinemachine.CinemachineVirtualCamera>().Follow = transform;
         float lastXMove = animController.GetFloat("lastXMove");
         float lastYMove = animController.GetFloat("lastYMove");
         GetComponent<Rigidbody2D>().velocity = new Vector2(lastXMove, lastYMove) * 10;
         animController.SetFloat("xMove", lastXMove);
         animController.SetFloat("yMove", lastYMove);
+    }
+
+    private void SpawnPlayerAtWarpPoint()
+    {
+        List<WarpPoint> points = new List<WarpPoint>(FindObjectsOfType<WarpPoint>());
+        bool warped = false;
+        foreach (WarpPoint p in points)
+        {
+            if (p.gameObject.name == targetWarp)
+            {
+                transform.position = p.transform.position;
+                warped = true;
+                break;
+            }
+        }
+        if (!warped && points.Any())
+            transform.position = points.First().transform.position;
     }
 
     private void CancelDive()
@@ -210,7 +222,16 @@ public class PlayerController : MonoBehaviour
                 return;
         controller.speed = WhipStrafeSpeed;
         animController.SetTrigger("Whip");
-        animController.SetFloat("whipX", animController.GetFloat("lastXMove"));
-        animController.SetFloat("whipY", animController.GetFloat("lastYMove"));
+        float xMove = Input.GetAxisRaw("Horizontal");
+        float yMove = Input.GetAxisRaw("Vertical");
+        if (xMove == 0 && yMove == 0)
+        {
+            if (xMove != 0)
+                GetComponent<SpriteRenderer>().flipX = xMove < 0;
+            xMove = animController.GetFloat("lastXMove");
+            yMove = animController.GetFloat("lastYMove");
+        }
+        animController.SetFloat("whipX", xMove);
+        animController.SetFloat("whipY", yMove);
     }
 }

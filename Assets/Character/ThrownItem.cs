@@ -9,6 +9,7 @@ public class ThrownItem : MonoBehaviour
     public float throwTime = 2;
     public float maxHeight = 2;
     public GameObject parent;
+    public GameObject ExplosionPrefab;
 
     public GameObject actualItem;
 
@@ -32,6 +33,8 @@ public class ThrownItem : MonoBehaviour
 
     private void OnDestroy()
     {
+        Instantiate(ExplosionPrefab).transform.position = transform.position;
+
         foreach (var d in FindObjectsOfType<Damageable>())
             if (d.gameObject != parent && (d.transform.position - transform.position).sqrMagnitude <= DamageDistanceSquared)
             {
