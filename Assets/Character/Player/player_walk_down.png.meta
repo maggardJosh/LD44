@@ -134,8 +134,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 20
-        height: 27
+        width: 22
+        height: 29
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,7 +143,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea7407e3e802a01439155e35b0b17783
+      spriteID: a2abfbd5dbb836741a33fdfbbc0267c5
       internalID: -8858148489411009008
       vertices: []
       indices: 
@@ -153,10 +153,10 @@ TextureImporter:
       name: player_walk_down_1
       rect:
         serializedVersion: 2
-        x: 20
+        x: 23
         y: 0
-        width: 20
-        height: 27
+        width: 22
+        height: 29
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,7 +164,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e37e0441222d144aa7fd2072981b18e
+      spriteID: eb6c82a6283cf674397c76ac33f3d9b2
       internalID: 1397241024309930288
       vertices: []
       indices: 
@@ -174,10 +174,10 @@ TextureImporter:
       name: player_walk_down_2
       rect:
         serializedVersion: 2
-        x: 40
+        x: 44
         y: 0
-        width: 20
-        height: 27
+        width: 22
+        height: 29
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,7 +185,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3b681b65b87af64aa949a434e459a61
+      spriteID: b3fdb950f18197e40a77143c71617364
       internalID: 5562484070443655820
       vertices: []
       indices: 
@@ -195,10 +195,10 @@ TextureImporter:
       name: player_walk_down_3
       rect:
         serializedVersion: 2
-        x: 60
+        x: 66
         y: 0
-        width: 20
-        height: 27
+        width: 22
+        height: 29
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,7 +206,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f741f01668d35d043964c9e50186e311
+      spriteID: ea48c504827577148b9ad4b74b934a40
       internalID: -4060602870248184417
       vertices: []
       indices: 
