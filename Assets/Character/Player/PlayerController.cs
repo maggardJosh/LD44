@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour
         hasLeftWarp = false;
         List<WarpPoint> points = new List<WarpPoint>(FindObjectsOfType<WarpPoint>());
         bool warped = false;
+        WarpPoint defaultPoint = new WarpPoint();
         foreach (WarpPoint p in points)
         {
             if (p.gameObject.name == targetWarp)
@@ -102,9 +103,11 @@ public class PlayerController : MonoBehaviour
                 warped = true;
                 break;
             }
+            if (p.isDefaultWarp)
+                defaultPoint = p;
         }
         if (!warped && points.Any())
-            transform.position = points.First().transform.position;
+            transform.position = defaultPoint.transform.position;
     }
 
     private void CancelDive()
