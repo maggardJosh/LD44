@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,6 +11,14 @@ public class PlayerController : MonoBehaviour
 {
     private TopDownController controller;
     public bool hasLeftWarp = false;
+
+    internal void SaveScenePositionForMemory()
+    {
+        lastHasLeftWarp = hasLeftWarp;
+        lastPos = transform.position;
+        sceneToWarpBackTo = SceneManager.GetActiveScene().name;
+    }
+
     public string targetWarp = "";
     private Animator animController;
     private float normalSpeed;
@@ -21,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     public string sceneToWarpBackTo = "";
     public Vector3 lastPos = Vector3.zero;
+    public bool lastHasLeftWarp = false;
 
     public BoxCollider2D horizontalHitBoxLeft;
     public BoxCollider2D horizontalHitBoxRight;
@@ -38,6 +48,7 @@ public class PlayerController : MonoBehaviour
         SceneManager.sceneLoaded += LevelLoaded;
         DisableHitboxes();
         SpawnPlayerAtWarpPoint();
+        damageableComponent = GetComponent<Damageable>();
     }
 
     private void DisableHitboxes()
@@ -50,7 +61,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        //TODO: handle player death
         SceneManager.sceneLoaded -= LevelLoaded;
     }
 
@@ -73,7 +83,7 @@ public class PlayerController : MonoBehaviour
 
     private void SpawnPlayerBackToLastScene()
     {
-        hasLeftWarp = false;
+        hasLeftWarp = lastHasLeftWarp;
         transform.position = lastPos;
         sceneToWarpBackTo = "";
     }
@@ -114,6 +124,16 @@ public class PlayerController : MonoBehaviour
         damageableComponent.enabled = true;
     }
     Coroutine diveCoroutine;
+
+    private void Dead()
+    {
+        FadeTransitionScreen.Instance.Transition(() =>
+        {
+            damageableComponent.ResetHealth(6);
+            SceneManager.LoadScene("Outside");
+        });
+    }
+
     void Update()
     {
         if (FadeTransitionScreen.Instance.IsTransitioning)
@@ -143,6 +163,10 @@ public class PlayerController : MonoBehaviour
             return;
         if (animController.GetCurrentAnimatorStateInfo(0).IsName("Stun"))
             return;
+        if (animController.GetCurrentAnimatorStateInfo(0).IsName("Dead"))
+        {
+            return;
+        }
 
         controller.xMove = Input.GetAxisRaw("Horizontal");
         controller.yMove = Input.GetAxisRaw("Vertical");
@@ -172,7 +196,6 @@ public class PlayerController : MonoBehaviour
     {
         gameObject.layer = LayerMask.NameToLayer("Rolling");
         controller.enabled = false;
-        damageableComponent = GetComponent<Damageable>();
         damageableComponent.enabled = false;
         animController.SetTrigger("Dive");
         yield return HandleRollOrDive(diveDistance, diveTime);
@@ -262,7 +285,7 @@ public class PlayerController : MonoBehaviour
     private List<SoundManager.Sound> StepCollection = new List<SoundManager.Sound> { SoundManager.Sound.SFX_Player_Walk1, SoundManager.Sound.SFX_Player_Walk2, SoundManager.Sound.SFX_Player_Walk3 };
     private void PlayStepSound()
     {
-        SoundManager.Instance.PlaySound(StepCollection[Random.Range(0, 3)]);
+        SoundManager.Instance.PlaySound(StepCollection[UnityEngine.Random.Range(0, 3)]);
     }
 
     private void PlayDiveSound()

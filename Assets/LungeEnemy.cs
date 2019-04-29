@@ -47,7 +47,11 @@ public class LungeEnemy : MonoBehaviour
     public float maxLungeTime = 9;
 
     private float timeUntilThrow;
-
+    private void Dead()
+    {
+        Instantiate(GlobalPrefabs.Instance.ExplosionPrefab, transform.position, transform.rotation);
+        Destroy(gameObject);
+    }
     void Update()
     {
         if (controller.StunTimeLeft > 0)
@@ -140,8 +144,6 @@ public class LungeEnemy : MonoBehaviour
         float count = 0;
         while(count < LungeTime)
         {
-            Debug.Log(count);
-            Debug.Log(lungeVelocity);
             count += Time.deltaTime;
             GetComponent<Rigidbody2D>().velocity = lungeVelocity * velLungeCurve.Evaluate(count/LungeTime);
             lungeVelocity *= .9f;

@@ -50,6 +50,12 @@ public class ThrowingEnemy : MonoBehaviour
 
     private float timeUntilThrow;
 
+    private void Dead()
+    {
+        Instantiate(GlobalPrefabs.Instance.ExplosionPrefab, transform.position, transform.rotation);
+        Destroy(gameObject);
+    }
+
     void Update()
     {
 
@@ -72,7 +78,7 @@ public class ThrowingEnemy : MonoBehaviour
             case State.AGGRO_OUT_OF_DISTANCE:
 
                 playerDiff = (player.transform.position - transform.position);
-                if (playerDiff.magnitude < ThrowDist*.9f)
+                if (playerDiff.magnitude < ThrowDist * .9f)
                 {
                     currentState = State.AGGRO_IN_DISTANCE;
                     gameObject.StopTopDownController();

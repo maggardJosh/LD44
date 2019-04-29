@@ -29,6 +29,7 @@ public class GlobalPrefabs : MonoBehaviour
     public GameObject ShadowPrefab;
     public GameObject InteractIndicatorPrefab;
     public GameObject ThrownItemPrefab;
+    public GameObject ExplosionPrefab;
 
 
     // Start is called before the first frame update
