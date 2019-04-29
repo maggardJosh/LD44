@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -74,8 +75,20 @@ public class SoundManager : MonoBehaviour
         Playing,
         Stopped
     }
+
+    public enum BattleState
+    {
+        PLAYING_SCENE,
+        FADING_OUT_SCENE,
+        FADING_IN_BATTLE,
+        PLAYING_BATTLE,
+        FADING_OUT_BATTLE,
+        FADING_IN_SCENE
+    }
     #endregion
-    
+
+    public BattleState currentState;
+
     public List<Track> TrackList;
 
     private static bool keepFadingIn;
@@ -86,28 +99,56 @@ public class SoundManager : MonoBehaviour
     private  float onHoldClipMarker;
     private  Sound onHoldSong;
 
-    private MusicSate currentState = MusicSate.Playing;
+    private MusicSate depricatedMachineState = MusicSate.Playing;
 
     private const float FADE_RATE = .05f;
+    private const float BATTLE_FADE_RATE = 1;
 
-    public void AddTracks(List<Track> tracks)
+    void Update()
     {
-        TrackList = new List<Track>();
-        foreach (Track inputTrack in tracks)
+        //Handle ambiance fading here
+        HandleBattleState();
+    }
+
+    private void HandleBattleState()
+    {
+        Debug.Log($"State: {currentState.ToString()}\tVolume: {GetSceneTrack().AudioSource.volume}");
+        switch (currentState)
         {
-            TrackList.Add(inputTrack);
+            case BattleState.PLAYING_SCENE:
+                PlayingScene();
+                break;
+
+            case BattleState.FADING_OUT_SCENE:
+                
+                FadeOut(GetSceneTrack().ClipName);
+
+                break;
+
+            case BattleState.FADING_IN_BATTLE:
+                
+                FadeIn(Sound.Music_Battle);
+
+                break;
+
+            case BattleState.PLAYING_BATTLE:
+                PlayingBattle();
+                break;
+
+            case BattleState.FADING_OUT_BATTLE:
+
+                FadeOut(Sound.Music_Battle);
+
+                break;
+
+            case BattleState.FADING_IN_SCENE:
+
+                FadeIn(GetSceneTrack().ClipName);
+
+                break;
         }
     }
 
-
-
-    public void TrackSettings(Sound soundToPlay, AudioMixer mainMix, float trackVolume)
-    {
-        Track settingTrack = GetTrack(soundToPlay);
-        settingTrack.AudioSource.outputAudioMixerGroup = mainMix.FindMatchingGroups(GetMixerGroup(settingTrack.ClipType))[0];
-        settingTrack.TrackVolume = trackVolume;
-    }
-    
     public bool PlayMusic(Sound soundName, float startingTime = 0)
     {
         Track trackToPlay = GetTrack(soundName);
@@ -119,6 +160,16 @@ public class SoundManager : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void PlayAmbient(Sound soundName)
+    {
+        if (SongIsAlreadyPlaying(soundName))
+            return;
+
+        Track track = GetTrack(soundName);
+        track.AudioSource.clip = track.Clip;
+        track.AudioSource.Play();
     }
 
     public void PlaySound(Sound soundName)
@@ -137,29 +188,14 @@ public class SoundManager : MonoBehaviour
 
     public void CallChangeMusic(Sound soundToStart)
     {
-        if (currentState == MusicSate.FadingIn || currentState == MusicSate.FadingOut)
+        if (depricatedMachineState == MusicSate.FadingIn || depricatedMachineState == MusicSate.FadingOut)
             return;
         if (SongIsAlreadyPlaying(soundToStart))
             return;
         StartCoroutine(ChangeMusic(soundToStart, FADE_RATE));
+        currentState = BattleState.PLAYING_SCENE;
     }
-
-    public void CallChangeMusicHold(Sound interruptingMusic)
-    {
-        if (currentState == MusicSate.FadingIn || currentState == MusicSate.FadingOut)
-            return;
-        if (SongIsAlreadyPlaying(interruptingMusic))
-            return;
-        StartCoroutine(ChangeMusicHold(interruptingMusic));
-    }
-
-    public void CallChangeMusicResume()
-    {
-        if (currentState == MusicSate.FadingIn || currentState == MusicSate.FadingOut)
-            return;
-        StartCoroutine(ChangeMusicResume());
-    }
-
+    
     private AudioClip GetSound(Sound soundName)
     {
         return GetTrack(soundName).Clip;
@@ -169,7 +205,74 @@ public class SoundManager : MonoBehaviour
     {
         return TrackList.Single(s => s.ClipName == soundName);
     }
-    
+
+    private void PlayingBattle()
+    {
+    }
+
+    private void PlayingScene()
+    {
+        onHoldClipMarker = 0;
+    }
+
+    //Will only be used during FADING_IN_BATTLE and FADING_IN_SCENE
+    private void FadeIn(Sound sound)
+    {
+        Track track = GetTrack(sound);
+        float currentVolume = track.AudioSource.volume;
+
+        if (currentVolume == 0)
+        {
+            if (sound == Sound.Music_Battle)
+                onHoldClipMarker = UnityEngine.Random.Range(0, GetSound(sound).length);
+            PlayMusic(sound, onHoldClipMarker);
+        }
+
+        Mathf.Clamp((currentVolume += Time.deltaTime * BATTLE_FADE_RATE), 0f, 1f);
+
+        track.AudioSource.volume = currentVolume;
+
+        if (currentVolume < 1)
+            return;
+
+        switch (currentState)
+        {
+            case BattleState.FADING_IN_BATTLE:
+                currentState = BattleState.PLAYING_BATTLE;
+                break;
+            case BattleState.FADING_IN_SCENE:
+                currentState = BattleState.PLAYING_SCENE;
+                break;
+        }
+        
+    }
+
+    //Will only be used during FADING_OUT_BATTLE and FADING_OUT_SCENE
+    private void FadeOut(Sound sound)
+    {
+        Track track = GetTrack(sound);
+        float currentVolume = track.AudioSource.volume;
+        Mathf.Clamp((currentVolume -= Time.deltaTime * BATTLE_FADE_RATE), 0f, 1f);
+
+        track.AudioSource.volume = currentVolume;
+
+        if (currentVolume > 0)
+            return;
+
+        switch (currentState)
+        {
+            case BattleState.FADING_OUT_BATTLE:
+                currentState = BattleState.FADING_IN_SCENE;
+                break;
+            case BattleState.FADING_OUT_SCENE:
+                currentState = BattleState.FADING_IN_BATTLE;
+                onHoldClipMarker = track.AudioSource.time;
+                break;
+        }
+        
+        track.AudioSource.Stop();
+    }
+
     private  IEnumerator FadeInMusic (float speed, Track track)
     {
         SetState(MusicSate.FadingIn);
@@ -216,31 +319,41 @@ public class SoundManager : MonoBehaviour
         
     }
 
-    private  IEnumerator ChangeMusicHold(Sound interruptingMusic)
+    public void SceneMusicPutOnHold()
     {
-        Track track = GetTrack(interruptingMusic);
-        onHoldClipMarker = 0;
+        //jump out if we're in a state that satisfies this trigger
+        if (currentState == BattleState.FADING_OUT_SCENE || currentState == BattleState.FADING_IN_BATTLE || currentState == BattleState.PLAYING_BATTLE)
+            return;
 
-        onHoldSong = TrackList.Single(s => s.Clip.name == track.AudioSource.clip.name).ClipName;
-
-        onHoldClipMarker = track.AudioSource.time;
-
-        yield return FadeOutMusic(FADE_RATE, track);
-
-        if (PlayMusic(interruptingMusic))
-            yield return FadeInMusic(FADE_RATE, GetTrack(interruptingMusic));
-        
+        switch (currentState)
+        {
+            case BattleState.FADING_OUT_BATTLE:
+                currentState = BattleState.FADING_IN_BATTLE;
+                break;
+            case BattleState.FADING_IN_SCENE:
+            case BattleState.PLAYING_SCENE:
+                currentState = BattleState.FADING_OUT_SCENE;
+                break;
+        }
     }
-
-    private IEnumerator ChangeMusicResume()
+    
+    public void SceneMusicResume()
     {
-        yield return FadeOutMusic(FADE_RATE, GetTrack(onHoldSong));
+        if (currentState == BattleState.FADING_OUT_BATTLE || currentState == BattleState.FADING_IN_SCENE || currentState == BattleState.PLAYING_SCENE)
+            return;
 
-        if (PlayMusic(onHoldSong, onHoldClipMarker))
-            yield return FadeInMusic(FADE_RATE, GetTrack(onHoldSong));
-        
+        switch (currentState)
+        {
+            case BattleState.FADING_OUT_SCENE:
+                currentState = BattleState.FADING_IN_SCENE;
+                break;
+            case BattleState.FADING_IN_BATTLE:
+            case BattleState.PLAYING_BATTLE:
+                currentState = BattleState.FADING_OUT_BATTLE;
+                break;
+        }
     }
-
+    
     private static string GetMixerGroup(SoundType type)
     {
         switch (type)
@@ -256,6 +369,18 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    private Track GetSceneTrack()
+    {
+        SceneMusicSettings settings = (SceneMusicSettings)FindObjectOfType(typeof(SceneMusicSettings));
+        return GetTrack(settings.SceneSong);
+    }
+
+    private Track GetSceneAmbiance()
+    {
+        SceneMusicSettings settings = (SceneMusicSettings)FindObjectOfType(typeof(SceneMusicSettings));
+        return GetTrack(settings.SceneAmbience);
+    }
+
     private bool SongIsAlreadyPlaying(Sound song)
     {
         return (GetTrack(song).AudioSource.clip == GetSound(song));
@@ -263,7 +388,7 @@ public class SoundManager : MonoBehaviour
 
     private void SetState(MusicSate newState)
     {
-        currentState = newState;
+        depricatedMachineState = newState;
     }
-    
+
 }

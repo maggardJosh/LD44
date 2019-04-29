@@ -10,7 +10,7 @@ public class SceneMusicSettings : MonoBehaviour
     void Start()
     {
         SoundManager.Instance.CallChangeMusic(SceneSong);
-        SoundManager.Instance.CallChangeMusic(SceneAmbience);
+        SoundManager.Instance.PlayAmbient(SceneAmbience);
     }
     
 }
