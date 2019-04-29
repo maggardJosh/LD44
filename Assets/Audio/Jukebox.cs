@@ -5,25 +5,21 @@ using UnityEngine.Audio;
 
 public class Jukebox : MonoBehaviour
 {
-    public AudioMixer MainMixer;
+    //public AudioMixer MainMixer;
     public List<Track> Tracks;
 
     private void Awake()
     {
-        SoundManager.AddTracks(Tracks);
-        SoundManager.Instance.TrackSettings(SoundManager.Sound.Music_MemoryTheme, MainMixer, 1, true);
-        SoundManager.Instance.TrackSettings(SoundManager.Sound.Music_TownTheme, MainMixer, 1, true);
+        //SoundManager.Instance.AddTracks(Tracks);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        SoundManager.Instance.PlaySound(SoundManager.Sound.Music_TownTheme);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 }

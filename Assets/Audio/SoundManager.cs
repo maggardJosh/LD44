@@ -18,10 +18,46 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    #region enums
     public enum Sound
     {
-        Music_TownTheme,
-        Music_MemoryTheme
+        Music_Battle,
+        Music_Boss,
+        Music_GraveyardBossLair,
+        Music_Memory,
+        Music_Menu,
+        Music_Town,
+        Music_Transition1,
+        Music_Transition2,
+        SFX_Ambience_Other,
+        SFX_Ambience_Town,
+        SFX_Boss_Damage,
+        SFX_Boss_Death,
+        SFX_Boss_EnergyBlast,
+        SFX_Boss_Roar,
+        SFX_Boss_Swipe,
+        SFX_Boss_Walk1,
+        SFX_Boss_Walk2,
+        SFX_Boss_Walk3,
+        SFX_DialogueBlip1,
+        SFX_DialogueBlip2,
+        SFX_DialogueBlip3,
+        SFX_Enemy_EnergyDamage,
+        SFX_Enemy_EnergyDie,
+        SFX_Enemy_EnergyExplosion,
+        SFX_Enemy_EnergyMortar,
+        SFX_Enemy_EnergyPunch,
+        SFX_Enemy_EnergyWalk1,
+        SFX_Enemy_EnergyWalk2,
+        SFX_LaserWhip,
+        SFX_Menu_Click,
+        SFX_Menu_Select,
+        SFX_Player_Damage,
+        SFX_Player_Die,
+        SFX_Player_DodgeRoll,
+        SFX_Player_Walk1,
+        SFX_Player_Walk2,
+        SFX_Player_Walk3
     }
 
     public enum SoundType
@@ -37,12 +73,9 @@ public class SoundManager : MonoBehaviour
         Playing,
         Stopped
     }
-
-    public AudioSource Music;
-    public AudioSource SFX;
-
-    public static List<Track> TrackList;
-    public static AudioMixer MainMixer;
+    #endregion
+    
+    public List<Track> TrackList;
 
     private static bool keepFadingIn;
     private static bool keepFadingOut;
@@ -56,7 +89,7 @@ public class SoundManager : MonoBehaviour
 
     private const float FADE_RATE = .05f;
 
-    public static void AddTracks(List<Track> tracks)
+    public void AddTracks(List<Track> tracks)
     {
         TrackList = new List<Track>();
         foreach (Track inputTrack in tracks)
@@ -67,20 +100,19 @@ public class SoundManager : MonoBehaviour
 
 
 
-    public void TrackSettings(Sound soundToPlay, AudioMixer mainMix, float trackVolume, bool loop = false)
+    public void TrackSettings(Sound soundToPlay, AudioMixer mainMix, float trackVolume)
     {
         Track settingTrack = GetTrack(soundToPlay);
         settingTrack.AudioSource.outputAudioMixerGroup = mainMix.FindMatchingGroups(GetMixerGroup(settingTrack.ClipType))[0];
         settingTrack.TrackVolume = trackVolume;
     }
     
-    public bool PlaySound(Sound soundName, float startingTime = 0)
+    public bool PlayMusic(Sound soundName, float startingTime = 0)
     {
         Track trackToPlay = GetTrack(soundName);
         if (!trackToPlay.AudioSource.isPlaying)
         {
             trackToPlay.AudioSource.time = startingTime;
-            //trackToPlay.AudioSource.PlayOneShot(trackToPlay.Clip, trackToPlay.TrackVolume);
             trackToPlay.AudioSource.clip = trackToPlay.Clip;
             trackToPlay.AudioSource.Play();
             return true;
@@ -88,22 +120,34 @@ public class SoundManager : MonoBehaviour
         return false;
     }
 
-    public static void ToggleMute()
+    public void PlaySound(Sound soundName)
     {
-        Instance.Music.mute = !Instance.Music.mute;
-        Instance.SFX.mute = !Instance.SFX.mute;
+        Track trackToPlay = GetTrack(soundName);
+        trackToPlay.AudioSource.PlayOneShot(trackToPlay.Clip);
     }
 
-    public void CallChangeMusic(Sound soundToStop, Sound soundToStart)
+    public static void ToggleMute()
+    {
+        if (AudioListener.volume > 0)
+            AudioListener.volume = 0;
+        else
+            AudioListener.volume = 1;
+    }
+
+    public void CallChangeMusic(Sound soundToStart)
     {
         if (currentState == MusicSate.FadingIn || currentState == MusicSate.FadingOut)
             return;
-        StartCoroutine(ChangeMusic(soundToStop, soundToStart, FADE_RATE));
+        if (SongIsAlreadyPlaying(soundToStart))
+            return;
+        StartCoroutine(ChangeMusic(soundToStart, FADE_RATE));
     }
 
     public void CallChangeMusicHold(Sound interruptingMusic)
     {
         if (currentState == MusicSate.FadingIn || currentState == MusicSate.FadingOut)
+            return;
+        if (SongIsAlreadyPlaying(interruptingMusic))
             return;
         StartCoroutine(ChangeMusicHold(interruptingMusic));
     }
@@ -125,73 +169,74 @@ public class SoundManager : MonoBehaviour
         return TrackList.Single(s => s.ClipName == soundName);
     }
     
-    private  IEnumerator FadeInMusic (float speed, float maxVolume)
+    private  IEnumerator FadeInMusic (float speed, Track track)
     {
         SetState(MusicSate.FadingIn);
         keepFadingIn = true;
         keepFadingOut = false;
 
-        Instance.Music.volume = 0;
-        float audioVolume = Instance.Music.volume;
+        track.AudioSource.volume = 0;
+        float audioVolume = track.AudioSource.volume;
 
-        while (Instance.Music.volume < maxVolume && keepFadingIn)
+        while (track.AudioSource.volume < track.TrackVolume && keepFadingIn)
         {
             audioVolume += speed;
-            Instance.Music.volume = audioVolume;
+            track.AudioSource.volume = audioVolume;
             yield return null;
         }
         SetState(MusicSate.Playing);
     }
 
-    private IEnumerator FadeOutMusic(float speed)
+    private IEnumerator FadeOutMusic(float speed, Track track)
     {
         SetState(MusicSate.FadingOut);
         keepFadingIn = false;
         keepFadingOut = true;
         
-        float audioVolume = Music.volume;
+        float audioVolume = track.AudioSource.volume;
 
-        while (Music.volume >= speed && keepFadingOut)
+        while (track.AudioSource.volume >= speed && keepFadingOut)
         {
             audioVolume -= speed;
-            Music.volume = audioVolume;
+            track.AudioSource.volume = audioVolume;
             yield return null;
         }
 
-        Music.Stop();
+        track.AudioSource.Stop();
         SetState(MusicSate.Stopped);
     }
     
-    private IEnumerator ChangeMusic(Sound soundToStop, Sound soundToStart, float speedToChange)
+    private IEnumerator ChangeMusic(Sound soundToStart, float speedToChange)
     {
-        yield return FadeOutMusic(speedToChange);
+        yield return FadeOutMusic(speedToChange, GetTrack(soundToStart));
         
-        if (PlaySound(soundToStart))
-            yield return FadeInMusic(FADE_RATE, GetTrack(soundToStart).TrackVolume);
+        if (PlayMusic(soundToStart))
+            yield return FadeInMusic(FADE_RATE, GetTrack(soundToStart));
         
     }
 
     private  IEnumerator ChangeMusicHold(Sound interruptingMusic)
     {
+        Track track = GetTrack(interruptingMusic);
         onHoldClipMarker = 0;
 
-        onHoldSong = TrackList.Single(s => s.Clip.name == Music.clip.name).ClipName;
+        onHoldSong = TrackList.Single(s => s.Clip.name == track.AudioSource.clip.name).ClipName;
 
-        onHoldClipMarker = Music.time;
+        onHoldClipMarker = track.AudioSource.time;
 
-        yield return FadeOutMusic(FADE_RATE);
+        yield return FadeOutMusic(FADE_RATE, track);
 
-        if (PlaySound(interruptingMusic))
-            yield return FadeInMusic(FADE_RATE, GetTrack(interruptingMusic).TrackVolume);
+        if (PlayMusic(interruptingMusic))
+            yield return FadeInMusic(FADE_RATE, GetTrack(interruptingMusic));
         
     }
 
     private IEnumerator ChangeMusicResume()
     {
-        yield return FadeOutMusic(FADE_RATE);
+        yield return FadeOutMusic(FADE_RATE, GetTrack(onHoldSong));
 
-        if (PlaySound(onHoldSong, onHoldClipMarker))
-            yield return FadeInMusic(FADE_RATE, GetTrack(onHoldSong).TrackVolume);
+        if (PlayMusic(onHoldSong, onHoldClipMarker))
+            yield return FadeInMusic(FADE_RATE, GetTrack(onHoldSong));
         
     }
 
@@ -206,6 +251,11 @@ public class SoundManager : MonoBehaviour
             default:
                 return "Music";
         }
+    }
+
+    private bool SongIsAlreadyPlaying(Sound song)
+    {
+        return (GetTrack(song).AudioSource.clip == GetSound(song));
     }
 
     private void SetState(MusicSate newState)

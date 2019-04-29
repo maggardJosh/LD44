@@ -22,7 +22,7 @@ public class DialogueComponent : MonoBehaviour
             canInteract = true;
             interactIndicator.gameObject.SetActive(true);
             //SoundManager.CallChangeMusic(SoundManager.Sound.Music_TownTheme, SoundManager.Sound.Music_MemoryTheme);
-            SoundManager.Instance.CallChangeMusicHold(SoundManager.Sound.Music_MemoryTheme);
+            SoundManager.Instance.CallChangeMusicHold(SoundManager.Sound.Music_Memory);
         }
     }
 

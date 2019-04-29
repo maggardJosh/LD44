@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 272812245455087026}
   - component: {fileID: 1047038526288511172}
   - component: {fileID: 309460792}
+  - component: {fileID: 2022969391628634180}
   m_Layer: 0
   m_Name: EssentialLoader
   m_TagString: Untagged
@@ -97,3 +98,15 @@ MonoBehaviour:
   playerColor: {r: 1, g: 1, b: 1, a: 1}
   PlayerMat: {fileID: 2100000, guid: e22b74d458b4a944caca1ff5f9c61910, type: 2}
   SceneMat: {fileID: 2100000, guid: 070cf2d9f3d7a624c8e2d5952900c49f, type: 2}
+--- !u!114 &2022969391628634180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501535647094673497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 193e7fc3cc83a5340bcbc19c6bfaf22a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
