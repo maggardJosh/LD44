@@ -162,7 +162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PushBackValue: 5
-  StunTime: 4
   Damage: 2
 --- !u!1 &713852483
 GameObject:
@@ -333,7 +332,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e22b74d458b4a944caca1ff5f9c61910, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -359,7 +358,7 @@ SpriteRenderer:
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4, y: 1.75}
+  m_Size: {x: 2.0625, y: 3.875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -435,10 +434,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasLeftWarp: 1
   targetWarp: 
+  WhipStrafeSpeed: 2
+  diveDistance: 4
+  diveTime: 0.4
+  rollDistance: 4
+  rollTime: 0.5
   horizontalHitBoxLeft: {fileID: 2814785639927420622}
   horizontalHitBoxRight: {fileID: 1241007108}
   hitBoxUp: {fileID: 89565758}
   hitBoxDown: {fileID: 870572688}
+  damageableComponent: {fileID: 0}
 --- !u!58 &537303968286632713
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -467,4 +472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a8f663ecaf67a44787930ed2bae87ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 6
+  invulnerableTime: 4
+  stunTime: 1
+  invulnerableFrameSpeed: 0.2

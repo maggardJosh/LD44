@@ -7,8 +7,7 @@ public class DialogueComponent : MonoBehaviour
     public Dialogue Dialogue;
     public bool canInteract = false;
     private InteractIndicator interactIndicator;
-
-    private bool isFirstInteraction = true;
+    private GameObject player;
 
     private void Start()
     {
@@ -18,11 +17,12 @@ public class DialogueComponent : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //TODO: Stop characters from walking around when we are near them, they should also turn towards us
         if (collision.CompareTag("Player"))
         {
             canInteract = true;
             interactIndicator.gameObject.SetActive(true);
+            //SoundManager.CallChangeMusic(SoundManager.Sound.Music_TownTheme, SoundManager.Sound.Music_MemoryTheme);
+            SoundManager.Instance.CallChangeMusicHold(SoundManager.Sound.Music_MemoryTheme);
         }
     }
 
@@ -30,18 +30,23 @@ public class DialogueComponent : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            player = collision.gameObject;
             GetComponentInParent<Npc>().Interact(collision.gameObject);
         }
     }
-    
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
+            player = null;
             canInteract = false;
             interactIndicator.gameObject.SetActive(false);
-            isFirstInteraction = true;
-            GetComponentInParent<Npc>().StopInteracting();
+            Npc npc = GetComponentInParent<Npc>();
+            if (npc != null) //Check just in case they were removed based on quest this frame
+                npc.StopInteracting();
+            //SoundManager.CallChangeMusic(SoundManager.Sound.Music_MemoryTheme, SoundManager.Sound.Music_TownTheme);
+            SoundManager.Instance.CallChangeMusicResume();
         }
     }
 
@@ -49,52 +54,10 @@ public class DialogueComponent : MonoBehaviour
     {
         if (canInteract && Input.GetButtonDown("Interact"))
         {
-            ShowDialogue();
+            player.StopTopDownController();
+            DialogueManager.Instance.StartDialogue(Dialogue);
             return true;
         }
         return false;
-    }
-
-    private void ShowDialogue()
-    {
-        if (isFirstInteraction)
-            FirstDialogue();
-        else
-            ContinueDialogue();
-    }
-
-    private Dialogue.DialogueSet GetCurrentDialogue()
-    {
-        foreach (var set in Dialogue.dialogueEntries.OrderBy(s => (int)s.MinQuestLevel))
-            if (set.MinQuestLevel >= QuestSystem.Instance.CurrentState)
-                return set;
-
-        return Dialogue.dialogueEntries.LastOrDefault();
-    }
-
-    public void FirstDialogue()
-    {
-        DialogueManager.Instance.SetDialogueName(Dialogue.CharacterName);
-        DialogueManager.Instance.StartDialogue(GetCurrentDialogue());
-        isFirstInteraction = false;
-    }
-    
-    public void ContinueDialogue()
-    {
-        if (DialogueManager.Instance.dialogueQueue.Count == 0)
-            FinishDialogue();
-
-        if (Input.GetButtonDown("Interact"))
-            DialogueManager.Instance.DisplayNextSentence();
-
-    }
-
-    public void FinishDialogue()
-    {
-        isFirstInteraction = true;
-        DialogueManager.Instance.gameObject.SetActive(false);
-
-        if (GetCurrentDialogue().ShouldIncreaseQuest)
-            QuestSystem.Instance.CompleteQuest();
     }
 }

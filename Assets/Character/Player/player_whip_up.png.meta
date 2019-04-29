@@ -14,6 +14,9 @@ TextureImporter:
   - first:
       213: 3847211115333191451
     second: player_whip_up_3
+  - first:
+      213: -1798523351141190889
+    second: player_whip_up_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -134,16 +137,16 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 20
-        height: 89
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 35
+        height: 61
+      alignment: 9
+      pivot: {x: 0.35, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f6de26badd653a44aeca4bc9e1e3374
+      spriteID: 80aaecf43c8551345bb2f42ae8fe065e
       internalID: -8965455513197511285
       vertices: []
       indices: 
@@ -153,18 +156,18 @@ TextureImporter:
       name: player_whip_up_1
       rect:
         serializedVersion: 2
-        x: 20
+        x: 35
         y: 0
-        width: 20
-        height: 89
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 35
+        height: 61
+      alignment: 9
+      pivot: {x: 0.35, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6508fc1f65239294a86524d4b5f53a88
+      spriteID: c67407476a26b974faab22d9c0538a63
       internalID: 4019311325615019236
       vertices: []
       indices: 
@@ -174,18 +177,18 @@ TextureImporter:
       name: player_whip_up_2
       rect:
         serializedVersion: 2
-        x: 40
+        x: 70
         y: 0
-        width: 20
-        height: 89
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 35
+        height: 61
+      alignment: 9
+      pivot: {x: 0.3274473, y: 0.060387842}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd4782dd65263344e8745f28a8030ec3
+      spriteID: e5473bc06236fa3488bf1f0246e2fc9b
       internalID: -4724864581975707526
       vertices: []
       indices: 
@@ -195,19 +198,40 @@ TextureImporter:
       name: player_whip_up_3
       rect:
         serializedVersion: 2
-        x: 60
+        x: 105
         y: 0
-        width: 20
-        height: 89
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 35
+        height: 61
+      alignment: 9
+      pivot: {x: 0.35, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f39028edb9589b149ab0fefcdbf49cd4
+      spriteID: 94523c0bf78586c4d9ba6c1896246350
       internalID: 3847211115333191451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_whip_up_4
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 0
+        width: 35
+        height: 61
+      alignment: 9
+      pivot: {x: 0.35, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 627e4dc606064694f9fb16e3e74aff78
+      internalID: -1798523351141190889
       vertices: []
       indices: 
       edges: []

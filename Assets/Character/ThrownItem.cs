@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ThrownItem : MonoBehaviour
 {
@@ -11,16 +9,17 @@ public class ThrownItem : MonoBehaviour
     public float throwTime = 2;
     public float maxHeight = 2;
     public GameObject parent;
+    public GameObject ExplosionPrefab;
 
     public GameObject actualItem;
-   
+
     public float DamageDistanceSquared = 1 * 1;
-    
+
     void Update()
     {
         count += Time.deltaTime;
         float t = count / throwTime;
-        if(t>= 1)
+        if (t >= 1)
         {
             Destroy(gameObject);
             return;
@@ -34,11 +33,12 @@ public class ThrownItem : MonoBehaviour
 
     private void OnDestroy()
     {
+        Instantiate(ExplosionPrefab).transform.position = transform.position;
+
         foreach (var d in FindObjectsOfType<Damageable>())
             if (d.gameObject != parent && (d.transform.position - transform.position).sqrMagnitude <= DamageDistanceSquared)
             {
-                d.TakeDamage(1);
-                d.PushBack(transform.position, 2f, 1f);
+                d.TakeDamage(1, transform.position, 2f);
 
             }
     }

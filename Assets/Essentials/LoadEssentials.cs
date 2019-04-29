@@ -4,6 +4,16 @@ public class LoadEssentials : MonoBehaviour
 {
     void Awake()
     {
+        if (SoundManager.Instance == null)
+        {
+            GameObject soundManager = Instantiate(GlobalPrefabs.Instance.SoundManager);
+            DontDestroyOnLoad(soundManager);
+        }
+        if(PauseMenuManager.Instance == null)
+        {
+            GameObject pauseMenu = Instantiate(GlobalPrefabs.Instance.PauseCanvas);
+            DontDestroyOnLoad(pauseMenu);
+        }
         if(FindObjectOfType<FadeTransitionScreen>() == null)
         {
             GameObject transScreen = Instantiate(GlobalPrefabs.Instance.TransitionCanvas);
