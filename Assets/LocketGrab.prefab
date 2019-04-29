@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1772923933822793774
 Transform:
   m_ObjectHideFlags: 0
@@ -243,5 +243,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b7c29eceed7764585c4c873c36808e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dialogue: {fileID: 11400000, guid: c2543e9ad98c5ab419b86e830e4e5be3, type: 2}
+  Dialogue: {fileID: 11400000, guid: 7dd9d019472eaf94898d28facce19c67, type: 2}
   canInteract: 0

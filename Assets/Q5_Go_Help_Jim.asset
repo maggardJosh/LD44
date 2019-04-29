@@ -24,12 +24,12 @@ MonoBehaviour:
     - Go help JIMBOY! Northwest side of town
     ShouldIncreaseQuest: 0
     MemoryToSpawn: 
-  - MinQuestLevel: -1
+  - MinQuestLevel: 4
     DialogueLines:
     - Nice weather eh?
     ShouldIncreaseQuest: 0
     MemoryToSpawn: 
-  - MinQuestLevel: 7
+  - MinQuestLevel: 10
     DialogueLines:
     - Good job helping Jimmyman
     ShouldIncreaseQuest: 0

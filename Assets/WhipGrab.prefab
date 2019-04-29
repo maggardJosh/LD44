@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6400abaeca80aa848b1a196168bd26f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questState: 2
+  questState: 4
   shouldHappenImmediately: 1
   shouldHideBeforeComplete: 0
   shouldHideAsCurrent: 0

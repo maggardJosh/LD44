@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b7c29eceed7764585c4c873c36808e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dialogue: {fileID: 11400000, guid: 442384640ebf4254298aefbfad61ff51, type: 2}
+  Dialogue: {fileID: 11400000, guid: 6564ea086c7bf6c4b850eef8338a683f, type: 2}
   canInteract: 0
 --- !u!1 &4610919039730213331
 GameObject:
@@ -86,13 +86,14 @@ GameObject:
   - component: {fileID: 4610919039730213329}
   - component: {fileID: 4610919039730213328}
   - component: {fileID: 4610919039730213341}
+  - component: {fileID: 2534275113038866688}
   m_Layer: 0
   m_Name: Ralph
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4610919039730213340
 Transform:
   m_ObjectHideFlags: 0
@@ -225,3 +226,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.46875}
   serializedVersion: 2
   m_Radius: 0.46875
+--- !u!114 &2534275113038866688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4610919039730213331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6400abaeca80aa848b1a196168bd26f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questState: 7
+  shouldHappenImmediately: 1
+  shouldHideBeforeComplete: 1
+  shouldHideAsCurrent: 0
+  shouldHideAfterComplete: 1
+  shouldShowBeforeComplete: 0
+  shouldShowAsCurrent: 1
+  shouldShowAfterComplete: 0
