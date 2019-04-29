@@ -1,12 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PauseMenuManager : MonoBehaviour
 {
     public Text CurrentQuestHint;
     private State CurrentState;
+
+    [SerializeField]
+    private Image[] ItemImages;
+
+    [SerializeField]
+    private Button[] MemoryButtons;
+
+    [SerializeField]
+    private Sprite whipSprite;
+
+    [SerializeField]
+    private Sprite itemOneSprite;
 
     private enum State
     {
@@ -37,10 +47,55 @@ public class PauseMenuManager : MonoBehaviour
     void Update()
     {
     }
-
-    public void SetQuestHint()
+    private void HideAllItems()
     {
-        CurrentQuestHint.text = QuestSystem.GetCurrentQuestHint(QuestSystem.Instance.CurrentState);
+        foreach (var item in ItemImages)
+            item.enabled = false;
+    }
+
+    private void HideAllMemories()
+    {
+        foreach (var mem in MemoryButtons)
+            mem.GetComponent<Image>().enabled = false;
+    }
+    public void UpdateScreen()
+    {
+        var qLevel = QuestSystem.Instance.CurrentState;
+        CurrentQuestHint.text = QuestSystem.GetCurrentQuestHint(qLevel);
+        HideAllItems();
+        HideAllMemories();
+        switch (qLevel)
+        {
+            case QuestSystem.QuestState.A_JUST_STARTED:
+                ShowMemoriesUpTo(1);
+                break;
+            case QuestSystem.QuestState.B_WHIP_GOT:
+                ShowMemoriesUpTo(1);
+                ShowImage(0, itemOneSprite);
+                break;
+            case QuestSystem.QuestState.C_DIVE_GOT:
+                ShowMemoriesUpTo(2);
+                ShowImage(0, whipSprite);
+
+                break;
+            default:
+                ShowMemoriesUpTo(8);
+                ShowImage(0, itemOneSprite);
+                ShowImage(1, whipSprite);
+                break;
+        }
+    }
+
+    private void ShowImage(int i, Sprite image)
+    {
+        ItemImages[i].enabled = true;
+        ItemImages[i].sprite = image;
+    }
+
+    private void ShowMemoriesUpTo(int i)
+    {
+        for (int j = 0; j < i; j++)
+            MemoryButtons[j].GetComponent<Image>().enabled = true;
     }
 
     private void CheckAndSwitchState()
@@ -66,7 +121,7 @@ public class PauseMenuManager : MonoBehaviour
 
     private void ShowMenu()
     {
-        SetQuestHint();
+        UpdateScreen();
         gameObject.SetActive(true);
         CurrentState = State.MenuOpen;
     }
