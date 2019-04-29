@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167940570}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.039, y: 0.856, z: 0}
+  m_LocalScale: {x: 1.213, y: 1.213, z: 1.213}
   m_Children: []
   m_Father: {fileID: 4247804194879138730}
   m_RootOrder: 0
@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 4247804194879138726}
   - component: {fileID: 590526039611572040}
   - component: {fileID: 4247804194879138645}
+  - component: {fileID: 1120905485697727655}
   m_Layer: 8
   m_Name: LungeSkeleton
   m_TagString: Essentials
@@ -156,8 +157,7 @@ SpriteRenderer:
   m_SortingLayerID: -194851169
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3451594177169733351, guid: 3465f7c12ab14014f85b51a0503163a3,
-    type: 3}
+  m_Sprite: {fileID: 889740198677806935, guid: 057ac357b01a88c4e8ec7a8014d626fd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -178,7 +178,7 @@ Animator:
   m_GameObject: {fileID: 4247804194879138729}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 0e49943ee1c11a949b0788cdc988f302, type: 2}
+  m_Controller: {fileID: 22100000, guid: 3437df060147598478a00436d74c0d6f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -237,9 +237,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.3}
+  m_Offset: {x: 0, y: 0.6030091}
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.60300905
 --- !u!114 &590526039611572040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,3 +310,16 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1120905485697727655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4247804194879138729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a1cfdd078b50664d8f2382b50c1dd9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StepSound: 220000002300000024000000
