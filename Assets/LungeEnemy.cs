@@ -50,7 +50,6 @@ public class LungeEnemy : MonoBehaviour
 
     void Update()
     {
-
         if (controller.StunTimeLeft > 0)
         {
             animator.SetTrigger("LungeDone");

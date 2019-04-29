@@ -191,7 +191,7 @@ MonoBehaviour:
   LungeDist: 5
   AggroDist: 9
   LungeTime: 2
-  minLungeTime: 0
+  minLungeTime: 1
   maxLungeTime: 1
   jitterRandom: 0.1
   velLungeCurve:

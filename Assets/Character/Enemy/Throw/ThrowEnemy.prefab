@@ -191,5 +191,5 @@ MonoBehaviour:
   ThrowDist: 4
   AggroDist: 6
   minThrowTime: 1
-  maxThrowTime: 3
+  maxThrowTime: 1
   jitterRandom: 0.3
