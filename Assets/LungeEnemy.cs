@@ -10,6 +10,7 @@ public class LungeEnemy : MonoBehaviour
     private PlayerController player;
     public float LungeSpeed = 5;
     public float ChaseSpeed = 1;
+    public float ReEnterDist = 1;
     public float LungeDist = 2;
     public float AggroDist = 7;
     public float LungeTime = 2;
@@ -77,7 +78,7 @@ public class LungeEnemy : MonoBehaviour
             case State.AGGRO_OUT_OF_DISTANCE:
 
                 playerDiff = (player.transform.position - transform.position);
-                if (playerDiff.magnitude < LungeDist * .9f)
+                if (playerDiff.magnitude < ReEnterDist)
                 {
                     currentState = State.AGGRO_IN_DISTANCE;
                     gameObject.StopTopDownController();

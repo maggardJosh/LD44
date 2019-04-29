@@ -188,8 +188,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThrowSpeed: 0.8
   ThrowHeight: 1
-  ThrowDist: 4
-  AggroDist: 6
-  minThrowTime: 1
+  ThrowDist: 9
+  AggroDist: 12
+  ReEnterDist: 5
+  minThrowTime: 0.5
   maxThrowTime: 1
   jitterRandom: 0.3
