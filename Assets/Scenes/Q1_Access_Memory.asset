@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterName: 
   dialogueEntries:
-  - MinQuestLevel: 0
+  - MinQuestLevel: -1
     DialogueLines:
     - I uhh, forgot
     - who
     - I be...
-    ShouldIncreaseQuest: 0
+    ShouldIncreaseQuest: 1

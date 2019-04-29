@@ -6,6 +6,7 @@ public class QuestSystem : MonoBehaviour
 {
     public enum QuestState
     {
+        Q0_FIRST_LOAD = -1,
         Q1_ACCESS_MEMORY = 0,
         Q2_GO_TO_GRAVEYARD = 1,
         Q3_RETRIEVE_NPC_ITEM = 2,
@@ -30,7 +31,7 @@ public class QuestSystem : MonoBehaviour
     }
 
     [SerializeField]
-    private QuestState _currentState = QuestState.Q1_ACCESS_MEMORY;
+    private QuestState _currentState = QuestState.Q0_FIRST_LOAD;
     public QuestState CurrentState
     {
         get { return _currentState; }
