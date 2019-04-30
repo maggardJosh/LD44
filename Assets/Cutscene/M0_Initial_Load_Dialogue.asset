@@ -16,7 +16,6 @@ MonoBehaviour:
   dialogueEntries:
   - MinQuestLevel: 0
     DialogueLines:
-    - WHOA!....
-    - This seems familiar...
-    - . . . . .
-    ShouldIncreaseQuest: 0
+    - I barely remember that...
+    ShouldIncreaseQuest: 1
+    MemoryToSpawn: 
