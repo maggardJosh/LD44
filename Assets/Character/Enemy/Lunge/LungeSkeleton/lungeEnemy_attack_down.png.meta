@@ -107,10 +107,10 @@ TextureImporter:
       name: lungeEnemy_attack_down_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 23
-        height: 28
+        x: 2
+        y: 4
+        width: 17
+        height: 23
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,7 +118,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9f6267598e9eb84e8442fe6e1f3dccb
+      spriteID: 45b6d498a6235ab478b2364bc4acc72b
       internalID: 889740198677806935
       vertices: []
       indices: 
@@ -128,10 +128,10 @@ TextureImporter:
       name: lungeEnemy_attack_down_1
       rect:
         serializedVersion: 2
-        x: 23
-        y: 0
-        width: 23
-        height: 28
+        x: 24
+        y: 4
+        width: 20
+        height: 22
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,7 +139,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08d8206929b061946a0c6231307dc6b2
+      spriteID: 5908dcfe06607074bbc4b583915e2d14
       internalID: 7139792124578602507
       vertices: []
       indices: 
@@ -149,18 +149,18 @@ TextureImporter:
       name: lungeEnemy_attack_down_2
       rect:
         serializedVersion: 2
-        x: 46
-        y: 0
-        width: 23
-        height: 28
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 50
+        y: 1
+        width: 18
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.09}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fa0d53cf976f2f4fa2571fe13e68a29
+      spriteID: 93c2de85e86594b4aa22692d238281c2
       internalID: 175473681548757317
       vertices: []
       indices: 

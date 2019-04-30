@@ -270,7 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LungeSpeed: 10
   ChaseSpeed: 1
-  ReEnterDist: 1
+  ReEnterDist: 7
   LungeDist: 5
   AggroDist: 9
   LungeTime: 2

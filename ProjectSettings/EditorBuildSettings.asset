@@ -33,6 +33,21 @@ EditorBuildSettings:
     path: Assets/Scenes/Graveyard_1.unity
     guid: 929043732254eda47955a4a2869d090a
   - enabled: 1
+    path: Assets/Scenes/Boss.unity
+    guid: 83ab922eb7fd59c438fe37c977cc236c
+  - enabled: 1
+    path: Assets/Scenes/M1.unity
+    guid: ad85478d280b8e6409c2ffa955aefcb2
+  - enabled: 1
+    path: Assets/Scenes/M2.unity
+    guid: 78a63bf470412ec409eae82fee6252e7
+  - enabled: 1
+    path: Assets/Scenes/M3.unity
+    guid: 7d0cf7c539c174f488249c4563c86f03
+  - enabled: 1
+    path: Assets/Scenes/M4.unity
+    guid: cca7b683c4f49094a870752c64da84b0
+  - enabled: 1
     path: Assets/Scenes/Graveyard_2.unity
     guid: d8f14b3723a7ee24d85c7829976d33ba
   - enabled: 1

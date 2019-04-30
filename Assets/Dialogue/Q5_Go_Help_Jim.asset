@@ -10,21 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0631a019bd506a4eba0cb3aa00cd935, type: 3}
-  m_Name: Q4_Maranda
+  m_Name: Q5_Go_Help_Jim
   m_EditorClassIdentifier: 
-  CharacterName: Maranda
+  CharacterName: Rando
   dialogueEntries:
-  - MinQuestLevel: 2
+  - MinQuestLevel: 5
     DialogueLines:
-    - My Item is in the east side of town
-    ShouldIncreaseQuest: 0
-  - MinQuestLevel: 3
-    DialogueLines:
-    - MY ITEM!
-    - THANK YOU!!
-    - '.... You should go retrieve the whip from east of town'
+    - Jimbo needs help, northwest side of town
     ShouldIncreaseQuest: 1
+    MemoryToSpawn: 
+  - MinQuestLevel: 6
+    DialogueLines:
+    - Go help JIMBOY! Northwest side of town
+    ShouldIncreaseQuest: 0
+    MemoryToSpawn: 
   - MinQuestLevel: 4
     DialogueLines:
-    - Thanks again for helping me with my ITEM
+    - Nice weather eh?
     ShouldIncreaseQuest: 0
+    MemoryToSpawn: 
+  - MinQuestLevel: 10
+    DialogueLines:
+    - Good job helping Jimmyman
+    ShouldIncreaseQuest: 0
+    MemoryToSpawn: 
