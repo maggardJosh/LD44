@@ -16,7 +16,7 @@ MonoBehaviour:
   dialogueEntries:
   - MinQuestLevel: 2
     DialogueLines:
-    - Keepsake aquired
+    - You've got Maranda's Book
     ShouldIncreaseQuest: 1
     QuestToComplete: 2
     MemoryToSpawn: 

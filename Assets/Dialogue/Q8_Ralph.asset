@@ -18,7 +18,10 @@ MonoBehaviour:
     DialogueLines:
     - I was so scared!
     - I'm going home RIGHT NOW!
-    - '... Here''s a memory though'
+    - '.  .  .  .  '
+    - But first...
+    - Thank you for for everything you do, Tupi. Here, take this. I'll always remember
+      your sweet skills.
     ShouldIncreaseQuest: 1
     QuestToComplete: 8
     MemoryToSpawn: M2

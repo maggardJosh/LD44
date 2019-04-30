@@ -16,15 +16,15 @@ MonoBehaviour:
   dialogueEntries:
   - MinQuestLevel: 5
     DialogueLines:
-    - "I wonder where Ralph went off to...\t"
+    - I wonder where Ralphie went off to...
     ShouldIncreaseQuest: 0
     QuestToComplete: -1
     MemoryToSpawn: 
   - MinQuestLevel: 6
     DialogueLines:
-    - Could you help me?
-    - Ralph is lost north of town...
-    - Please rescue him!
+    - Tupi! I'm so glad you've decided to do the hero thing again!
+    - Ralphie went off to the North, near the old lair looking for scrap.
+    - I think I can hear him yelling off somewhere up there!
     ShouldIncreaseQuest: 1
     QuestToComplete: 6
     MemoryToSpawn: 

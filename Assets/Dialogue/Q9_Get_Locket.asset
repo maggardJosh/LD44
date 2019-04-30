@@ -16,7 +16,7 @@ MonoBehaviour:
   dialogueEntries:
   - MinQuestLevel: 8
     DialogueLines:
-    - Locket Aquired...
+    - Locket Aquired
     - '... It inspires strong memories within you'
     ShouldIncreaseQuest: 1
     QuestToComplete: 9
