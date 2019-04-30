@@ -3,58 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Roll Scene
+//Uses whip on spiders
 public class M2 : MonoBehaviour
 {
-    public ParticleSystem partSyst;
     public Dialogue cutsceneDialogue;
-    private bool alreadyPlayed = false;
 
     private void Start()
     {
-    }
-    public void StartCutscene()
-    {
-        if (alreadyPlayed)
-            return;
-        alreadyPlayed = true;
         StartCoroutine(CutsceneLogic());
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            collision.gameObject.StopTopDownController();
-            StartCutscene();
-        }
-    }
 
-  
     private IEnumerator CutsceneLogic()
     {
+        TopDownController p = FindObjectOfType<PlayerController>().GetComponent<TopDownController>();
+        p.FaceDirection(Vector3.down);
         while (FadeTransitionScreen.Instance.IsTransitioning)
             yield return null;
         FadeTransitionScreen.Instance.SetCinematic(true);
-        yield return new WaitForSeconds(3f);
-
-        GameObject fargoth = GameObject.Find("Fargoth");
-
-        TopDownController p = FindObjectOfType<PlayerController>().GetComponent<TopDownController>();
-        
-        yield return MoveToPosition(p, GameObject.Find("CinemaStartPos").transform.position, 1.5f);
-        p.FacePosition(fargoth.transform.position);
+        p.FaceDirection(Vector3.down);
+        yield return new WaitForSeconds(1.5f);
+        p.GetComponent<Animator>().SetTrigger("Dive");
+        yield return MoveToPosition(p, "Position", .7f);
+        p.GetComponent<Animator>().SetTrigger("Roll");
+        yield return MoveToPosition(p, "Position2", .3f);
+        p.GetComponent<Animator>().SetTrigger("RollDone");
+        yield return new WaitForSeconds(1f);
+        yield return MoveToPosition(p, "Position3", .5f);
         yield return new WaitForSeconds(1f);
 
-        yield return MoveToPosition(fargoth.GetComponent<TopDownController>(), p.transform.position + Vector3.left * 4f, 1f);
-        yield return new WaitForSeconds(.5f);
-
-        yield return MoveToPosition(fargoth.GetComponent<TopDownController>(), p.transform.position + Vector3.left * 2f, 3f);
-
-        yield return new WaitForSeconds(1f);
-        yield return DialogueManager.Instance.StartDialogueThreaded(cutsceneDialogue);
-        yield return MoveToPosition(fargoth.GetComponent<TopDownController>(), p.transform.position + Vector3.left * 2f + Vector3.up * 20f, 1f);
-        if (partSyst != null)
-            partSyst.Stop();
-        yield return new WaitForSeconds(3f);
         SoundManager.Instance.PlaySound(SoundManager.Sound.Music_Transition2);
         FadeTransitionScreen.Instance.Transition(() =>
         {
@@ -62,12 +39,19 @@ public class M2 : MonoBehaviour
         });
     }
 
-    private IEnumerator MoveToPosition(TopDownController t, Vector3 pos, float time)
+    private IEnumerator MoveToPosition(TopDownController t, string posName, float time)
     {
+        yield return MoveToPosition(t, GameObject.Find(posName).transform.position, time);
+    }
+    private IEnumerator MoveToPosition(TopDownController t, Vector3 pos, float time, bool relative = false)
+    {
+        if (relative)
+            pos += t.transform.position;
         Vector3 diff = pos - t.transform.position;
+        diff.Normalize();
         Vector3 startPos = t.transform.position;
         float count = 0;
-        while(count <= time)
+        while (count <= time)
         {
             t.xMove = diff.x;
             t.yMove = diff.y;
