@@ -152,11 +152,7 @@ Transform:
   - {fileID: 1591886915}
   - {fileID: 2009318488}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 5
-=======
   m_RootOrder: 6
->>>>>>> develop
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &62650581
 PrefabInstance:
@@ -324,11 +320,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 6
-=======
   m_RootOrder: 7
->>>>>>> develop
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &416452608
 GameObject:
@@ -6170,11 +6162,7 @@ Transform:
   m_Children:
   - {fileID: 969659022}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 3
-=======
   m_RootOrder: 5
->>>>>>> develop
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1184826491
 Rigidbody2D:
@@ -6338,11 +6326,7 @@ Transform:
   - {fileID: 416452609}
   - {fileID: 551072300}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 2
-=======
   m_RootOrder: 3
->>>>>>> develop
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!66 &1673208620
 CompositeCollider2D:
