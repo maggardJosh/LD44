@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questState: 7
-  shouldHappenImmediately: 1
+  shouldHappenImmediately: 0
   shouldHideBeforeComplete: 1
   shouldHideAsCurrent: 0
   shouldHideAfterComplete: 1

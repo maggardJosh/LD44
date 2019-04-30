@@ -6127,8 +6127,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: 12, y: -8, z: 0}
     second:
-      m_TileIndex: 15
-      m_TileSpriteIndex: 8
+      m_TileIndex: 50
+      m_TileSpriteIndex: 33
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -6352,8 +6352,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: 12, y: -7, z: 0}
     second:
-      m_TileIndex: 17
-      m_TileSpriteIndex: 17
+      m_TileIndex: 49
+      m_TileSpriteIndex: 47
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -6577,8 +6577,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: 12, y: -6, z: 0}
     second:
-      m_TileIndex: 17
-      m_TileSpriteIndex: 17
+      m_TileIndex: 51
+      m_TileSpriteIndex: 40
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -9721,11 +9721,11 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 75928210763b6c14a840f7d8834cea6a, type: 2}
   - m_RefCount: 15
     m_Data: {fileID: 11400000, guid: a95b9beeffe3f0c4c97846000d28dce8, type: 2}
-  - m_RefCount: 16
+  - m_RefCount: 15
     m_Data: {fileID: 11400000, guid: 88b67341a098f814d9d89100ebc117aa, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: c45f72222c2d0f94486a2c409497ef92, type: 2}
-  - m_RefCount: 48
+  - m_RefCount: 46
     m_Data: {fileID: 11400000, guid: 4e680904bf4ad7242b30a80f0771d629, type: 2}
   - m_RefCount: 39
     m_Data: {fileID: 11400000, guid: 3bb39c71e48ce64469bd83c49dd237d4, type: 2}
@@ -9789,6 +9789,12 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: af185e9f46b6f494ea7a35d7da7a24dd, type: 2}
   - m_RefCount: 37
     m_Data: {fileID: 11400000, guid: 90b3ef9abc8f1154798d8ce83398541f, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: f94ad9499cd7acd46abe35bba899a736, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 1dd64a07253d35b41af4e227077a9c64, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 4b80e81a3a364ba4b8cac82d2bd47253, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 4
     m_Data: {fileID: -6059512799696617684, guid: 86caea73d820e764c963ede9c546813c,
@@ -9814,7 +9820,7 @@ Tilemap:
   - m_RefCount: 3
     m_Data: {fileID: -6955936569660709782, guid: 86caea73d820e764c963ede9c546813c,
       type: 3}
-  - m_RefCount: 16
+  - m_RefCount: 15
     m_Data: {fileID: -6545979212480016804, guid: 86caea73d820e764c963ede9c546813c,
       type: 3}
   - m_RefCount: 1
@@ -9841,7 +9847,7 @@ Tilemap:
   - m_RefCount: 2
     m_Data: {fileID: 6695141461892179627, guid: 86caea73d820e764c963ede9c546813c,
       type: 3}
-  - m_RefCount: 48
+  - m_RefCount: 46
     m_Data: {fileID: -6876649693055785313, guid: 86caea73d820e764c963ede9c546813c,
       type: 3}
   - m_RefCount: 39
@@ -9889,7 +9895,7 @@ Tilemap:
   - m_RefCount: 6
     m_Data: {fileID: -8862069762056768619, guid: 86caea73d820e764c963ede9c546813c,
       type: 3}
-  - m_RefCount: 2
+  - m_RefCount: 3
     m_Data: {fileID: -2392254794950150503, guid: 86caea73d820e764c963ede9c546813c,
       type: 3}
   - m_RefCount: 2
@@ -9910,7 +9916,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 5453219020403613593, guid: 86caea73d820e764c963ede9c546813c,
       type: 3}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: -790645535827152779, guid: 86caea73d820e764c963ede9c546813c,
       type: 3}
   - m_RefCount: 5
@@ -9931,7 +9937,7 @@ Tilemap:
   - m_RefCount: 26
     m_Data: {fileID: -7687392169703305176, guid: 86caea73d820e764c963ede9c546813c,
       type: 3}
-  - m_RefCount: 5
+  - m_RefCount: 6
     m_Data: {fileID: 5273504420588928270, guid: 86caea73d820e764c963ede9c546813c,
       type: 3}
   - m_RefCount: 37
@@ -10727,11 +10733,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4833707919910856819, guid: 34c36aefeac5d144eae4dcf3c0802b61,
-        type: 3}
-      propertyPath: TutorialMessage
-      value: Press Q to open the menu
-      objectReference: {fileID: 0}
     - target: {fileID: 7160719072022582669, guid: 34c36aefeac5d144eae4dcf3c0802b61,
         type: 3}
       propertyPath: m_Size.x
@@ -10751,6 +10752,11 @@ PrefabInstance:
         type: 3}
       propertyPath: questState
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833707919910856819, guid: 34c36aefeac5d144eae4dcf3c0802b61,
+        type: 3}
+      propertyPath: TutorialMessage
+      value: Press Q to open the menu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34c36aefeac5d144eae4dcf3c0802b61, type: 3}
