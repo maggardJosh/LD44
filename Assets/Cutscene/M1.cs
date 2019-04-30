@@ -17,32 +17,31 @@ public class M1 : MonoBehaviour
     private IEnumerator CutsceneLogic()
     {
         TopDownController p = FindObjectOfType<PlayerController>().GetComponent<TopDownController>();
-        p.FaceDirection(Vector3.right);
+        p.FaceDirection(Vector3.down);
         while (FadeTransitionScreen.Instance.IsTransitioning)
             yield return null;
         FadeTransitionScreen.Instance.SetCinematic(true);
-        p.FaceDirection(Vector3.right);
+        p.FaceDirection(Vector3.down);
+        p.GetComponent<Animator>().SetFloat("whipY", -1);
+        p.GetComponent<Animator>().SetTrigger("Whip");
+        p.GetComponent<Animator>().SetTrigger("WhipHoldDone");
         yield return new WaitForSeconds(1f);
-
-
-        yield return MoveToPosition(p, "PositionOne", 1.5f);
-        yield return MoveToPosition(p, "PositionOne (1)", 1.5f);
-        yield return new WaitForSeconds(1f);
+        StartCoroutine(MoveToPosition(GameObject.Find("ThrowEnemy").GetComponent<TopDownController>(), Vector3.down, .3f, true));
         p.FaceDirection(Vector3.left);
-        yield return new WaitForSeconds(1f);
-
-        yield return MoveToPosition(p, "PositionTwo", 1f);
+        p.GetComponent<Animator>().SetFloat("whipY", 0);
+        p.GetComponent<Animator>().SetFloat("whipX", -1);
+        p.GetComponent<Animator>().SetTrigger("Whip");
+        p.GetComponent<Animator>().SetTrigger("WhipHoldDone");
+        StartCoroutine(MoveToPosition(GameObject.Find("ThrowEnemy (1)").GetComponent<TopDownController>(), Vector3.left, .3f, true));
         yield return new WaitForSeconds(1.5f);
-        p.FaceDirection(Vector3.left);
-        yield return new WaitForSeconds(2f);
-        yield return MoveToPosition(p, "PositionThree", .3f);
-        yield return MoveToPosition(p, "PositionThree (1)", .2f);
-        yield return MoveToPosition(p, "PositionThree (2)", .2f);
-        yield return MoveToPosition(p, "PositionThree (3)", .2f);
-        yield return MoveToPosition(p, "PositionThree (4)", .3f);
+        p.FaceDirection(Vector3.right);
+        p.GetComponent<Animator>().SetFloat("whipX", -1);
+        p.GetComponent<Animator>().SetTrigger("Whip");
+        p.GetComponent<Animator>().SetTrigger("WhipHoldDone");
+        StartCoroutine(MoveToPosition(GameObject.Find("ThrowEnemy (2)").GetComponent<TopDownController>(), Vector3.right, .3f, true));
+        yield return new WaitForSeconds(1f);
 
         yield return new WaitForSeconds(1f);
-        yield return DialogueManager.Instance.StartDialogueThreaded(cutsceneDialogue);
 
         SoundManager.Instance.PlaySound(SoundManager.Sound.Music_Transition2);
         FadeTransitionScreen.Instance.Transition(() =>
@@ -55,8 +54,10 @@ public class M1 : MonoBehaviour
     {
         yield return MoveToPosition(t, GameObject.Find(posName).transform.position, time);
     }
-    private IEnumerator MoveToPosition(TopDownController t, Vector3 pos, float time)
+    private IEnumerator MoveToPosition(TopDownController t, Vector3 pos, float time, bool relative = false)
     {
+        if (relative)
+            pos += t.transform.position;
         Vector3 diff = pos - t.transform.position;
         diff.Normalize();
         Vector3 startPos = t.transform.position;
