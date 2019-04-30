@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: NPC_Miranda_Override
+  m_Controller: {fileID: 9100000, guid: bf83774bc82c5a14cbd509427c7ea679, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 01923f8f38a4d7e45a382c0aa831a71c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b1db2cd0810597e489c8ad674c389a34, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9ad6f846f07003042b5963efaf6aacda, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 936ec3348dd008b498540af0c5df1d48, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a65aea3b1f262c64fbbcb5b1ca27d234, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b4d38683ae9f30a4d82d04fe6fcfc0e0, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 769429635b3f1ea42abcb4993c842937, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: effd95d7ce6cbfc4eb4d6bea125977b7, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5d824754c6a8acf45ad624864d5aceee, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0bad274fb6d1d53449046616b1e5b013, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: f9228d9916586cb4488d4738d286784b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6641548df8cfefc4fa62681b63ea2367, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 28f17329bb948e14ea849712e305c419, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8e8b5cdf355295748ba76544bea3eba5, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: eeebbb097383f314da0a650141dbd149, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8807cba7f95a3874a9b28e25e2d0578e, type: 2}
