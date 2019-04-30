@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1527b7c7665578b45ab1661a2369ce8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TutorialMessage: This is tutorial text, yo
+  TutorialMessage: 'Click Middle Mouse/Left Shift to Dodge
+
+    You can now cross over certain small gaps'
 --- !u!61 &7160719072022582669
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -84,7 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6400abaeca80aa848b1a196168bd26f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questState: 0
+  questState: 8
   shouldHappenImmediately: 0
   shouldHideBeforeComplete: 0
   shouldHideAsCurrent: 0

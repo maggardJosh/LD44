@@ -44,7 +44,7 @@ MonoBehaviour:
     MemoryToSpawn: M3
   - MinQuestLevel: 9
     DialogueLines:
-    - Thanks again for your help
+    - Thanks again for your help.
     ShouldIncreaseQuest: 0
     QuestToComplete: -1
     MemoryToSpawn: 

@@ -35,7 +35,7 @@ MonoBehaviour:
     MemoryToSpawn: 
   - MinQuestLevel: 10
     DialogueLines:
-    - Good job helping Jimmyman
+    - Good job helping Jimmyman.
     ShouldIncreaseQuest: 0
     QuestToComplete: -1
     MemoryToSpawn: 

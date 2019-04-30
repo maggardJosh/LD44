@@ -31,7 +31,7 @@ MonoBehaviour:
     MemoryToSpawn: 
   - MinQuestLevel: 4
     DialogueLines:
-    - Thanks again for helping me with my ITEM
+    - Thanks again for helping me with my book!
     ShouldIncreaseQuest: 0
     QuestToComplete: -1
     MemoryToSpawn: 
