@@ -16,7 +16,8 @@ MonoBehaviour:
   dialogueEntries:
   - MinQuestLevel: 0
     DialogueLines:
-    - I barely remember that...
+    - I was... running?
+    - Why?
     ShouldIncreaseQuest: 1
     QuestToComplete: 0
     MemoryToSpawn: 

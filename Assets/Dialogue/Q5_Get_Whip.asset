@@ -17,7 +17,7 @@ MonoBehaviour:
   - MinQuestLevel: 4
     DialogueLines:
     - Aquired Whip
-    - It inspires strong memories in you....
+    - It inspires strong memories within you....
     ShouldIncreaseQuest: 1
     QuestToComplete: 4
     MemoryToSpawn: M1
