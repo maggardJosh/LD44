@@ -10492,7 +10492,7 @@ PrefabInstance:
     - target: {fileID: 8148226193897643613, guid: 1e97c4ff2eef50c41b3023cc78a2c5ee,
         type: 3}
       propertyPath: isDefaultWarp
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8148226193897643613, guid: 1e97c4ff2eef50c41b3023cc78a2c5ee,
         type: 3}
