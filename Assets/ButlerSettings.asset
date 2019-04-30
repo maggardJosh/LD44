@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c4349d15b721042b8a02c7b3b019de, type: 3}
   m_Name: ButlerSettings
   m_EditorClassIdentifier: 
-  sceneList:
-  - m_Handle: 0
   GameName: ld44
   UserName: maggardJosh
   Scenes:
@@ -30,6 +28,11 @@ MonoBehaviour:
   - Assets\Scenes\BossArea_1.unity
   - Assets\Scenes\BossArea_2.unity
   - Assets\Scenes\ActualBossArea.unity
+  - Assets\Scenes\M0.unity
+  - Assets\Scenes\M1.unity
+  - Assets\Scenes\M2.unity
+  - Assets\Scenes\M3.unity
+  - Assets\Scenes\M4.unity
   BuildAndroid: 0
   BuildWeb: 1
   BuildPC: 1
