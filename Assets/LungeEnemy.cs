@@ -149,7 +149,6 @@ public class LungeEnemy : MonoBehaviour
         {
             count += Time.deltaTime;
             GetComponent<Rigidbody2D>().velocity = lungeVelocity * velLungeCurve.Evaluate(count/LungeTime);
-            lungeVelocity *= .9f;
             yield return null;
         }
 

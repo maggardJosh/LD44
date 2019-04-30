@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 105239dac1b2f864eb828a0fcb8e8cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LungeSpeed: 10
+  LungeSpeed: 3
   ChaseSpeed: 1
   ReEnterDist: 1
   LungeDist: 5
@@ -208,8 +208,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.124980636
     - serializedVersion: 3
-      time: 0.6199147
-      value: 0.8908201
+      time: 0.43073624
+      value: 0.8461805
       inSlope: -0.4777496
       outSlope: -0.4777496
       tangentMode: 0
@@ -219,11 +219,11 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -4.5166273
-      outSlope: -4.5166273
+      inSlope: -2.137702
+      outSlope: -2.137702
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.039156437
+      inWeight: 0.087416835
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

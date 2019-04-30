@@ -237,9 +237,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.6030091}
+  m_Offset: {x: 0, y: 0.50626135}
   serializedVersion: 2
-  m_Radius: 0.60300905
+  m_Radius: 0.50626135
 --- !u!114 &590526039611572040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 105239dac1b2f864eb828a0fcb8e8cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LungeSpeed: 20
+  LungeSpeed: 10
   ChaseSpeed: 1
   ReEnterDist: 5
   LungeDist: 7
@@ -283,29 +283,20 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: 0.004389489
-      outSlope: 0.004389489
+      inSlope: -0.16242434
+      outSlope: -0.16242434
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.124980636
-    - serializedVersion: 3
-      time: 0.87937415
-      value: 0.84617525
-      inSlope: -0.4777496
-      outSlope: -0.4777496
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0.09189189
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: -4.5166273
-      outSlope: -4.5166273
+      value: -0.0029907227
+      inSlope: -3.3792465
+      outSlope: -3.3792465
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.039156437
+      inWeight: 0.03963965
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
