@@ -69,6 +69,7 @@ public class PauseMenuManager : MonoBehaviour
         HideAllMemories();
         switch (qLevel)
         {
+            case QuestSystem.QuestState.Q0_FIRST_LOAD:
             case QuestSystem.QuestState.Q1_ACCESS_MEMORY:
             case QuestSystem.QuestState.Q2_GO_TO_GRAVEYARD:
             case QuestSystem.QuestState.Q3_RETRIEVE_NPC_ITEM:

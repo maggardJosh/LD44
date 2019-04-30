@@ -41,7 +41,7 @@ public class QuestSystem : MonoBehaviour
         if (_currentState > s)
             return;
         else
-            _currentState = s;
+            _currentState = s + 1;
         foreach (QuestAffectedItem item in Resources.FindObjectsOfTypeAll<QuestAffectedItem>())
             item.UpdateActiveBasedOnCurrentQuest();
     }

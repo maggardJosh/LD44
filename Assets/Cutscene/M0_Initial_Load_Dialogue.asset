@@ -18,4 +18,5 @@ MonoBehaviour:
     DialogueLines:
     - I barely remember that...
     ShouldIncreaseQuest: 1
+    QuestToComplete: 0
     MemoryToSpawn: 

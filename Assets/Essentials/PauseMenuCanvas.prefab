@@ -541,7 +541,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 5546248255335445552}
   m_OnClick:
     m_PersistentCalls:
@@ -686,7 +686,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 4293747407036267110}
   m_OnClick:
     m_PersistentCalls:
@@ -831,7 +831,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 4708412968252305284}
   m_OnClick:
     m_PersistentCalls:
@@ -1001,11 +1001,9 @@ MonoBehaviour:
   - {fileID: 8860878139519856353}
   - {fileID: 2137792240756837998}
   - {fileID: 5080837163347411878}
-  whipSprite: {fileID: 3299591587197514302, guid: fef6126d7d29784498b5a57ad4965de7,
-    type: 3}
-  itemOneSprite: {fileID: 4185141268998863229, guid: 9c8ea2363cb3ea7469a87ae53ff2fe5a,
-    type: 3}
-  locketSprite: {fileID: 21300000, guid: 77812918bd378e845b569eb07c0d14e1, type: 3}
+  whipSprite: {fileID: 21300000, guid: 3717936520931014aaace38c544e224c, type: 3}
+  itemOneSprite: {fileID: 21300000, guid: 1ba8b6eb7004b7f4da7a0df757b88207, type: 3}
+  locketSprite: {fileID: 21300000, guid: 84def0f13e5526140aa615fddd5a3fb3, type: 3}
 --- !u!1 &5589504869833377735
 GameObject:
   m_ObjectHideFlags: 0
@@ -1800,7 +1798,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 8330237871843549225}
   m_OnClick:
     m_PersistentCalls:
@@ -2009,7 +2007,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 7777530869016259224}
   m_OnClick:
     m_PersistentCalls:
