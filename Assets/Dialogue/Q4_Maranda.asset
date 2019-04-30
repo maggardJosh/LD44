@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0631a019bd506a4eba0cb3aa00cd935, type: 3}
+  m_Name: Q4_Maranda
+  m_EditorClassIdentifier: 
+  CharacterName: Maranda
+  dialogueEntries:
+  - MinQuestLevel: 2
+    DialogueLines:
+    - My book is on the South side of town, Tupi, by the dock.
+    ShouldIncreaseQuest: 0
+    QuestToComplete: -1
+    MemoryToSpawn: 
+  - MinQuestLevel: 3
+    DialogueLines:
+    - My book, thank you!
+    - .  .  .  .
+    - Okay, alright. I think you left your whip in the swamp to the East of town.
+    - But that's all! I won't give you any memories, you were so torn-up before...
+    ShouldIncreaseQuest: 1
+    QuestToComplete: 3
+    MemoryToSpawn: 
+  - MinQuestLevel: 4
+    DialogueLines:
+    - Thanks again for helping me with my book!
+    ShouldIncreaseQuest: 0
+    QuestToComplete: -1
+    MemoryToSpawn: 

@@ -33,6 +33,9 @@ public class ThrownItem : MonoBehaviour
 
     private void OnDestroy()
     {
+        //TODO: Decide if we want explosion sounds here or not
+        SoundManager.Instance.PlaySound(SoundManager.Sound.SFX_Enemy_EnergyExplosion);
+
         Instantiate(ExplosionPrefab).transform.position = transform.position;
 
         foreach (var d in FindObjectsOfType<Damageable>())

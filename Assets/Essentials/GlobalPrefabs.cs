@@ -24,11 +24,14 @@ public class GlobalPrefabs : MonoBehaviour
     public GameObject TransitionCanvas;
     public GameObject PauseCanvas;
     public GameObject SoundManager;
+    public GameObject CutsceneBorder;
+    public GameObject TutorialTextManager;
 
     [Header("SharedPrefabs")]
     public GameObject ShadowPrefab;
     public GameObject InteractIndicatorPrefab;
     public GameObject ThrownItemPrefab;
+    public GameObject ExplosionPrefab;
 
 
     // Start is called before the first frame update

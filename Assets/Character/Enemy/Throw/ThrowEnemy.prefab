@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8369377125412384897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1610353810437242550}
+  m_Layer: 8
+  m_Name: MortarLaunchPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1610353810437242550
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8369377125412384897}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.812, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9022918594306731998}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9022918594306731997
 GameObject:
   m_ObjectHideFlags: 0
@@ -33,7 +63,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.58, y: 0.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1610353810437242550}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -74,7 +105,7 @@ SpriteRenderer:
   m_SortingLayerID: -194851169
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3451594177169733351, guid: 3465f7c12ab14014f85b51a0503163a3,
+  m_Sprite: {fileID: -2678887942780594951, guid: 86bfaf72ff89c5144b9b661f3dc44675,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -188,8 +219,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThrowSpeed: 0.8
   ThrowHeight: 1
-  ThrowDist: 4
-  AggroDist: 6
-  minThrowTime: 1
-  maxThrowTime: 3
+  ThrowDist: 9
+  AggroDist: 12
+  ReEnterDist: 5
+  ThrowRandom: 0.3
+  ThrowLaunchPoint: {fileID: 1610353810437242550}
+  minThrowTime: 0.5
+  maxThrowTime: 1
   jitterRandom: 0.3

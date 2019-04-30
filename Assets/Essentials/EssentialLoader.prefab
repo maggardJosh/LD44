@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 272812245455087026}
   - component: {fileID: 1047038526288511172}
   - component: {fileID: 309460792}
+  - component: {fileID: 2022969391628634180}
   m_Layer: 0
   m_Name: EssentialLoader
   m_TagString: Untagged
@@ -75,11 +76,17 @@ MonoBehaviour:
     type: 3}
   SoundManager: {fileID: 6783768504007678063, guid: 89b4ebd9a7615434b894963c56ef71ac,
     type: 3}
+  CutsceneBorder: {fileID: 49540895178174757, guid: 995f59b965b308741b043f81f22a562c,
+    type: 3}
+  TutorialTextManager: {fileID: 1586223459546828297, guid: 6d958439c63e7ca41a6e676a6ecf059f,
+    type: 3}
   ShadowPrefab: {fileID: 3414744869417834552, guid: 9b50a23e91614744e8c2a69eda269aa8,
     type: 3}
   InteractIndicatorPrefab: {fileID: 1246078820509063622, guid: 0136457582bc952438309a180c614d0e,
     type: 3}
   ThrownItemPrefab: {fileID: 4480813943179879866, guid: 9d0c2c695a16d824fb10953964d624bf,
+    type: 3}
+  ExplosionPrefab: {fileID: 431840176171706675, guid: 10be62b6259ba2c418b44366f0ae6183,
     type: 3}
 --- !u!114 &309460792
 MonoBehaviour:
@@ -97,3 +104,17 @@ MonoBehaviour:
   playerColor: {r: 1, g: 1, b: 1, a: 1}
   PlayerMat: {fileID: 2100000, guid: e22b74d458b4a944caca1ff5f9c61910, type: 2}
   SceneMat: {fileID: 2100000, guid: 070cf2d9f3d7a624c8e2d5952900c49f, type: 2}
+--- !u!114 &2022969391628634180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501535647094673497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 193e7fc3cc83a5340bcbc19c6bfaf22a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneSong: 0
+  SceneAmbience: 0

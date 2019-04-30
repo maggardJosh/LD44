@@ -15,9 +15,24 @@ MonoBehaviour:
   GameName: ld44
   UserName: maggardJosh
   Scenes:
-  - Assets\Scenes\EnemyScene.unity
-  - Assets\Scenes\Inside.unity
-  - Assets\Scenes\Outside.unity
+  - Assets\Scenes\Town.unity
+  - Assets\Scenes\OutOfTown.unity
+  - Assets\Scenes\OutOfTown_Down.unity
+  - Assets\Scenes\OutOfTown_Right.unity
+  - Assets\Scenes\OutOfTown_Up.unity
+  - Assets\Scenes\Graveyard.unity
+  - Assets\Scenes\Graveyard_1.unity
+  - Assets\Scenes\Graveyard_2.unity
+  - Assets\Scenes\Cutscene1.unity
+  - Assets\Scenes\BossArea.unity
+  - Assets\Scenes\BossArea_1.unity
+  - Assets\Scenes\BossArea_2.unity
+  - Assets\Scenes\ActualBossArea.unity
+  - Assets\Scenes\M0.unity
+  - Assets\Scenes\M1.unity
+  - Assets\Scenes\M2.unity
+  - Assets\Scenes\M3.unity
+  - Assets\Scenes\M4.unity
   BuildAndroid: 0
   BuildWeb: 1
   BuildPC: 1

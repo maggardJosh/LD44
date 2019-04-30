@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(TopDownController))]
@@ -8,6 +9,14 @@ public class PlayerController : MonoBehaviour
 {
     private TopDownController controller;
     public bool hasLeftWarp = false;
+
+    public void SaveScenePositionForMemory()
+    {
+        lastHasLeftWarp = hasLeftWarp;
+        lastPos = transform.position;
+        sceneToWarpBackTo = SceneManager.GetActiveScene().name;
+    }
+
     public string targetWarp = "";
     private Animator animController;
     private float normalSpeed;
@@ -17,10 +26,17 @@ public class PlayerController : MonoBehaviour
     public float rollDistance = 2;
     public float rollTime = .5f;
 
+    public string sceneToWarpBackTo = "";
+    public Vector3 lastPos = Vector3.zero;
+    public bool lastHasLeftWarp = false;
+
     public BoxCollider2D horizontalHitBoxLeft;
     public BoxCollider2D horizontalHitBoxRight;
     public BoxCollider2D hitBoxUp;
     public BoxCollider2D hitBoxDown;
+
+    public bool CanWhip { get { return QuestSystem.Instance.CurrentState > QuestSystem.QuestState.Q5_RETRIEVE_WHIP; } }
+    public bool CanDive { get { return QuestSystem.Instance.CurrentState > QuestSystem.QuestState.Q8_RESCUE_RALPH; } }
 
     void Start()
     {
@@ -29,6 +45,8 @@ public class PlayerController : MonoBehaviour
         animController = GetComponent<Animator>();
         SceneManager.sceneLoaded += LevelLoaded;
         DisableHitboxes();
+        SpawnPlayerAtWarpPoint();
+        damageableComponent = GetComponent<Damageable>();
     }
 
     private void DisableHitboxes()
@@ -43,26 +61,67 @@ public class PlayerController : MonoBehaviour
     {
         SceneManager.sceneLoaded -= LevelLoaded;
     }
+    public Transform followTransform;
 
-    private void LevelLoaded(Scene arg0, LoadSceneMode arg1)
+    private void LevelLoaded(Scene scene, LoadSceneMode arg1)
     {
         if (diveCoroutine != null)
             CancelDive();
-        List<WarpPoint> points = new List<WarpPoint>(FindObjectsOfType<WarpPoint>());
-        foreach (WarpPoint p in points)
-        {
-            if (p.gameObject.name == targetWarp)
-            {
-                transform.position = p.transform.position;
-                break;
-            }
-        }
-        FindObjectOfType<Cinemachine.CinemachineVirtualCamera>().Follow = transform;
+        if (scene.name == sceneToWarpBackTo)
+            SpawnPlayerBackToLastScene();
+        else
+            SpawnPlayerAtWarpPoint();
+
+        FindObjectOfType<Cinemachine.CinemachineVirtualCamera>().Follow = followTransform;
         float lastXMove = animController.GetFloat("lastXMove");
         float lastYMove = animController.GetFloat("lastYMove");
         GetComponent<Rigidbody2D>().velocity = new Vector2(lastXMove, lastYMove) * 10;
         animController.SetFloat("xMove", lastXMove);
         animController.SetFloat("yMove", lastYMove);
+    }
+
+    private void SpawnPlayerBackToLastScene()
+    {
+        hasLeftWarp = lastHasLeftWarp;
+        transform.position = lastPos;
+        sceneToWarpBackTo = "";
+    }
+
+    private void SpawnPlayerAtWarpPoint()
+    {
+        hasLeftWarp = false;
+        List<WarpPoint> points = new List<WarpPoint>(FindObjectsOfType<WarpPoint>());
+        WarpPoint result = GetPoint(points);
+        if (result != null)
+        {
+            transform.position = result.transform.position;
+            if (result.spawnDialogue != null)
+                StartCoroutine(ShowDialogue(result.spawnDialogue));
+        }
+    }
+
+    private IEnumerator ShowDialogue(Dialogue spawnDialogue)
+    {
+        while (FadeTransitionScreen.Instance.IsTransitioning)
+            yield return null;
+        DialogueManager.Instance.StartDialogue(spawnDialogue);
+    }
+
+    private WarpPoint GetPoint(List<WarpPoint> points)
+    {
+        WarpPoint defaultPoint = null;
+        foreach (WarpPoint p in points)
+        {
+            if (p.gameObject.name == targetWarp)
+            {
+                return p;
+            }
+            if (p.isDefaultWarp)
+                defaultPoint = p;
+        }
+        if (defaultPoint != null)
+            return defaultPoint;
+        return null;
     }
 
     private void CancelDive()
@@ -83,6 +142,16 @@ public class PlayerController : MonoBehaviour
         damageableComponent.enabled = true;
     }
     Coroutine diveCoroutine;
+
+    private void Dead()
+    {
+        FadeTransitionScreen.Instance.Transition(() =>
+        {
+            damageableComponent.ResetHealth(6);
+            SceneManager.LoadScene("Outside");
+        });
+    }
+
     void Update()
     {
         if (FadeTransitionScreen.Instance.IsTransitioning)
@@ -112,12 +181,16 @@ public class PlayerController : MonoBehaviour
             return;
         if (animController.GetCurrentAnimatorStateInfo(0).IsName("Stun"))
             return;
+        if (animController.GetCurrentAnimatorStateInfo(0).IsName("Dead"))
+        {
+            return;
+        }
 
         controller.xMove = Input.GetAxisRaw("Horizontal");
         controller.yMove = Input.GetAxisRaw("Vertical");
         if (Input.GetButtonDown("Interact"))
             TestInteractAndWhip();
-        if (Input.GetButtonDown("Dive"))
+        if (CanDive && Input.GetButtonDown("Dive"))
             diveCoroutine = StartCoroutine(StartDive());
         if (Input.GetButtonDown("Pause"))
             PauseMenuManager.Instance.PressPause();
@@ -141,7 +214,6 @@ public class PlayerController : MonoBehaviour
     {
         gameObject.layer = LayerMask.NameToLayer("Rolling");
         controller.enabled = false;
-        damageableComponent = GetComponent<Damageable>();
         damageableComponent.enabled = false;
         animController.SetTrigger("Dive");
         yield return HandleRollOrDive(diveDistance, diveTime);
@@ -185,6 +257,7 @@ public class PlayerController : MonoBehaviour
 
     public void WhipHit(string hitboxToEnable)
     {
+        SoundManager.Instance.PlaySound(SoundManager.Sound.SFX_LaserWhip);
         controller.speed = normalSpeed;
         switch (hitboxToEnable)
         {
@@ -205,9 +278,13 @@ public class PlayerController : MonoBehaviour
 
     private void TestInteractAndWhip()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
         foreach (var dialogueComp in FindObjectsOfType<DialogueComponent>())
             if (dialogueComp.TryInteract())
                 return;
+        if (!CanWhip)
+            return;
         controller.speed = WhipStrafeSpeed;
         animController.SetTrigger("Whip");
         float xMove = Input.GetAxisRaw("Horizontal");
@@ -221,5 +298,10 @@ public class PlayerController : MonoBehaviour
         }
         animController.SetFloat("whipX", xMove);
         animController.SetFloat("whipY", yMove);
+    }
+    
+    private void PlayDiveSound()
+    {
+        SoundManager.Instance.PlaySound(SoundManager.Sound.SFX_Player_DodgeRoll);
     }
 }

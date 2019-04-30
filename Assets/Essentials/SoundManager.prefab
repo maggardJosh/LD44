@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6783768503252412640
+--- !u!1 &2463088918287424830
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,55 +8,126 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6783768503252412643}
-  - component: {fileID: 6783768503252412645}
+  - component: {fileID: 2543823569320471987}
+  - component: {fileID: 787893173148644675}
   m_Layer: 0
-  m_Name: Jukebox
+  m_Name: Ambient
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6783768503252412643
+--- !u!4 &2543823569320471987
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6783768503252412640}
+  m_GameObject: {fileID: 2463088918287424830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 6783768503809031334}
-  - {fileID: 6783768504724986405}
+  m_Children: []
   m_Father: {fileID: 6783768504007678062}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6783768503252412645
-MonoBehaviour:
+--- !u!82 &787893173148644675
+AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6783768503252412640}
+  m_GameObject: {fileID: 2463088918287424830}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47fa0af908e71744081de95435137ddb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MainMixer: {fileID: 24100000, guid: ccb7d886d394c2a459914c0dbd19ff78, type: 2}
-  Tracks:
-  - ClipName: 0
-    ClipType: 0
-    Clip: {fileID: 8300000, guid: f272c5cd1726fea4bb32f5aad429715f, type: 3}
-    AudioSource: {fileID: 6783768503809031353}
-    TrackVolume: 0.5
-  - ClipName: 1
-    ClipType: 1
-    Clip: {fileID: 8300000, guid: cdf19a078b0b9824f9c6405b5973e7d0, type: 3}
-    AudioSource: {fileID: 6783768503809031353}
-    TrackVolume: 0.5
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -1248090833189257890, guid: ccb7d886d394c2a459914c0dbd19ff78,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6783768503809031335
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,11 +152,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6783768503809031335}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6783768503252412643}
+  m_Father: {fileID: 6783768504007678062}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &6783768503809031353
@@ -97,7 +168,8 @@ AudioSource:
   m_GameObject: {fileID: 6783768503809031335}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -1757464703326026487, guid: ccb7d886d394c2a459914c0dbd19ff78,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -212,7 +284,9 @@ Transform:
   m_LocalPosition: {x: 2.881194, y: 1.9606018, z: -1.8459954}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6783768503252412643}
+  - {fileID: 6783768503809031334}
+  - {fileID: 6783768504724986405}
+  - {fileID: 2543823569320471987}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -228,8 +302,192 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 682a0848e1dd9bd4cb6d62a423243885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Music: {fileID: 6783768503809031353}
-  SFX: {fileID: 6783768504724986404}
+  TrackList:
+  - ClipName: 0
+    ClipType: 0
+    Clip: {fileID: 8300000, guid: a6f4285fd67839e43ace001032c5ce10, type: 3}
+    AudioSource: {fileID: 6783768503809031353}
+    TrackVolume: 1
+  - ClipName: 1
+    ClipType: 0
+    Clip: {fileID: 8300000, guid: 16397dc6f69bf1d478eb03f688bfb016, type: 3}
+    AudioSource: {fileID: 6783768503809031353}
+    TrackVolume: 1
+  - ClipName: 2
+    ClipType: 0
+    Clip: {fileID: 8300000, guid: 336deaa7d6cf397419db0f5e905ac7f0, type: 3}
+    AudioSource: {fileID: 6783768503809031353}
+    TrackVolume: 1
+  - ClipName: 3
+    ClipType: 0
+    Clip: {fileID: 8300000, guid: 245d0dfd24b297243923b2e6f7a5704b, type: 3}
+    AudioSource: {fileID: 6783768503809031353}
+    TrackVolume: 1
+  - ClipName: 4
+    ClipType: 0
+    Clip: {fileID: 8300000, guid: 98b4780caad367c4c92d580ab6c492db, type: 3}
+    AudioSource: {fileID: 6783768503809031353}
+    TrackVolume: 1
+  - ClipName: 5
+    ClipType: 0
+    Clip: {fileID: 8300000, guid: 9490774ee817ac343af4504efc29b4b2, type: 3}
+    AudioSource: {fileID: 6783768503809031353}
+    TrackVolume: 1
+  - ClipName: 6
+    ClipType: 0
+    Clip: {fileID: 8300000, guid: 29748b54e19b2b748a6bcdbfa88397f9, type: 3}
+    AudioSource: {fileID: 6783768503809031353}
+    TrackVolume: 1
+  - ClipName: 7
+    ClipType: 0
+    Clip: {fileID: 8300000, guid: 049690372a5173b4fb445905ecfae6bb, type: 3}
+    AudioSource: {fileID: 6783768503809031353}
+    TrackVolume: 1
+  - ClipName: 8
+    ClipType: 2
+    Clip: {fileID: 8300000, guid: 3385c25835a59304fb9caa77c51a4b84, type: 3}
+    AudioSource: {fileID: 787893173148644675}
+    TrackVolume: 1
+  - ClipName: 9
+    ClipType: 2
+    Clip: {fileID: 8300000, guid: 0b7c704f0669e4d4ba1e5fc8d4eb6941, type: 3}
+    AudioSource: {fileID: 787893173148644675}
+    TrackVolume: 1
+  - ClipName: 10
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: c8aae774e21a3a64ead720ee3851ab0c, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 11
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: 19ef444948dabb4429f47497392ac2fc, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 12
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: 17dd9f5ecf2c78045931d0cb00b08fe2, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 13
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: e7859dcfd7cad4744b8c23365c44a941, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 14
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: 3fe77d0eac552f44d80fc3e6d63190da, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 15
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: 238e4abccedc15e47bc7bd5c14ce4ab5, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 16
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: eb29331323c37c5498694be5460ed51b, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 17
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: 3cd1a231d43ce5b4bb087b2473258353, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 18
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: ef3acef761f01d94bb5d8b4483a2545b, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 19
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: d4dab6b17bd0ebb4599ccac3aee25989, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 20
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: c799861c10b8fa1479e757cb8be59ef4, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 21
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: ba4a864353fb0e1489d8250723d6ec93, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 22
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: 06b8eb9cfb944a642b4caedb1bfa52ae, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 23
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: d1332e79a8aee6e459969e4daa14441d, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 24
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: 4628969734f149342a8e66089077bb78, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 25
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: 7ec5bb7ccd421dd4abeb289f9f56f7b1, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 26
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: 058ef0c716acdcc47ba6f6e207a3b698, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 27
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: 7e663e1205ff00c4ea21a1144aefb176, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 28
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: 51ee5c993a41a3349807e759b47902aa, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 29
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: e7c41653fd8198447a57d9afaf019912, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 30
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: 7744b028966ce7f4f9419258cbc0e496, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 31
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: 2e5e54fd54b689b46bed34b858df585d, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 32
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: 63316bc1c12d3c14a85bf04751798422, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 33
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: 2028da224f4c3e34b8525efb4e2900a5, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 34
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: 35db199f1f346ac48b55491584ee930d, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 35
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: 7c785121421729f4f87eb875a5c26474, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
+  - ClipName: 36
+    ClipType: 1
+    Clip: {fileID: 8300000, guid: f7c3459d5d709d949ad970b05d3fa202, type: 3}
+    AudioSource: {fileID: 6783768504724986404}
+    TrackVolume: 1
 --- !u!1 &6783768504724986402
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,11 +512,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6783768504724986402}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6783768503252412643}
+  m_Father: {fileID: 6783768504007678062}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &6783768504724986404
@@ -270,7 +528,8 @@ AudioSource:
   m_GameObject: {fileID: 6783768504724986402}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4547568709614716283, guid: ccb7d886d394c2a459914c0dbd19ff78,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1

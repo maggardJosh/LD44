@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
@@ -86,8 +87,20 @@ public class DialogueManager : MonoBehaviour
         while (!animator.GetCurrentAnimatorStateInfo(0).IsName("DialogueBox_Close"))
             yield return null;
 
-        if (GetCurrentDialogue(currentDialogue).ShouldIncreaseQuest)
-            QuestSystem.Instance.CompleteQuest();
+        var dialogueSet = GetCurrentDialogue(currentDialogue);
+        if (dialogueSet.ShouldIncreaseQuest)
+            QuestSystem.Instance.CompleteQuest(dialogueSet.QuestToComplete);
+
+        if (!string.IsNullOrWhiteSpace(dialogueSet.MemoryToSpawn))
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Sound.Music_Transition1);
+            FindObjectOfType<PlayerController>().SaveScenePositionForMemory();
+            FadeTransitionScreen.Instance.Transition(() =>
+            {
+                SceneManager.LoadScene(dialogueSet.MemoryToSpawn);
+            });
+        }
+        else
         if (setCinematic)
             FadeTransitionScreen.Instance.SetCinematic(false);
     }

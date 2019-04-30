@@ -20,16 +20,16 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -3735049021991039891, guid: 9c8ea2363cb3ea7469a87ae53ff2fe5a,
+      value: {fileID: -4753168001561789160, guid: 53eeec7cd43506441aae91bcf0240267,
         type: 3}
     - time: 0.083333336
-      value: {fileID: -7073808861426261586, guid: 9c8ea2363cb3ea7469a87ae53ff2fe5a,
+      value: {fileID: 8606794147846624441, guid: 53eeec7cd43506441aae91bcf0240267,
         type: 3}
     - time: 0.16666667
-      value: {fileID: -3735049021991039891, guid: 9c8ea2363cb3ea7469a87ae53ff2fe5a,
+      value: {fileID: -9211110968842867117, guid: 53eeec7cd43506441aae91bcf0240267,
         type: 3}
     - time: 0.25
-      value: {fileID: 2690416322616630388, guid: 9c8ea2363cb3ea7469a87ae53ff2fe5a,
+      value: {fileID: -3558058344652402558, guid: 53eeec7cd43506441aae91bcf0240267,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -50,10 +50,10 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -3735049021991039891, guid: 9c8ea2363cb3ea7469a87ae53ff2fe5a, type: 3}
-    - {fileID: -7073808861426261586, guid: 9c8ea2363cb3ea7469a87ae53ff2fe5a, type: 3}
-    - {fileID: -3735049021991039891, guid: 9c8ea2363cb3ea7469a87ae53ff2fe5a, type: 3}
-    - {fileID: 2690416322616630388, guid: 9c8ea2363cb3ea7469a87ae53ff2fe5a, type: 3}
+    - {fileID: -4753168001561789160, guid: 53eeec7cd43506441aae91bcf0240267, type: 3}
+    - {fileID: 8606794147846624441, guid: 53eeec7cd43506441aae91bcf0240267, type: 3}
+    - {fileID: -9211110968842867117, guid: 53eeec7cd43506441aae91bcf0240267, type: 3}
+    - {fileID: -3558058344652402558, guid: 53eeec7cd43506441aae91bcf0240267, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -78,4 +78,18 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: PlayStepSound
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.16666667
+    functionName: PlayStepSound
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

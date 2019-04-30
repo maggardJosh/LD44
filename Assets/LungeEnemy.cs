@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LungeEnemy : MonoBehaviour
@@ -10,6 +11,7 @@ public class LungeEnemy : MonoBehaviour
     private PlayerController player;
     public float LungeSpeed = 5;
     public float ChaseSpeed = 1;
+    public float ReEnterDist = 1;
     public float LungeDist = 2;
     public float AggroDist = 7;
     public float LungeTime = 2;
@@ -47,10 +49,13 @@ public class LungeEnemy : MonoBehaviour
     public float maxLungeTime = 9;
 
     private float timeUntilThrow;
-
+    private void Dead()
+    {
+        Instantiate(GlobalPrefabs.Instance.ExplosionPrefab, transform.position, transform.rotation);
+        Destroy(gameObject);
+    }
     void Update()
     {
-
         if (controller.StunTimeLeft > 0)
         {
             animator.SetTrigger("LungeDone");
@@ -74,7 +79,7 @@ public class LungeEnemy : MonoBehaviour
             case State.AGGRO_OUT_OF_DISTANCE:
 
                 playerDiff = (player.transform.position - transform.position);
-                if (playerDiff.magnitude < LungeDist * .9f)
+                if (playerDiff.magnitude < ReEnterDist)
                 {
                     currentState = State.AGGRO_IN_DISTANCE;
                     gameObject.StopTopDownController();
@@ -125,6 +130,7 @@ public class LungeEnemy : MonoBehaviour
     Coroutine lungeCo;
     private void Lunge()
     {
+        SoundManager.Instance.PlaySound(SoundManager.Sound.SFX_Enemy_EnergyPunch);
         lungeCo = StartCoroutine(LungeAtPlayer());
     }
 
@@ -141,11 +147,8 @@ public class LungeEnemy : MonoBehaviour
         float count = 0;
         while(count < LungeTime)
         {
-            Debug.Log(count);
-            Debug.Log(lungeVelocity);
             count += Time.deltaTime;
             GetComponent<Rigidbody2D>().velocity = lungeVelocity * velLungeCurve.Evaluate(count/LungeTime);
-            lungeVelocity *= .9f;
             yield return null;
         }
 
@@ -174,4 +177,11 @@ public class LungeEnemy : MonoBehaviour
             }
         }
     }
+
+    private List<SoundManager.Sound> StepCollection = new List<SoundManager.Sound> { SoundManager.Sound.SFX_Player_Walk1, SoundManager.Sound.SFX_Player_Walk2, SoundManager.Sound.SFX_Player_Walk3 };
+    private void PlayStepSound()
+    {
+        SoundManager.Instance.PlaySound(StepCollection[UnityEngine.Random.Range(0, 3)]);
+    }
+
 }

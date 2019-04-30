@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0631a019bd506a4eba0cb3aa00cd935, type: 3}
+  m_Name: Q5_Go_Help_Jim
+  m_EditorClassIdentifier: 
+  CharacterName: Brumpus
+  dialogueEntries:
+  - MinQuestLevel: 5
+    DialogueLines:
+    - I heard Jimbo's lookin' fer some help.
+    - Northwest side'a town.
+    ShouldIncreaseQuest: 1
+    QuestToComplete: 5
+    MemoryToSpawn: 
+  - MinQuestLevel: 6
+    DialogueLines:
+    - Git to helpin' Jimboy! Northwest side'a town like I todja.
+    ShouldIncreaseQuest: 0
+    QuestToComplete: -1
+    MemoryToSpawn: 
+  - MinQuestLevel: 4
+    DialogueLines:
+    - Nice weather eh?
+    ShouldIncreaseQuest: 0
+    QuestToComplete: -1
+    MemoryToSpawn: 
+  - MinQuestLevel: 10
+    DialogueLines:
+    - Good job helping Jimmyman.
+    ShouldIncreaseQuest: 0
+    QuestToComplete: -1
+    MemoryToSpawn: 

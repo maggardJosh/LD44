@@ -39,6 +39,10 @@ public class TopDownController : MonoBehaviour
         this.StunTimeLeft = stunTime;
     }
 
+    public void FaceDirection(Vector3 direction)
+    {
+        FacePosition(transform.position + direction);
+    }
     public void FacePosition(Vector3 position)
     {
         Vector3 diffNormalized = (transform.position - position).normalized;
@@ -62,6 +66,8 @@ public class TopDownController : MonoBehaviour
 
     void LateUpdate()
     {
+        if (animator.GetBool("IsDead"))
+            return;
         animator.SetFloat("StunLeft", StunTimeLeft);
         if (StunTimeLeft > 0)
         {

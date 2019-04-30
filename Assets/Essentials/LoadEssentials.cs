@@ -4,17 +4,27 @@ public class LoadEssentials : MonoBehaviour
 {
     void Awake()
     {
+        if (TutorialTextManager.Instance == null)
+        {
+            GameObject tutorialText = Instantiate(GlobalPrefabs.Instance.TutorialTextManager);
+            DontDestroyOnLoad(tutorialText);
+        }
+        if (CutsceneEffectManager.Instance == null)
+        {
+            GameObject cutsceneBorder = Instantiate(GlobalPrefabs.Instance.CutsceneBorder);
+            DontDestroyOnLoad(cutsceneBorder);
+        }
         if (SoundManager.Instance == null)
         {
             GameObject soundManager = Instantiate(GlobalPrefabs.Instance.SoundManager);
             DontDestroyOnLoad(soundManager);
         }
-        if(PauseMenuManager.Instance == null)
+        if (PauseMenuManager.Instance == null)
         {
             GameObject pauseMenu = Instantiate(GlobalPrefabs.Instance.PauseCanvas);
             DontDestroyOnLoad(pauseMenu);
         }
-        if(FindObjectOfType<FadeTransitionScreen>() == null)
+        if (FindObjectOfType<FadeTransitionScreen>() == null)
         {
             GameObject transScreen = Instantiate(GlobalPrefabs.Instance.TransitionCanvas);
             DontDestroyOnLoad(transScreen);
@@ -41,9 +51,9 @@ public class LoadEssentials : MonoBehaviour
 
         if (FindObjectsOfType<PlayerController>().Length <= 0)
         {
-            GameObject player = GameObject.Instantiate(GlobalPrefabs.Instance.PlayerPrefab);
-            var virtualCam = FindObjectOfType<Cinemachine.CinemachineVirtualCamera>().Follow = player.transform;
-            DontDestroyOnLoad(player);
+            PlayerController player = GameObject.Instantiate(GlobalPrefabs.Instance.PlayerPrefab).GetComponent<PlayerController>();
+            var virtualCam = FindObjectOfType<Cinemachine.CinemachineVirtualCamera>().Follow = player.followTransform;
+            DontDestroyOnLoad(player.gameObject);
         }
 
         if (FindObjectsOfType<Camera>().Length <= 0)

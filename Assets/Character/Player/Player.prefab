@@ -44,7 +44,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 2.6236088}
+  m_Offset: {x: -0.053427815, y: 2.0359023}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -55,7 +55,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.5119095}
+  m_Size: {x: 1.9617012, y: 3.5163536}
   m_EdgeRadius: 0
 --- !u!1 &271905160
 GameObject:
@@ -101,7 +101,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.6230793, y: 0.9449444}
+  m_Offset: {x: -1.655136, y: 0.78466105}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -112,7 +112,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8448883, y: 0.7554264}
+  m_Size: {x: 1.9090016, y: 1.5034156}
   m_EdgeRadius: 0
 --- !u!1 &530582269
 GameObject:
@@ -207,7 +207,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.6564307, y: 0.8782425}
+  m_Offset: {x: 1.655136, y: 0.78466105}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -218,7 +218,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9560628, y: 0.84436226}
+  m_Size: {x: 1.9090016, y: 1.5034156}
   m_EdgeRadius: 0
 --- !u!1 &870572686
 GameObject:
@@ -264,7 +264,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.68925214}
+  m_Offset: {x: 0.07479912, y: -0.72130895}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -275,7 +275,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.7559538}
+  m_Size: {x: 1.918959, y: 3.0595922}
   m_EdgeRadius: 0
 --- !u!1 &537303968286632710
 GameObject:
@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 537303968286632712}
   - component: {fileID: 537303968286632713}
   - component: {fileID: 2428505001331944693}
+  - component: {fileID: -5443296466370826845}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -312,6 +313,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 530582270}
+  - {fileID: 3264393491067170294}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -439,10 +441,14 @@ MonoBehaviour:
   diveTime: 0.4
   rollDistance: 4
   rollTime: 0.5
+  sceneToWarpBackTo: 
+  lastPos: {x: 0, y: 0, z: 0}
+  lastHasLeftWarp: 0
   horizontalHitBoxLeft: {fileID: 2814785639927420622}
   horizontalHitBoxRight: {fileID: 1241007108}
   hitBoxUp: {fileID: 89565758}
   hitBoxDown: {fileID: 870572688}
+  followTransform: {fileID: 3264393491067170294}
   damageableComponent: {fileID: 0}
 --- !u!58 &537303968286632713
 CircleCollider2D:
@@ -476,3 +482,46 @@ MonoBehaviour:
   invulnerableTime: 4
   stunTime: 1
   invulnerableFrameSpeed: 0.2
+--- !u!114 &-5443296466370826845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537303968286632710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a1cfdd078b50664d8f2382b50c1dd9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StepSound: 220000002300000024000000
+--- !u!1 &3978882221541619698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3264393491067170294}
+  m_Layer: 0
+  m_Name: FollowTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3264393491067170294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3978882221541619698}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.78, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 537303968286632709}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

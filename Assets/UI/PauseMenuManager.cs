@@ -1,12 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PauseMenuManager : MonoBehaviour
 {
     public Text CurrentQuestHint;
     private State CurrentState;
+
+    [SerializeField]
+    private Image[] ItemImages;
+
+    [SerializeField]
+    private Button[] MemoryButtons;
+
+    [SerializeField]
+    private Sprite whipSprite;
+
+    [SerializeField]
+    private Sprite itemOneSprite;
+
+    [SerializeField]
+    private Sprite locketSprite;
 
     private enum State
     {
@@ -37,10 +50,75 @@ public class PauseMenuManager : MonoBehaviour
     void Update()
     {
     }
-
-    public void SetQuestHint()
+    private void HideAllItems()
     {
-        CurrentQuestHint.text = QuestSystem.GetCurrentQuestHint(QuestSystem.Instance.CurrentState);
+        foreach (var item in ItemImages)
+            item.enabled = false;
+    }
+
+    private void HideAllMemories()
+    {
+        foreach (var mem in MemoryButtons)
+            mem.GetComponent<Image>().enabled = false;
+    }
+    public void UpdateScreen()
+    {
+        var qLevel = QuestSystem.Instance.CurrentState;
+        CurrentQuestHint.text = QuestSystem.GetCurrentQuestHint(qLevel);
+        HideAllItems();
+        HideAllMemories();
+        switch (qLevel)
+        {
+            case QuestSystem.QuestState.Q0_FIRST_LOAD:
+            case QuestSystem.QuestState.Q1_ACCESS_MEMORY:
+            case QuestSystem.QuestState.Q2_GO_TO_GRAVEYARD:
+            case QuestSystem.QuestState.Q3_RETRIEVE_NPC_ITEM:
+                ShowMemoriesUpTo(1);
+                break;
+            case QuestSystem.QuestState.Q4_RETURN_NPC_ITEM:
+                ShowMemoriesUpTo(1);
+                ShowImage(0, itemOneSprite);
+                break;
+            case QuestSystem.QuestState.Q5_RETRIEVE_WHIP:
+                ShowMemoriesUpTo(1);
+                break;
+            case QuestSystem.QuestState.Q6_WANDER_TOWN:
+            case QuestSystem.QuestState.Q7_TALK_TO_JIM:
+            case QuestSystem.QuestState.Q8_RESCUE_RALPH:
+                ShowMemoriesUpTo(2);
+                ShowImage(0, whipSprite);
+                break;
+            case QuestSystem.QuestState.Q9_RETURN_TO_JIM:
+                ShowMemoriesUpTo(3);
+                ShowImage(0, whipSprite);
+                break;
+            case QuestSystem.QuestState.Q10_GET_LOCKET:
+                ShowMemoriesUpTo(4);
+                ShowImage(0, whipSprite);
+                break;
+            case QuestSystem.QuestState.Q11_FIGHT_BOSS:
+                ShowMemoriesUpTo(5);
+                ShowImage(0, whipSprite);
+                ShowImage(1, locketSprite);
+                break;
+            default:
+                ShowMemoriesUpTo(8);
+                ShowImage(0, whipSprite);
+                ShowImage(1, whipSprite);
+                break;
+        }
+    }
+
+    private void ShowImage(int i, Sprite image)
+    {
+        ItemImages[i].enabled = true;
+        ItemImages[i].sprite = image;
+    }
+
+    private void ShowMemoriesUpTo(int i)
+    {
+        for (int j = 0; j < i; j++)
+            MemoryButtons[j].GetComponent<Image>().enabled = true;
     }
 
     private void CheckAndSwitchState()
@@ -66,7 +144,7 @@ public class PauseMenuManager : MonoBehaviour
 
     private void ShowMenu()
     {
-        SetQuestHint();
+        UpdateScreen();
         gameObject.SetActive(true);
         CurrentState = State.MenuOpen;
     }

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0631a019bd506a4eba0cb3aa00cd935, type: 3}
+  m_Name: ScarySpawn
+  m_EditorClassIdentifier: 
+  CharacterName: Maranda
+  dialogueEntries:
+  - MinQuestLevel: 1
+    DialogueLines:
+    - Gosh, Tupi, are you okay?
+    - Why'd you go back into that awful place? I didn't think that you'd be so eager
+      to...
+    - Hm?
+    - You want to remember what you were doing here?
+    - .  .  .  .  .
+    - You seem so eager now, but, hrm. Could you fetch my book for me?  It's on the
+      dock. I have to think about this for a bit...
+    ShouldIncreaseQuest: 1
+    QuestToComplete: 1
+    MemoryToSpawn: 

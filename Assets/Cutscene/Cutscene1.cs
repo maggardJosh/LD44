@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Cutscene1 : MonoBehaviour
 {
@@ -55,7 +56,10 @@ public class Cutscene1 : MonoBehaviour
             partSyst.Stop();
         yield return new WaitForSeconds(3f);
 
-        FadeTransitionScreen.Instance.SetCinematic(false);
+        FadeTransitionScreen.Instance.Transition(() =>
+        {
+            SceneManager.LoadScene(p.GetComponent<PlayerController>().sceneToWarpBackTo);
+        });
     }
 
     private IEnumerator MoveToPosition(TopDownController t, Vector3 pos, float time)
