@@ -19,4 +19,5 @@ MonoBehaviour:
     - Locket Aquired...
     - '... It inspires strong memories within you'
     ShouldIncreaseQuest: 1
+    QuestToComplete: 9
     MemoryToSpawn: M4

@@ -21,8 +21,12 @@ MonoBehaviour:
     - Could you go get my ITEM from the east side of town
     - '..... Thaaaanks'
     ShouldIncreaseQuest: 1
+    QuestToComplete: 1
+    MemoryToSpawn: 
   - MinQuestLevel: 1
     DialogueLines:
     - My ITEM is on the east side of town
     - Be careful
     ShouldIncreaseQuest: 0
+    QuestToComplete: -1
+    MemoryToSpawn: 

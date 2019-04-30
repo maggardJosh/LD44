@@ -11,6 +11,7 @@ public class Dialogue : ScriptableObject
         [TextArea(2,8)]
         public List<string> DialogueLines = new List<string>();
         public bool ShouldIncreaseQuest = false;
+        public QuestSystem.QuestState QuestToComplete = QuestSystem.QuestState.Q0_FIRST_LOAD;
         public string MemoryToSpawn = "";
     }
     public string CharacterName = "Character";

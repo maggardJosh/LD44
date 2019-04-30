@@ -89,7 +89,7 @@ public class DialogueManager : MonoBehaviour
 
         var dialogueSet = GetCurrentDialogue(currentDialogue);
         if (dialogueSet.ShouldIncreaseQuest)
-            QuestSystem.Instance.CompleteQuest();
+            QuestSystem.Instance.CompleteQuest(dialogueSet.QuestToComplete);
 
         if (!string.IsNullOrWhiteSpace(dialogueSet.MemoryToSpawn))
         {

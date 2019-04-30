@@ -18,19 +18,23 @@ MonoBehaviour:
     DialogueLines:
     - Jimbo needs help, northwest side of town
     ShouldIncreaseQuest: 1
+    QuestToComplete: 5
     MemoryToSpawn: 
   - MinQuestLevel: 6
     DialogueLines:
     - Go help JIMBOY! Northwest side of town
     ShouldIncreaseQuest: 0
+    QuestToComplete: -1
     MemoryToSpawn: 
   - MinQuestLevel: 4
     DialogueLines:
     - Nice weather eh?
     ShouldIncreaseQuest: 0
+    QuestToComplete: -1
     MemoryToSpawn: 
   - MinQuestLevel: 10
     DialogueLines:
     - Good job helping Jimmyman
     ShouldIncreaseQuest: 0
+    QuestToComplete: -1
     MemoryToSpawn: 

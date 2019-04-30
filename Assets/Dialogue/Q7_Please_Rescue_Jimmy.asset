@@ -18,6 +18,7 @@ MonoBehaviour:
     DialogueLines:
     - "I wonder where Ralph went off to...\t"
     ShouldIncreaseQuest: 0
+    QuestToComplete: -1
     MemoryToSpawn: 
   - MinQuestLevel: 6
     DialogueLines:
@@ -25,21 +26,25 @@ MonoBehaviour:
     - Ralph is lost north of town...
     - Please rescue him!
     ShouldIncreaseQuest: 1
+    QuestToComplete: 6
     MemoryToSpawn: 
   - MinQuestLevel: 7
     DialogueLines:
     - He's north of town
     - Please help!
     ShouldIncreaseQuest: 0
+    QuestToComplete: -1
     MemoryToSpawn: 
   - MinQuestLevel: 8
     DialogueLines:
     - OH THANK GOD
     - Just like old times eh?
     ShouldIncreaseQuest: 1
+    QuestToComplete: 8
     MemoryToSpawn: M3
   - MinQuestLevel: 9
     DialogueLines:
     - Thanks again for your help
     ShouldIncreaseQuest: 0
+    QuestToComplete: -1
     MemoryToSpawn: 

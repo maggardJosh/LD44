@@ -36,11 +36,12 @@ public class QuestSystem : MonoBehaviour
     {
         get { return _currentState; }
     }
-    public void CompleteQuest()
+    public void CompleteQuest(QuestState s)
     {
-        _currentState++;
-        if (!Enum.IsDefined(typeof(QuestState), CurrentState))
-            _currentState--;
+        if (_currentState > s)
+            return;
+        else
+            _currentState = s;
         foreach (QuestAffectedItem item in Resources.FindObjectsOfTypeAll<QuestAffectedItem>())
             item.UpdateActiveBasedOnCurrentQuest();
     }

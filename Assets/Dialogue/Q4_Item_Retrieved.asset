@@ -16,6 +16,7 @@ MonoBehaviour:
   dialogueEntries:
   - MinQuestLevel: 2
     DialogueLines:
-    - ITEM retrieved
+    - Keepsake aquired
     ShouldIncreaseQuest: 1
+    QuestToComplete: 2
     MemoryToSpawn: 

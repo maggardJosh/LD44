@@ -19,4 +19,5 @@ MonoBehaviour:
     - Aquired Whip
     - It inspires strong memories in you....
     ShouldIncreaseQuest: 1
+    QuestToComplete: 4
     MemoryToSpawn: M1
