@@ -273,7 +273,7 @@ MonoBehaviour:
   ReEnterDist: 7
   LungeDist: 5
   AggroDist: 9
-  LungeTime: 2
+  LungeTime: 1
   minLungeTime: 1
   maxLungeTime: 1
   jitterRandom: 0.1

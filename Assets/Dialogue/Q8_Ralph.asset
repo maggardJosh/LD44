@@ -20,7 +20,7 @@ MonoBehaviour:
     - I'm going home RIGHT NOW!
     - '... Here''s a memory though'
     ShouldIncreaseQuest: 1
-    QuestToComplete: 7
+    QuestToComplete: 8
     MemoryToSpawn: M2
   - MinQuestLevel: 8
     DialogueLines:
