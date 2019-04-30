@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b7c29eceed7764585c4c873c36808e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dialogue: {fileID: 11400000, guid: c2543e9ad98c5ab419b86e830e4e5be3, type: 2}
+  Dialogue: {fileID: 11400000, guid: 634c833c6725f3245bd6a052ac0c31bf, type: 2}
   canInteract: 0
 --- !u!1 &286858309053387996
 GameObject:
