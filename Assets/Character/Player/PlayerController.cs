@@ -94,7 +94,8 @@ public class PlayerController : MonoBehaviour
         WarpPoint result = GetPoint(points);
         if (result != null)
         {
-            transform.position = result.transform.position;
+
+            transform.position = new Vector3(result.transform.position.x, result.transform.position.y, 0);
             if (result.spawnDialogue != null)
                 StartCoroutine(ShowDialogue(result.spawnDialogue));
         }
@@ -299,7 +300,7 @@ public class PlayerController : MonoBehaviour
         animController.SetFloat("whipX", xMove);
         animController.SetFloat("whipY", yMove);
     }
-    
+
     private void PlayDiveSound()
     {
         SoundManager.Instance.PlaySound(SoundManager.Sound.SFX_Player_DodgeRoll);

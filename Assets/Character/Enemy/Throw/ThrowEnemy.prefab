@@ -217,12 +217,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d426de702fe1a42821993d275bf766, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThrowSpeed: 0.8
-  ThrowHeight: 1
-  ThrowDist: 9
-  AggroDist: 12
-  ReEnterDist: 5
-  ThrowRandom: 0.3
+  ThrowSpeed: 1
+  ThrowHeight: 3
+  ThrowDist: 12
+  AggroDist: 14
+  ReEnterDist: 10
+  ThrowRandom: 2
   ThrowLaunchPoint: {fileID: 1610353810437242550}
   minThrowTime: 0.5
   maxThrowTime: 1
