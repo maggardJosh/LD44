@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c4349d15b721042b8a02c7b3b019de, type: 3}
   m_Name: ButlerSettings
   m_EditorClassIdentifier: 
-  GameName: ld44
+  GameName: remnant
   UserName: maggardJosh
   Scenes:
   - Assets\Scenes\Town.unity

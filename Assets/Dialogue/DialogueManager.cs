@@ -75,8 +75,7 @@ public class DialogueManager : MonoBehaviour
         animator.SetBool("IsOpen", true);
         while (!animator.GetCurrentAnimatorStateInfo(0).IsName("DialogueBox_Open"))
             yield return null;
-
-
+        Time.timeScale = 0;
         while (dialogueQueue.Count > 0)
         {
             yield return TypeSentence(dialogueQueue.Dequeue());
@@ -86,6 +85,8 @@ public class DialogueManager : MonoBehaviour
         animator.SetBool("IsOpen", false);
         while (!animator.GetCurrentAnimatorStateInfo(0).IsName("DialogueBox_Close"))
             yield return null;
+
+        Time.timeScale = 1;
 
         var dialogueSet = GetCurrentDialogue(currentDialogue);
         if (dialogueSet.ShouldIncreaseQuest)
@@ -115,7 +116,7 @@ public class DialogueManager : MonoBehaviour
             float count = 0;
             while (count < TypeSpeed)
             {
-                count += Time.deltaTime;
+                count += Time.unscaledDeltaTime;
                 yield return null;
                 if (Input.GetButtonDown("Interact"))
                 {
