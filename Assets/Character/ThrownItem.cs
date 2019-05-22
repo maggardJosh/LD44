@@ -21,6 +21,7 @@ public class ThrownItem : MonoBehaviour
         float t = count / throwTime;
         if (t >= 1)
         {
+            BlowUp();
             Destroy(gameObject);
             return;
         }
@@ -31,7 +32,7 @@ public class ThrownItem : MonoBehaviour
         actualItem.transform.localPosition = localPos;
     }
 
-    private void OnDestroy()
+    private void BlowUp()
     {
         //TODO: Decide if we want explosion sounds here or not
         SoundManager.Instance.PlaySound(SoundManager.Sound.SFX_Enemy_EnergyExplosion);
