@@ -38,6 +38,12 @@ public class PauseMenuManager : MonoBehaviour
         }
     }
 
+    public static bool IsPaused { get
+        {
+            return Instance.CurrentState == State.MenuOpen; 
+        }
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -146,11 +152,13 @@ public class PauseMenuManager : MonoBehaviour
     {
         UpdateScreen();
         gameObject.SetActive(true);
+        Time.timeScale = 0;
         CurrentState = State.MenuOpen;
     }
 
     private void HideMenu()
     {
+        Time.timeScale = 1;
         gameObject.SetActive(false);
         CurrentState = State.MenuClosed;
     }

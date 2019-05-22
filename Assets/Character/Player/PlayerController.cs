@@ -157,6 +157,10 @@ public class PlayerController : MonoBehaviour
     {
         if (FadeTransitionScreen.Instance.IsTransitioning)
             return;
+        if (Input.GetButtonDown("Pause"))
+            PauseMenuManager.Instance.PressPause();
+        if (PauseMenuManager.IsPaused)
+            return;
         DisableHitboxes();
         if (animController.GetCurrentAnimatorStateInfo(0).IsName("WhipHold"))
         {
@@ -193,8 +197,6 @@ public class PlayerController : MonoBehaviour
             TestInteractAndWhip();
         if (CanDive && Input.GetButtonDown("Dive"))
             diveCoroutine = StartCoroutine(StartDive());
-        if (Input.GetButtonDown("Pause"))
-            PauseMenuManager.Instance.PressPause();
         if (Input.GetButtonDown("Mute"))
             SoundManager.ToggleMute();
     }
