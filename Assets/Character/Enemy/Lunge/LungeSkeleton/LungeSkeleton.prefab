@@ -253,8 +253,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  invulnerableTime: 2
-  stunTime: 2
+  invulnerableTime: 0.8
+  stunTime: 0.5
   invulnerableFrameSpeed: 0.1
 --- !u!114 &4247804194879138645
 MonoBehaviour:
