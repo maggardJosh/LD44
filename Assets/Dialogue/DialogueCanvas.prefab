@@ -380,7 +380,7 @@ MonoBehaviour:
   DialogueLines: {fileID: 6143993470094419124}
   CharacterName: {fileID: 6143993469992496011}
   animator: {fileID: 1689973521}
-  TypeSpeed: 0.1
+  TypeSpeed: 0.025
 --- !u!95 &1689973521
 Animator:
   serializedVersion: 3
